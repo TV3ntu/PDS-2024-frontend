@@ -16,3 +16,6 @@ Este repositorio sigue el modelo de branching GitFlow para gestionar el desarrol
 - **feature/**: Las ramas de características se utilizan para desarrollar nuevas funcionalidades. Cada nueva característica debe tener su propia rama de características, que se bifurca de develop y se fusiona de vuelta en develop una vez completada.
 
 - **fix/**: Las ramas de fix se utilizan para corregir problemas. Se crean a partir de la rama develop y se fusionan de vuelta en develop una vez solucionados los problemas.
+
+![image](https://github.com/TV3ntu/PDS-2024-frontend/assets/75498776/b7c98055-ef38-4276-860a-bd74b1728bd9)
+
