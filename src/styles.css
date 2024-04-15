@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #012E4A;
+    --primary-color-lighter: #036280;
+    --primary-color-lighter-2: #378BA4;
+    --secondary-color: #81BECE;
+    --tertiary-color: #E8EDE7;
+    --danger-color: #b80909;
+    --success-color: #39be39;
+    --warning-color: #e8d846;
+    --info-color: #0000ff;
+    --light-color: #ffffff;
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font: 'Montserrat', sans-serif;
+    --primary-font-size: 1.6rem;
+    --secondary-font-size: 1.4rem;
+    --primary-border-radius: 1rem;
+    --secondary-border-radius: 0.5rem;
+    --primary-border: 0.2rem solid var(--primary-color);
+    --primary-border_lighter: 0.2rem solid var(--primary-color-lighter);
+    --primary-border_gray: 0.2rem solid #d3d3d3;
+    --secondary-border: 0.1rem solid var(--secondary-color);
+    --secondary-border_lighter: 0.1rem solid var(--primary-color-lighter);
+    --tertiary-border: 0.5rem;
+    --primary-padding: 1rem;
+    --secondary-padding: 0.5rem;
+    --primary-margin: 1rem;
+    --secondary-margin: 0.5rem;
+    --primary-shadow: 0.1rem 0.1rem 0.5rem black;
+    --secondary-shadow: 0.1rem 0.1rem 0.5rem var(--secondary-color);
+    --primary-transition: all 0.3s ease-in-out;
+    --ambar-color: #ac977b;
+    --icon-yellow-color: #efb810;
+}
+
+* {
+    font-family: var(--primary-font);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 12px;
+}
+
+body{
+    min-height: 100vh;
+    position: relative;
+}
+
+app-root{
+    position: relative;
+}
+
+h1,h2,h3,h4,h5,h6,p,span{
+    font-family: var(--primary-font);
+    font-weight: normal;
+}
+
+.text-bold{
+    font-weight: 600;
+}
+.text-success{
+    color: var(--success-color);
+}
+
+.bolder-text{
+    font-weight: 700;
+}
+
+.italic-text{
+    font-style: italic;
+}
