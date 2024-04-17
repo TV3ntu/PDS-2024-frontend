@@ -1,0 +1,12 @@
+header{
+    padding: 2%;
+    position: sticky;
+    top:0;
+    background-color: var(--primary-color);
+}
+header button {
+    background-color: rgb(78, 78, 78);
+}
+header button mat-icon{
+    color: var(--light-color);
+}
