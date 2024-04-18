@@ -56,6 +56,7 @@ app-root{
 h1,h2,h3,h4,h5,h6,p,span{
     font-family: var(--primary-font);
     font-weight: normal;
+    margin: 0;
 }
 
 .text-bold{
