@@ -7,18 +7,22 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from "@angular/forms"
 import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import {MatCardModule} from '@angular/material/card';
+import { InstitutionComponent } from './pages/institution/institution.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    InstitutionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
