@@ -13,10 +13,10 @@ export class Course{
     }
 
     subscribe(){
-        console.log('Subscribed to course: ' + this.title)
+        console.log("You've subscribed to course: " + this.title)
     }
 
     unsubscribe(){
-        console.log('Unsubscribed from course: ' + this.title)
+        console.log("You've unsubscribed from course: " + this.title)
     }
 }
