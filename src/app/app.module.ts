@@ -12,11 +12,17 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatMenuModule} from '@angular/material/menu'
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {MatCardModule} from '@angular/material/card';
+import { InstitutionComponent } from './components/institution/institution.component';
+import { InstitutionListComponent } from './components/institution-list/institution-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    HeaderComponent
+    HeaderComponent,
+    InstitutionComponent,
+    InstitutionListComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     BrowserAnimationsModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
