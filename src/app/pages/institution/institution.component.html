@@ -1,12 +1,12 @@
-
-<mat-card class="institution-card">
+<div class="card-container">
+  <mat-card class="institution-card">
     <mat-card-content class="institution-card-content">
-      <img mat-card-image
-        src={{image}}>
+      <img class="mat-card-image" [src]="institution?.image">
       <div>
-        <h2>{{name}}</h2>
-        <h3>{{category}}</h3>
-        <p>{{description}}</p>
+        <h2>{{institution?.name}}</h2>
+        <h3>{{institution?.category}}</h3>
+        <p>{{institution?.description}}</p>
       </div>
     </mat-card-content>
 </mat-card>
+</div>
