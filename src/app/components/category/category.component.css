@@ -1,0 +1,25 @@
+section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  column-gap: 5rem;
+  row-gap: 2rem;
+}
+
+a {
+  color: var(--light-color);
+  background-color: var(--primary-color-lighter-2);
+  border: 0.1rem solid var(--primary-color-lighter-2);
+  padding: var(--primary-padding);
+  border-radius: var(--secondary-border-radius);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-color);
+  background-color: var(--light-color);
+  transition: all 0.3s ease-in-out;
+}
