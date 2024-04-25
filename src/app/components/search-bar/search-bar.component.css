@@ -7,10 +7,14 @@
 }
 
 input {
-  width: 80%;
+  width: 30%;
   border-radius: var(--secondary-border-radius);
   padding: 1rem;
-  border: 0.1rem solid var(--primary-color);
+  border: 0.1rem solid var(--light-color);
+}
+
+input:hover {
+  border-color: var(--primary-color);
 }
 
 button {
@@ -27,9 +31,13 @@ button:hover {
   transition: all 0.2s ease-in-out;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   .search-bar {
     flex-direction: column;
+  }
+
+  input {
+    width: 80%;
   }
 
   button {
