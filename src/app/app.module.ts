@@ -9,12 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import {MatCardModule} from '@angular/material/card';
 import { InstitutionComponent } from './pages/institution/institution.component';
+import { InstitutionListComponent } from './pages/institution-list/institution-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    InstitutionComponent,
+    InstitutionListComponent,
     InstitutionComponent,
     FooterComponent
   ],
