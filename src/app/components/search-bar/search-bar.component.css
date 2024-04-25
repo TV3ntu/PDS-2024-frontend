@@ -1,0 +1,36 @@
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+input {
+  width: 80%;
+  border-radius: var(--secondary-border-radius);
+  padding: 1rem;
+  border: 0.1rem solid var(--primary-color);
+}
+
+button {
+  padding: var(--primary-padding);
+  border-radius: var(--secondary-border-radius);
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+button:hover {
+  background-color: var(--primary-color-lighter);
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 425px) {
+  .search-bar {
+    flex-direction: column;
+  }
+
+  button {
+    width: 80%;
+  }
+}
