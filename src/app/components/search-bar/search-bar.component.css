@@ -16,12 +16,14 @@ input {
 button {
   padding: var(--primary-padding);
   border-radius: var(--secondary-border-radius);
-  background-color: var(--primary-color);
+  background-color: var(--dark-gray-color);
+  border-color: var(--dark-gray-color);
   color: var(--light-color);
 }
 
 button:hover {
-  background-color: var(--primary-color-lighter);
+  background-color: var(--light-color);
+  color: var(--dark-gray-color);
   transition: all 0.2s ease-in-out;
 }
 
