@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatCardModule} from '@angular/material/card';
 import { InstitutionComponent } from './components/institution/institution.component';
 import { InstitutionListComponent } from './components/institution-list/institution-list.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InstitutionListComponent } from './components/institution-list/institut
     HomePageComponent,
     HeaderComponent,
     InstitutionComponent,
-    InstitutionListComponent
+    InstitutionListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
