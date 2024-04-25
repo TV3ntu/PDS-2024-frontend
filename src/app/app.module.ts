@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatCardModule} from '@angular/material/card';
 import { InstitutionComponent } from './components/institution/institution.component';
 import { InstitutionListComponent } from './components/institution-list/institution-list.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CategoryComponent } from './components/category/category.component';
 
@@ -25,6 +26,7 @@ import { CategoryComponent } from './components/category/category.component';
     HeaderComponent,
     InstitutionComponent,
     InstitutionListComponent,
+    FooterComponent,
     SearchBarComponent,
     CategoryComponent
   ],

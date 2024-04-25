@@ -1,0 +1,18 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: 6rem;
+  font-size: 1.8rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+span {
+  font-weight: bold;
+}
+
+p {
+  font-size: 1rem;
+}
