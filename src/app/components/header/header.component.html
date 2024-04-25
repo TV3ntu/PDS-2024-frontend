@@ -1,0 +1,18 @@
+<header>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <h1><mat-icon>calendar_month</mat-icon>HORARIOS</h1>
+      <mat-menu #menu="matMenu">
+        <button (click)="goTo('instituciones')" mat-menu-item>
+          <mat-icon>school</mat-icon>
+          <span>Instituciones</span>
+        </button>
+        <button (click)="goTo('cursos')" mat-menu-item>
+          <mat-icon>history_edu</mat-icon>
+          <span>Cursos</span>
+        </button>
+
+    </mat-menu>
+</header>
