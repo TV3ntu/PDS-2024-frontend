@@ -1,6 +1,6 @@
-<button (click)="toggleModal()">Inscribirse</button>
+<!-- <button (click)="toggleModal()">Inscribirse</button> -->
 
-<div *ngIf="showModal" class="modal-overlay">
+<div class="modal-overlay">
 
   <div class="modal-content">
 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="buttons-overlay">
-      <button class="secondary-button" (click)="toggleModal()">Cerrar</button>
+      <button class="secondary-button" (click)="closeModalEvent()">Cerrar</button>
       <button>Inscribirse</button>
     </div>
 

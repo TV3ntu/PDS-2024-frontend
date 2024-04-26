@@ -14,7 +14,7 @@ export class EntityDetailComponent {
   entity: Entity | undefined
   courseId: string = ''
   institutionId: string = ''
-
+  showAssignmentsModal: boolean = false
   constructor(
     private courseService:CourseService,
     private institutionService: InstitutionService,
@@ -49,5 +49,12 @@ export class EntityDetailComponent {
     .subscribe(data => {
       this.entity = data
     })
+  }
+
+  openAssignmentsModal = () => {
+    this.showAssignmentsModal = true
+  }
+  closeAssignmentsModal(){
+    this.showAssignmentsModal = false
   }
 }

@@ -70,6 +70,10 @@ main > header > section> p{
 
 main > section{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 @media (min-width: 530px) {
