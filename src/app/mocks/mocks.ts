@@ -27,16 +27,29 @@ export const assignments: Assignment[] = [
 export const courses: Course[] = [
     new Course("1","Curso de Angular","Angular","Aprende Angular desde cero","https://wallpapers.com/images/hd/angular-js-logo-in-gray-7mrokd29izt1eyog.jpg",assignments),
     new Course("2","Curso de React","React","Aprende React desde cero","https://e1.pxfuel.com/desktop-wallpaper/556/915/desktop-wallpaper-how-to-install-reactjs-frontend.jpg",assignments),
-    new Course("3","Curso de Vue","Vue","Aprende Vue desde cero","https://crisp.chat/static/blog/content/images/size/w2000/2023/03/migrar-vuejs.jpeg",assignments),
     new Course("4","Curso de Node","Node","Aprende Node desde cero","https://wallpapercave.com/wp/wp5070716.jpg",assignments),
-    new Course("5","Curso de Python","Python","Aprende Python desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments)
+    new Course("6","Curso de Java","Java","Aprende Java desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("7","Curso de C#","C#","Aprende C# desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("8","Curso de C++","C++","Aprende C++ desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("9","Curso de Ruby","Ruby","Aprende Ruby desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("10","Curso de PHP","PHP","Aprende PHP desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("16","Curso de PHP","PHP","Aprende PHP desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("3","Curso de Vue","Vue","Aprende Vue desde cero","https://crisp.chat/static/blog/content/images/size/w2000/2023/03/migrar-vuejs.jpeg",assignments),
+    new Course("5","Curso de Python","Python","Aprende Python desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("15","Curso de R","R","Aprende Python desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("11","Curso de Linux","Linux","Aprende Linux desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("12","Curso de Windows","Windows","Aprende Windows desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("13","Curso de Mac","Mac","Aprende Mac desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+    new Course("14","Curso de Android","Android","Aprende Android desde cero","https://wallpapercave.com/wp/wp7685924.jpg",assignments),
+
+
 ]
 
 export const institutions: Institution[] = [
-    new Institution("1","Institución Angular","Aprende Angular desde cero","AngularInstitute","https://wallpapers.com/images/hd/angular-js-logo-in-gray-7mrokd29izt1eyog.jpg",courses),
-    new Institution("2","institución React","Aprende React desde cero","ReactInstitute","https://e1.pxfuel.com/desktop-wallpaper/556/915/desktop-wallpaper-how-to-install-reactjs-frontend.jpg",courses),
-    new Institution("3","Institucion Vue","Aprende Vue desde cero","VueInstitute","https://crisp.chat/static/blog/content/images/size/w2000/2023/03/migrar-vuejs.jpeg",courses),
-    new Institution("4","Institución de Node","Aprende Node desde cero","NodeInstitute","https://wallpapercave.com/wp/wp5070716.jpg",courses),
-    new Institution("5","Institución de Python","Aprende Python desde cero","PythonInstitute","https://wallpapercave.com/wp/wp7685924.jpg",courses)
+    new Institution("1","Institución Frontend","Frontend","AngularInstitute of UNSAM, the M is for Masachusets","https://wallpapers.com/images/hd/angular-js-logo-in-gray-7mrokd29izt1eyog.jpg",courses.slice(0,2)),
+    new Institution("2","institución Backend","Backend","ReactInstitute","https://e1.pxfuel.com/desktop-wallpaper/556/915/desktop-wallpaper-how-to-install-reactjs-frontend.jpg",courses.slice(2,8)),
+    new Institution("3","Institucion FullStack","FullStack","VueInstitute","https://crisp.chat/static/blog/content/images/size/w2000/2023/03/migrar-vuejs.jpeg",courses.slice(8,10)),
+    new Institution("4","Institución de Datos","Datos","NodeInstitute","https://wallpapercave.com/wp/wp5070716.jpg",courses.slice(9,12)),
+    new Institution("5","Institución de SO","Sistemas Operativos","PythonInstitute","https://wallpapercave.com/wp/wp7685924.jpg",courses.slice(12,16))
 ]
 
