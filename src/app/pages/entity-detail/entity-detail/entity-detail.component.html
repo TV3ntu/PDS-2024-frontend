@@ -1,3 +1,14 @@
-<p>entity-detail works!
-    {{entity?.title}}
-</p>
+<main>
+    <header>
+        <img [src]="entity?.image" alt="entity?.name">
+        <section >
+            <h1>{{ entity?.title }}</h1>
+            <i class="fa fa-arrow-up-from-bracket"></i>
+            <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
+        </section>
+        <p>{{ entity?.description }}</p>
+        <span>{{entity?.category}}</span>
+    </header>
+
+
+</main>
