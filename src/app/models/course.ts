@@ -11,7 +11,7 @@ export class Course extends Entity{
         console.log("You've unsubscribed from course: " + this.title)
     }
 
-    children: Assignment[]
+    override children: Assignment[]
 
     constructor(id:string, title: string, description: string, image: string,category:string, children: Assignment[]){
         super(id, title, description, image,category)
