@@ -1,42 +1,78 @@
+:host{
+  display: block;
+  width: 100%;
+
+}
+
 .card-container{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  border-radius: 1rem;
+  width: 100%;
+  border: none;
+  box-shadow: -2px 2px 91px -31px rgba(0,0,0,0.75);
+-webkit-box-shadow: -2px 2px 91px -31px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 2px 91px -31px rgba(0,0,0,0.75);
+}
+.mat-card-image {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
 }
 .institution-card {
     border-radius: 4px;
-    max-width: 600px;
-    padding: 10px;
     align-items: center;
     display: flex;
+    gap: 1rem;
+    border: none;
+    box-shadow: none;
+}
 
-    .mat-card-image {
-      margin: 0;
-      height: 100%;
-    }
+.institution-card-content {
+  display: flex;
+  width: 100%;
+  border-bottom: solid ;
+  border-width: 1px;
+  justify-content: space-between;
+  flex-direction: column;
+  border: none;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 1rem;
+}
 
-    .institution-card-content {
-      display: flex;
-      border-bottom: solid ;
-      border-width: 1px;
-      justify-content: center;
-      align-items: center;
-      flex-direction:row-reverse;
+.institution-card-content h2{
+  width: 100%;
+  margin: 0;
+}
+.institution-card-content h3{
+  background-color: var(--dark-gray-color);
+  color: var(--light-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
 
-      & > * {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: auto;
-        max-width: 50%;
+@media (min-width: 660px) {
+  .institution-card{
+    flex-direction: row;
+    width: 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 40vh;
+  }
+  .institution-card-content{
+    padding: 1rem;
+    width: 100%;
+  }
+  .institution-card-content button{
+    align-self: flex-end;
+  }
 
-        
-        &:last-child {
-          flex-direction: column;
-          align-items: center;
-          font-size: 18px;
-          padding: 8px;
-        }
-      }
-    }
+  .mat-card-image {
+    width: 350px;
+    height: auto;
+  }
 }
