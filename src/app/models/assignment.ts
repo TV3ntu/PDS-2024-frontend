@@ -1,13 +1,13 @@
-
 export class Assignment{
     id: string
-    startTime: Date
-    endTime: Date
+    startTime: string
+    endTime: string
     day: string
     quotas: number
     isActive: boolean
     price: number
-    constructor(id:string, startTime: Date, endTime: Date, day: string,
+
+    constructor(id:string, startTime: string, endTime: string, day: string,
         quotas: number,isActive:boolean,price: number){
         this.id= id
         this.startTime=startTime
