@@ -12,39 +12,42 @@ import { InstitutionService } from 'src/app/services/institution/institution.ser
 })
 export class EntityDetailComponent {
   entity: Entity | undefined
-  mode: string = ''
+  courseId: string = ''
+  institutionId: string = ''
 
   constructor(
     private courseService:CourseService,
     private institutionService: InstitutionService,
-    private route:ActivatedRoute){ }
+    private route:ActivatedRoute
+  ){ }
 
   ngOnInit(){
     // Obtengo el modo de la entidad a mostrar
-    this.route.data.subscribe((data) => {
-      this.mode = data['mode']
+
+    this.route.paramMap.subscribe(params => {
+      this.courseId = params.get('courseId') || ''
+      this.institutionId = params.get('institutionId') || ''
+      console.log(this.isInstitution(),'courseId', this.courseId, 'institutionId', this.institutionId)
     })
 
-    if(this.mode === 'course') this.getCourse()
+    if(this.isInstitution()) this.getInstitution()
 
-    if(this.mode === 'institution') this.getInstitution()
-
+    if(!this.isInstitution()) this.getCourse()
   }
 
+  isInstitution = () => this.institutionId !== '' && this.courseId === ''
+
   getCourse(): void {
-    this.courseService.getById('1')
+    this.courseService.getById(this.courseId)
     .subscribe(data => {
       this.entity = data
     })
   }
 
   getInstitution():void{
-    this.institutionService.getById('1')
+    this.institutionService.getById(this.institutionId)
     .subscribe(data => {
       this.entity = data
     })
-
-
-    console.log('getInstitution')
   }
 }
