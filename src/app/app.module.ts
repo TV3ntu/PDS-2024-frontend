@@ -18,6 +18,7 @@ import { EntityListComponent } from './components/entity-list/entity-list.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CategoryComponent } from './components/category/category.component';
+import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CategoryComponent } from './components/category/category.component';
     EntityListComponent,
     FooterComponent,
     SearchBarComponent,
-    CategoryComponent
+    CategoryComponent,
+    AssignmentsModalComponent
   ],
   imports: [
     BrowserModule,
