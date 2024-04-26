@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/models/course';
 import { Entity } from 'src/app/models/entity';
 import { CourseService } from 'src/app/services/course/course.service';
+import { InstitutionService } from 'src/app/services/institution/institution.service';
 
 @Component({
   selector: 'app-entity-detail',
@@ -13,7 +14,10 @@ export class EntityDetailComponent {
   entity: Entity | undefined
   mode: string = ''
 
-  constructor(private courseService:CourseService, private route:ActivatedRoute){ }
+  constructor(
+    private courseService:CourseService,
+    private institutionService: InstitutionService,
+    private route:ActivatedRoute){ }
 
   ngOnInit(){
     // Obtengo el modo de la entidad a mostrar
@@ -35,6 +39,12 @@ export class EntityDetailComponent {
   }
 
   getInstitution():void{
+    this.institutionService.getById('1')
+    .subscribe(data => {
+      this.entity = data
+    })
+
+
     console.log('getInstitution')
   }
 }
