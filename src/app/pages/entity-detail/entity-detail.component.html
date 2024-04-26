@@ -9,7 +9,7 @@
             <p>{{ entity?.description }}</p>
         </section>
     </header>
-    <section *ngIf="isInstitution()">
+    <section class="entity-list" *ngIf="isInstitution()">
             <app-entity-card *ngFor="let child of entity?.children" [entity]="child"></app-entity-card>
     </section>
 

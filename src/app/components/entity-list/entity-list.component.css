@@ -4,3 +4,11 @@ section{
     gap: 2rem;
     padding: 2rem;
 }
+
+
+
+@media (min-width: 1120px) {
+    section{
+      padding: 2rem 10rem;
+    }
+  }

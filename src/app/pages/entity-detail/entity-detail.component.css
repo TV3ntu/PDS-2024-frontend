@@ -75,10 +75,14 @@ main > section{
     align-items: center;
     flex-wrap: wrap;
 }
-
+main .entity-list{
+    padding: 2rem;
+    gap: 2rem;
+    justify-content: space-between;
+}
 @media (min-width: 530px) {
     main > header{
-        min-height: 40vh;
+        min-height: 20vh;
         align-items: stretch;
     }
     main > header > img{
