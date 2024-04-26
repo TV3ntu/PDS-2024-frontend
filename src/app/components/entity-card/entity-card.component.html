@@ -8,5 +8,6 @@
         <p>{{entity?.description}}</p>
       </div>
     </mat-card-content>
+    <button mat-raised-button color="primary" (click)="navigateToDetail(entity?.id)">{{goToButtonText()}}</button>
 </mat-card>
 </div>
