@@ -18,7 +18,9 @@ import { EntityListComponent } from './components/entity-list/entity-list.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CategoryComponent } from './components/category/category.component';
+import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component';
 import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
+import { AssignmentDayCardComponent } from './components/assignment-day-card/assignment-day-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AssignmentsModalComponent } from './components/assignments-modal/assign
     FooterComponent,
     SearchBarComponent,
     CategoryComponent,
-    AssignmentsModalComponent
+    EntityDetailComponent,
+    AssignmentsModalComponent,
+    AssignmentDayCardComponent
   ],
   imports: [
     BrowserModule,

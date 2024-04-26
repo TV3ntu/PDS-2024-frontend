@@ -8,21 +8,27 @@
 
 input {
   width: 30%;
+  height: 100%;
   border-radius: var(--secondary-border-radius);
   padding: 1rem;
   border: 0.1rem solid var(--light-color);
+  border-color: var(--primary-color);
+  transition: all 0.2s ease-in-out;
 }
 
-input:hover {
-  border-color: var(--primary-color);
+input:focus {
+  background-color: var(--dark-gray-color);
+  color: var(--light-color);
 }
 
 button {
-  padding: var(--primary-padding);
+  padding: 1rem;
+  height: 100%;
   border-radius: var(--secondary-border-radius);
   background-color: var(--dark-gray-color);
   border-color: var(--dark-gray-color);
   color: var(--light-color);
+  cursor: pointer;
 }
 
 button:hover {
@@ -37,10 +43,11 @@ button:hover {
   }
 
   input {
-    width: 80%;
+    width: 95%;
+    height: auto;
   }
 
   button {
-    width: 80%;
+    width: 95%;
   }
 }

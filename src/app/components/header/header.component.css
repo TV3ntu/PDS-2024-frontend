@@ -6,6 +6,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1000;
 }
 header h1{
     margin: 0;
@@ -13,10 +14,19 @@ header h1{
     align-items: center;
     gap: 1rem;
     font-size: 2.5rem;
+    font-family: Kanit, sans-serif;
     color: var(--light-color);
+}
+header img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 header button {
     background-color: rgb(78, 78, 78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 header button mat-icon{
     color: var(--light-color);

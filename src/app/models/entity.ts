@@ -4,6 +4,7 @@ export class Entity{
     category: string
     image: string
     description: string
+    children: any
     constructor(id:string, title: string, category: string, description: string, image: string){
         this.id= id
         this.title=title
