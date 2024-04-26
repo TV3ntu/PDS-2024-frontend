@@ -1,0 +1,20 @@
+<button (click)="toggleModal()">Inscribirse</button>
+
+<div *ngIf="showModal" class="modal-overlay">
+
+  <div class="modal-content">
+
+    <h2>Seleccione día y horario para {{course!.title}}</h2>
+
+    <div *ngFor="let assigment of assignments" class="assignment-overlay">
+      <a>{{assigment.day}} a las {{assigment.startTime}}</a>
+    </div>
+
+    <div class="buttons-overlay">
+      <button class="secondary-button" (click)="toggleModal()">Cerrar</button>
+      <button>Inscribirse</button>
+    </div>
+
+  </div>
+
+</div>

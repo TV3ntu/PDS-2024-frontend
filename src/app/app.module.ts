@@ -19,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CategoryComponent } from './components/category/category.component';
 import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component';
+import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EntityDetailComponent } from './pages/entity-detail/entity-detail.compo
     FooterComponent,
     SearchBarComponent,
     CategoryComponent,
-    EntityDetailComponent
+    EntityDetailComponent,
+    AssignmentsModalComponent
   ],
   imports: [
     BrowserModule,

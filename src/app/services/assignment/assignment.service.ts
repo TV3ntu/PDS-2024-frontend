@@ -5,7 +5,7 @@ import {Assignment} from "../../models/assignment";
 @Injectable({
   providedIn: 'root'
 })
-export class AssigmentService {
+export class AssignmentService {
   assignments: Assignment[]
 
   constructor() {
