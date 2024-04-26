@@ -1,3 +1,4 @@
+import { assignments } from './../../mocks/mocks';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Assignment} from "../../models/assignment";
 import {Course} from "../../models/course";
@@ -10,16 +11,20 @@ import { Entity } from 'src/app/models/entity';
   styleUrls: ['./assignments-modal.component.css']
 })
 export class AssignmentsModalComponent {
-  @Input() course!: Entity | undefined
+  @Input() assignments: Assignment[] | undefined
   @Input() showModal: boolean = false
   @Output() closeModal = new EventEmitter()
-  assignments!: Assignment[]
+  /* assignments!: Assignment[] */
 
   constructor(assigmentService: AssignmentService) {
     this.setAssignments()
+    console.log(this.getAllDays())
   }
 
-  /* toggleModal() { this.showModal = !this.showModal } */
+  // Quiero que no se repitan los valores de day
+  getAllDays = () => this.assignments?.map(a => a.day).filter((value, index, self) => self.indexOf(value) === index)
+
+  getAllTimes = (day:string) => this.assignments?.filter(a => a.day === day).map(a => {return {startTime:a.startTime, endTime:a.endTime}})
 
   closeModalEvent() {
     console.log('closeModalEvent')
@@ -28,6 +33,7 @@ export class AssignmentsModalComponent {
 
   setAssignments() {
     // TODO: Llamar al service para obtener los assigments del curso dado
-    this.assignments = this.course?.children || []
+    /* console.log('setAssignments', this.course) */
+    /* this.assignments = this.course?.children || [] */
   }
 }

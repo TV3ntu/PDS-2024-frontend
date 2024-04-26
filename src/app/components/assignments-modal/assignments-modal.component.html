@@ -3,16 +3,17 @@
 <div class="modal-overlay">
 
   <div class="modal-content">
+    <header>
+      <h2>Seleccione día y horario</h2>
+      <button class="secondary-button" (click)="closeModalEvent()">Cerrar</button>
+    </header>
 
-    <h2>Seleccione día y horario para {{course!.title}}</h2>
-
-    <div *ngFor="let assigment of assignments" class="assignment-overlay">
-      <a>{{assigment.day}} a las {{assigment.startTime}}</a>
-    </div>
+    <section  class="assignment-overlay">
+      <app-assignment-day-card *ngFor="let day of getAllDays()" [day]="day" [times]="getAllTimes(day)"></app-assignment-day-card>
+    </section>
 
     <div class="buttons-overlay">
-      <button class="secondary-button" (click)="closeModalEvent()">Cerrar</button>
-      <button>Inscribirse</button>
+      <!-- <button>Inscribirse</button> -->
     </div>
 
   </div>
