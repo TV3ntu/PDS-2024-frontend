@@ -18,7 +18,7 @@ import { EntityListComponent } from './components/entity-list/entity-list.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CategoryComponent } from './components/category/category.component';
-import { EntityDetailComponent } from './pages/entity-detail/entity-detail/entity-detail.component';
+import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component';
 
 @NgModule({
   declarations: [
