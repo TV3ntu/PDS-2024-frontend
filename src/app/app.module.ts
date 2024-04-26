@@ -20,6 +20,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CategoryComponent } from './components/category/category.component';
 import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component';
 import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
+import { AssignmentDayCardComponent } from './components/assignment-day-card/assignment-day-card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AssignmentsModalComponent } from './components/assignments-modal/assign
     SearchBarComponent,
     CategoryComponent,
     EntityDetailComponent,
-    AssignmentsModalComponent
+    AssignmentsModalComponent,
+    AssignmentDayCardComponent
   ],
   imports: [
     BrowserModule,
