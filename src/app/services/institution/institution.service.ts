@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable,of } from 'rxjs';
 import { Institution } from 'src/app/models/institution';
 
 @Injectable({
@@ -16,4 +17,9 @@ export class InstitutionService {
       new Institution("5","Institución de Python","Aprende Python desde cero","PythonInstitute","https://wallpapercave.com/wp/wp7685924.jpg")
     ]
   }
+
+  getById = (id:string):Observable<Institution | undefined> => of(this.institutions.find(c => c.id == id))
+
+  getAll = ():Observable<Institution[]> => of(this.institutions)
+
 }
