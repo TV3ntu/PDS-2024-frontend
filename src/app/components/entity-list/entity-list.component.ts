@@ -38,7 +38,13 @@ export class EntityListComponent {
   getInstitutions(){
     this.institutionService.getAll()
     .subscribe(institutions => {
-      this.entityList = institutions
+      const transformedInstitutions = institutions.map(institution => {
+        return {
+            ...institution,  // Copia todas las propiedades existentes
+            title: institution.name,
+        }
+      })
+      this.entityList = transformedInstitutions;
     })
   }
 }
