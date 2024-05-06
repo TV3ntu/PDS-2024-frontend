@@ -16,14 +16,36 @@
   -moz-box-shadow: -2px 2px 91px -31px rgba(0,0,0,0.75);
   overflow: hidden;
 }
-.mat-card-image {
+.mat-card-image-container {
   margin: 0;
   height: 50vh;
   width: 100%;
-  border-radius: 0.5rem;
-  object-fit: scale-down;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-
+.mat-card-image{
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  z-index: 10;
+  box-shadow: none;
+}
+.mat-card-image.cover{
+  object-fit: cover;
+}
+.mat-card-image-bg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 5;
+  position: absolute;
+  top:0;
+  left: 0;
+  filter: blur(5px);
+}
 .institution-card {
     width: 100%;
     align-items: center;
@@ -76,8 +98,8 @@
     align-self: flex-end;
   }
 
-  .mat-card-image {
-    width: 250px;
+  .mat-card-image-container {
+    width: 550px;
     height: auto;
   }
 }
@@ -86,8 +108,8 @@
   .institution-card{
     height: 45vh;
   }
-  .mat-card-image {
-    width: 300px;
+  .mat-card-image-container {
+    width: 600px;
     height: auto;
   }
 }
@@ -96,8 +118,8 @@
   .institution-card{
     height: 50vh;
   }
-  .mat-card-image {
-    width: 350px;
+  .mat-card-image-container {
+    width: 650px;
     height: auto;
   }
 }
