@@ -31,3 +31,9 @@ header button {
 header button mat-icon{
     color: var(--light-color);
 }
+.icon-container{
+    display: flex;
+    justify-items: flex;
+    margin: 5px;
+
+}
