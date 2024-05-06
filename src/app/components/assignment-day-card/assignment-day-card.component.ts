@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Assignment } from 'src/app/models/assignment';
 
 @Component({
   selector: 'app-assignment-day-card',
@@ -7,7 +6,7 @@ import { Assignment } from 'src/app/models/assignment';
   styleUrls: ['./assignment-day-card.component.css']
 })
 export class AssignmentDayCardComponent {
-  @Input() times: {startTime: string, endTime: string}[] | undefined
+  @Input() times: {startTime: string, endTime: string, isActive:boolean}[] | undefined
   @Input() day: string = ''
   showDay: boolean = false
 

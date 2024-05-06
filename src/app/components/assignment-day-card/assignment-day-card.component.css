@@ -58,3 +58,13 @@ article > section > ul > li{
     gap: 0.5rem;
 
 }
+
+.secondary-button {
+    background-color: var(--light-color);
+    color: var(--danger-color);
+    border: 0.1rem solid var(--danger-color);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
