@@ -24,7 +24,7 @@ export class AssignmentsModalComponent {
   // Quiero que no se repitan los valores de day
   getAllDays = () => this.assignments?.map(a => a.day).filter((value, index, self) => self.indexOf(value) === index)
 
-  getAllTimes = (day:string) => this.assignments?.filter(a => a.day === day).map(a => {return {startTime:a.startTime, endTime:a.endTime}})
+  getAllTimes = (day:string) => this.assignments?.filter(a => a.day === day).map(a => {return {startTime:a.startTime, endTime:a.endTime, isActive:a.isActive}})
 
   closeModalEvent() {
     console.log('closeModalEvent')
