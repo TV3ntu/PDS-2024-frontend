@@ -25,7 +25,7 @@ export const assignments: Assignment[] = [
 ]
 
 export const courses: Course[] = [
-    new Course("1","Curso de Angular","Angular","Aprende Angular desde cero","https://wallpapers.com/images/hd/angular-js-logo-in-gray-7mrokd29izt1eyog.jpg",assignments),
+    new Course("1","Curso de Angular","Angular","Aprende Angular desde cero","https://wallpapers.com/images/hd/angular-js-logo-in-gray-7mrokd29izt1eyog.jpg",assignments.slice(0,3)),
     new Course("2","Curso de React","React","Aprende React desde cero","https://e1.pxfuel.com/desktop-wallpaper/556/915/desktop-wallpaper-how-to-install-reactjs-frontend.jpg",assignments),
     new Course("4","Curso de Node","Node","Aprende Node desde cero","https://wallpapercave.com/wp/wp5070716.jpg",assignments),
     new Course("6","Curso de Java","Java","Aprende Java desde cero","https://w0.peakpx.com/wallpaper/281/257/HD-wallpaper-java-logo.jpg",assignments),
