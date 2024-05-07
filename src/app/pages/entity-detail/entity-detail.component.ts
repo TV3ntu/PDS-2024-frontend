@@ -46,8 +46,12 @@ export class EntityDetailComponent {
 
   getInstitution():void{
     this.institutionService.getById(this.institutionId)
-    .subscribe(data => {
-      this.entity = data
+    .subscribe(institution => {
+      const transformedInstitution = {
+        ...institution,
+        title: institution.name
+      }
+      this.entity = transformedInstitution
     })
   }
 

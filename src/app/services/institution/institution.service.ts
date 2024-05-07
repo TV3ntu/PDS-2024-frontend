@@ -25,7 +25,7 @@ export class InstitutionService {
     this.institutions = institutions
   }
 
-  getById = (id:string):Observable<Institution | undefined> => of(this.institutions.find(c => c.id == id))
+  getById = (id:string):Observable<InstitutionResponse> => this.http.get<InstitutionResponse>(`${this.path}/${id}`)
 
   getAll = ():Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path)
 
