@@ -1,5 +1,6 @@
 <header>
     <h1><img src="/assets/weekbook-logo.png" alt='WeekBook' >WeekBook</h1>
+    <div class="icon-container">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
     </button>
@@ -17,4 +18,9 @@
           <span>Log Out</span>
         </button>
     </mat-menu>
+    <div>a</div>
+    <button mat-icon-button (click)="goTo('')" aria-label="log in or register">
+      <mat-icon>login</mat-icon>
+    </button>
+    </div>
 </header>
