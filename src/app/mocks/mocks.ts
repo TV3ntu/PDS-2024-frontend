@@ -8,7 +8,7 @@ import { Assignment } from '../models/assignment'
 // Crea mocks de assignments genéricos
 
 export const assignments: Assignment[] = [
-    new Assignment("1","09:00","10:00","lunes",20,true,1500),
+    new Assignment("1","09:00","10:00","lunes",20,false,1500),
     new Assignment("2","10:00","11:00","martes",20,true,1500),
     new Assignment("3","11:00","12:00","miercoles",20,true,1500),
     new Assignment("4","12:00","13:00","jueves",20,true,1500),
