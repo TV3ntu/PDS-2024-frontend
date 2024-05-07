@@ -54,6 +54,7 @@ export class EntityDetailComponent {
       this.entity = transformedInstitution
     })
   }
+  hasCourses = () => this.entity?.children?.length > 0
 
   openAssignmentsModal = () => {
     this.showAssignmentsModal = true
