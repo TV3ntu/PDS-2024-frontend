@@ -1,9 +1,9 @@
-export class Entity{
+export class User {
     id: string
     name: string
     lastName: string
     email: string
-    
+
     constructor(id:string, name: string, lastName: string, email: string){
         this.id= id
         this.name=name

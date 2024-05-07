@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+small {
+  color: var(--danger-color);
+}
+
 /* DESKTOP */
 
 @media (min-width: 769px) {
