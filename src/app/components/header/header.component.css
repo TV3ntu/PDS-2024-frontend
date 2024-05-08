@@ -34,6 +34,14 @@ header button mat-icon{
 .icon-container{
     display: flex;
     justify-items: flex;
-    margin: 5px;
+    width: 21%;
+    justify-content: space-between;
+}
 
+.user-data-container{
+    display: flex;
+    justify-items: flex;
+    align-items: center;
+    color: white;
+    font-size: 24px;
 }
