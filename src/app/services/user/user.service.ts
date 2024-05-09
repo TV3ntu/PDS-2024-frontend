@@ -12,6 +12,8 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  unsuscribe(){}
+
   login(email: string, password: string): Observable<User> {
     const body = { email, password }
     return this.http.post<any>(this.serverUrl + '/api/users/login', body)
