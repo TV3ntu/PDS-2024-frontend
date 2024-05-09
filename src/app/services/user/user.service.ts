@@ -7,10 +7,13 @@ import {User} from "../../models/user";
   providedIn: 'root'
 })
 export class UserService {
-  serverUrl = 'http://localhost:8080'
 
+  serverUrl = 'http://localhost:8080'
+  
   constructor(private http: HttpClient) {}
 
+  unsuscribe(){}
+  
   login(email: string, password: string): Observable<User> {
     const body = { email, password }
     return this.http.post<any>(this.serverUrl + '/api/users/login', body)
