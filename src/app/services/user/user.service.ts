@@ -17,4 +17,9 @@ export class UserService {
     return this.http.post<any>(this.serverUrl + '/api/users/login', body)
       .pipe( tap(user => UserService.currentUser = user) )
   }
+
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.serverUrl}/api/users`, user)
+      .pipe( tap(updatedUser => UserService.currentUser = updatedUser) )
+  }
 }
