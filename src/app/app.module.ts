@@ -21,6 +21,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component';
 import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
 import { AssignmentDayCardComponent } from './components/assignment-day-card/assignment-day-card.component';
+import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AssignmentDayCardComponent } from './components/assignment-day-card/ass
     CategoryComponent,
     EntityDetailComponent,
     AssignmentsModalComponent,
-    AssignmentDayCardComponent
+    AssignmentDayCardComponent,
+    ProfileFormComponent
   ],
   imports: [
     BrowserModule,
