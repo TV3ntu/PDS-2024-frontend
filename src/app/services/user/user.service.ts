@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {User} from "../../models/user";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {
-    
-  }
+  serverUrl = 'http://localhost:8080'
+  
+  constructor(private http: HttpClient) {}
 
   unsuscribe(){}
-
+  
+  login(email: string, password: string): Observable<User> {
+    const body = { email, password }
+    return this.http.post<any>(this.serverUrl + '/api/users/login', body)
+  }
 }
