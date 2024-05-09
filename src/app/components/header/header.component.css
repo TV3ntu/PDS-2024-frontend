@@ -31,3 +31,17 @@ header button {
 header button mat-icon{
     color: var(--light-color);
 }
+.icon-container{
+    display: flex;
+    justify-items: flex;
+    width: 21%;
+    justify-content: space-between;
+}
+
+.user-data-container{
+    display: flex;
+    justify-items: flex;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+}
