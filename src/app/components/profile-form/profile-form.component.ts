@@ -16,8 +16,10 @@ export class ProfileFormComponent {
     if(!this.userService.isLogged()) {
       this.router.navigate(['/ingresar'])
     }else{
-
-      this.user = this.userService.getLoggedUser()
+      this.userService.getUserLoggedData().subscribe(user => {
+        this.user = user
+      })
+      /* this.user = this.userService.getLoggedUser() */
     }
   }
 
