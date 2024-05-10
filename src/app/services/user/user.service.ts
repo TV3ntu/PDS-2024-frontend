@@ -8,27 +8,28 @@ import {User} from "../../models/user";
 })
 export class UserService {
   serverUrl = 'http://localhost:8080'
-  public static currentUser: User | null = null
+  public currentUser: User | null = null
 
   constructor(private http: HttpClient) {}
 
   unsuscribe(){}
+  getUser = () => this.currentUser
 
   login(email: string, password: string): Observable<User> {
     const body = { email, password }
     return this.http.post<any>(this.serverUrl + '/api/users/login', body)
-      .pipe( tap(user => UserService.currentUser = user) )
+      .pipe( tap(user => this.currentUser = user) )
   }
 
   logout() {
-    UserService.currentUser = null
+    this.currentUser = null
   }
 
-  isLogged = () => UserService.currentUser != null
+  isLogged = () => this.currentUser != null
 
   updateUser(user: User): Observable<User> {
     return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id + '/detail', user)
-      .pipe( tap(updatedUser => UserService.currentUser = updatedUser) )
+      .pipe( tap(updatedUser => this.currentUser = updatedUser) )
     // FIXME: El servicio al que le pega funciona bien pero desde Angular tira CORS error
   }
 }

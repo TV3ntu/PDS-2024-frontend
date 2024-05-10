@@ -6,7 +6,7 @@
     --secondary-color: #00a3ad;
     --tertiary-color: #E8EDE7;
     --danger-color: #b80909;
-    --success-color: #39be39;
+    --success-color: #71b371;
     --warning-color: #e8d846;
     --info-color: #0000ff;
     --light-color: #ffffff;
@@ -77,3 +77,7 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 html { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-menu-panel{
+    padding: 1%;
+}
