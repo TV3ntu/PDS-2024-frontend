@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-profile-form',
@@ -9,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent {
-  @Input() user!: User | null
-  constructor(private userService:UserService,private router:Router) { }
+  @Input() user: User = new User('','','','','')
+  constructor(private userService:UserService,private router:Router,private notificationService:NotificationService) { }
 
   ngOnInit() {
     if(!this.userService.isLogged()) {
@@ -25,6 +27,20 @@ export class ProfileFormComponent {
 
   guardarUsuario() {
     console.log(this.user)
+    this.userService.updateUser(this.user)
+    .pipe(
+      catchError((error) => {
+        console.log(error)
+        error.error.status = 401
+        error.error.message = 'No se pudo actualizar usuario'
+        return this.notificationService.handleError(error)
+      })
+
+    )
+  .subscribe(user => {
+      console.log(user)
+      this.notificationService.notify(200, 'Usuario actualizado')
+    })
       // TODO: Guardar User
   }
 }
