@@ -1,10 +1,12 @@
 <header>
     <h1><img src="/assets/weekbook-logo.png" alt='WeekBook' >WeekBook</h1>
+    <div *ngIf="isLogged()" class="user-data-container">{{user?.name}}</div>
     <div class="icon-container">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-      <mat-menu #menu="matMenu">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu" class="mat-menu">
         <button (click)="goTo('instituciones')" mat-menu-item>
           <mat-icon>school</mat-icon>
           <span>Instituciones</span>
@@ -13,14 +15,14 @@
           <mat-icon>history_edu</mat-icon>
           <span>Cursos</span>
         </button>
-        <button (click)="logOut()" mat-menu-item>
+        <button class="log-out-button" *ngIf="isLogged()" (click)="logOut()" mat-menu-item>
           <mat-icon>close</mat-icon>
           <span>Log Out</span>
         </button>
+        <button *ngIf="!isLogged()" mat-menu-item (click)="goTo('ingresar')" aria-label="log in or register">
+          <mat-icon>login</mat-icon>
+          <span>Ingresar</span>
+        </button>
     </mat-menu>
-    <button mat-icon-button (click)="goTo('')" aria-label="log in or register">
-      <mat-icon>login</mat-icon>
-    </button>
-    <div class="user-data-container">{{user.name}} {{user.lastName}}</div>
-    </div>
+  </div>
 </header>

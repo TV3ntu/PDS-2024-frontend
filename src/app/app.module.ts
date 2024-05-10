@@ -1,3 +1,4 @@
+import { NotificationComponent } from './components/notification/notification.component';
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
@@ -12,7 +13,7 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatMenuModule} from '@angular/material/menu'
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { EntityCardComponent } from './components/entity-card/entity-card.component';
 import { EntityListComponent } from './components/entity-list/entity-list.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -25,6 +26,7 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import {  MatFormFieldModule } from '@angular/material/form-field'
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import {  MatFormFieldModule } from '@angular/material/form-field'
     EntityDetailComponent,
     AssignmentsModalComponent,
     AssignmentDayCardComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    LoginPageComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
