@@ -39,9 +39,14 @@ export class EntityDetailComponent {
 
   getCourse(): void {
     this.courseService.getById(this.courseId)
-    .subscribe(data => {
-      console.log(data)
-      this.entity = data
+    .subscribe(course => {
+      console.log(course)
+      const transformedCourse = {
+        ...course,
+        title: course.title,
+        children: course.assignments
+      }
+      this.entity = transformedCourse
     })
   }
 

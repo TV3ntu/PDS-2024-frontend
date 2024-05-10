@@ -1,3 +1,4 @@
+import { assignments } from './../../mocks/mocks';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Course } from 'src/app/models/course';
@@ -5,7 +6,20 @@ import {courses, institutions} from 'src/app/mocks/mocks'
 import { InstitutionService } from '../institution/institution.service';
 import { Institution } from 'src/app/models/institution';
 import { path } from '../api.path';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'
+import { Assignment } from 'src/app/models/assignment';
+
+
+interface CourseResponse{
+  title:string
+  id:string
+  description: string
+  image: string
+  category: string
+  children: Assignment[]
+  assignments: Assignment[]
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +34,7 @@ export class CourseService {
     this.institutions = institutions
   }
 
-  getById = (id:string):Observable<Course> => this.http.get<Course>(`${this.path}/${id}`)
+  getById = (id:string):Observable<CourseResponse> => this.http.get<CourseResponse>(`${this.path}/${id}`)
 
   getAll = ():Observable<Course[]> => this.http.get<Course[]>(this.path)
 
