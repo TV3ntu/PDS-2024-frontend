@@ -11,7 +11,7 @@ export class ProfileFormComponent {
 
   ngOnInit() {
     // TODO: Si el user esta logeado, inicializar this.user con los valores correspondientes
-    this.user = new User('', '', '', '');
+    this.user = new User('', '', '', '', '');
   }
 
   guardarUsuario() {

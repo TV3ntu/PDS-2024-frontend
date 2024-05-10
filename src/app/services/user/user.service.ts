@@ -20,6 +20,10 @@ export class UserService {
       .pipe( tap(user => UserService.currentUser = user) )
   }
 
+  logout() {
+    UserService.currentUser = null
+  }
+
   updateUser(user: User): Observable<User> {
     return this.http.put<User>(`${this.serverUrl}/api/users`, user)
       .pipe( tap(updatedUser => UserService.currentUser = updatedUser) )
