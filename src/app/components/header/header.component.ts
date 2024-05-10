@@ -17,6 +17,8 @@ export class HeaderComponent {
     this.router.navigate([`/${route}`])
   }
 
+  isLogged = () => this.userService.isLogged()
+
   logOut() {
     this.goTo("instituciones")
     this.userService.logout()

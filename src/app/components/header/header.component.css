@@ -35,7 +35,7 @@ header button mat-icon{
     display: flex;
     justify-items: flex;
     width: 21%;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .user-data-container{
