@@ -5,8 +5,8 @@
         <ul>
             <li *ngFor="let time of times">
                 <span>{{time.startTime}} a {{time.endTime}}</span>
-                <button *ngIf="time.isActive" mat-raised-button color="primary">Inscribirse</button>
-                <button *ngIf="!time.isActive" mat-raised-button class="secondary-button">Desuscribirse</button>
+                <button (click)="subscribe()" *ngIf="time.isActive" mat-raised-button color="primary">Inscribirse</button>
+                <button (click)="unsubscribe()" *ngIf="!time.isActive" mat-raised-button class="secondary-button">Desuscribirse</button>
             </li>
         </ul>
     </section>
