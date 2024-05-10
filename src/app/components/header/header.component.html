@@ -6,7 +6,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
 
-      <mat-menu #menu="matMenu">
+      <mat-menu #menu="matMenu" class="mat-menu">
         <button (click)="goTo('instituciones')" mat-menu-item>
           <mat-icon>school</mat-icon>
           <span>Instituciones</span>
@@ -15,12 +15,11 @@
           <mat-icon>history_edu</mat-icon>
           <span>Cursos</span>
         </button>
-        <button *ngIf="isLogged()" (click)="logOut()" mat-menu-item>
+        <button class="log-out-button" *ngIf="isLogged()" (click)="logOut()" mat-menu-item>
           <mat-icon>close</mat-icon>
           <span>Log Out</span>
         </button>
         <button *ngIf="!isLogged()" mat-menu-item (click)="goTo('ingresar')" aria-label="log in or register">
-
           <mat-icon>login</mat-icon>
           <span>Ingresar</span>
         </button>
