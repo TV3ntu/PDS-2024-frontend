@@ -15,6 +15,10 @@
           <mat-icon>history_edu</mat-icon>
           <span>Cursos</span>
         </button>
+        <button *ngIf="isLogged()" (click)="goTo('perfil')" mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span>Perfil</span>
+        </button>
         <button class="log-out-button" *ngIf="isLogged()" (click)="logOut()" mat-menu-item>
           <mat-icon>close</mat-icon>
           <span>Log Out</span>

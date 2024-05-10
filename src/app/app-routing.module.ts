@@ -4,10 +4,12 @@ import { AuthGuard } from './auth.guard'
 import { HomePageComponent } from './pages/home-page/home-page.component'
 import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component'
 import { LoginPageComponent } from './pages/login-page/login-page.component'
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component'
 
 const routes: Routes = [
   /* { path: '', component: HomePageComponent, pathMatch: 'full'}, */
   { path:'ingresar', component: LoginPageComponent,pathMatch: 'full' },
+  { path:'perfil', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path:'instituciones', component: HomePageComponent,pathMatch: 'full',data: { mode: 'institution' } },
   { path:'cursos', component: HomePageComponent,pathMatch: 'full',data: { mode: 'course' } },
   { path:'instituciones/:institutionId', component: EntityDetailComponent },
