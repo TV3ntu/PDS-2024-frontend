@@ -37,6 +37,9 @@ header button mat-icon{
     background-color: var(--danger-color);
     color: var(--light-color);
 }
+.log-out-button:hover{
+    background-color: var(--danger-color-hover) !important;
+}
 .log-out-button mat-icon{
     color: var(--light-color);
 }
