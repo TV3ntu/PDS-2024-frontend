@@ -1,5 +1,5 @@
 <main>
-    <form #loginForm="ngForm" class="form-overlay" (ngSubmit)="login()">
+    <form #loginForm="ngForm" class="form-overlay" (ngSubmit)="login($event)">
 
         <h2>Ingresá para gestionar tus horarios</h2>
 
@@ -17,7 +17,7 @@
             email
             #emailField="ngModel"
             >
-          <div>
+          <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
             <small *ngIf="emailField.errors?.['required']">El email es obligatorio</small>
             <small *ngIf="emailField.errors?.['email']">El email no es válido</small>
           </div>
@@ -35,7 +35,7 @@
                 class="form-input"
                 password
                 #passwordField="ngModel">
-            <div>
+            <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
               <small *ngIf="passwordField.errors?.['required']">La contraseña es obligatoria</small>
             </div>
         </div>
