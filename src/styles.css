@@ -54,7 +54,21 @@ body{
 app-root{
     position: relative;
 }
-
+.date-picker{
+    position:relative;
+}
+button.mat-calendar-body-cell.special-date {
+    background-color: #673ab7;
+    border-radius: 100% ;
+  }
+  button.mat-calendar-body-cell.special-date span {
+    color: white ;
+  }
+  .cdk-overlay-pane{
+    top: 0;
+    left: 0;
+    transform: translate(20%,70%);
+  }
 h1,h2,h3,h4,h5,h6,p,span{
     font-family: var(--primary-font) !important;
     font-weight: normal;
@@ -77,3 +91,23 @@ h1,h2,h3,h4,h5,h6,p,span{
 }
 html { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (min-width: 700px) {
+    .cdk-overlay-pane{
+        top: 50%;
+        left: 50%;
+        transform: translate(70%,70%);
+    }
+}
+
+@media (min-width: 1000px) {
+    .cdk-overlay-pane{
+        transform: translate(120%,70%);
+    }
+}
+
+@media (min-width: 1200px) {
+    .cdk-overlay-pane{
+        transform: translate(250%,70%);
+    }
+}

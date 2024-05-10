@@ -13,4 +13,7 @@ export class AssignmentDayCardComponent {
   toggleShowDay() {
     this.showDay = !this.showDay
   }
+  ngOnInit(){
+    console.log(this.times)
+  }
 }

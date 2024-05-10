@@ -17,7 +17,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 500;
-  max-height: 80vh;
+  height: 70vh;
   overflow-y: scroll;
   width: 80vw;
   padding: 2rem;
@@ -45,9 +45,20 @@
 .modal-content > header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
+  position:relative;
 }
-
+.modal-content > header h2{
+  margin: 0;
+}
+.modal-content > header > label{
+  width: 100%;
+}
+.modal-content .date-picker input{
+  display: none;
+}
 .buttons-overlay {
   display: flex;
   justify-content: center;
@@ -69,9 +80,13 @@ button:hover {
 }
 
 .secondary-button {
+  width: 100%;
   background-color: var(--light-color);
   color: var(--primary-color);
 }
+
+
+
 @media (min-width: 900px) {
   .modal-content {
     width: 50vw;
