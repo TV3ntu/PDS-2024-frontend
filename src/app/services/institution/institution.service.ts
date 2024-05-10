@@ -2,18 +2,31 @@ import { Injectable } from '@angular/core';
 import { Observable,of } from 'rxjs';
 import { Institution } from 'src/app/models/institution';
 import { institutions } from 'src/app/mocks/mocks';
+import { path } from '../api.path';
+import { HttpClient } from '@angular/common/http';
+import { Course } from 'src/app/models/course';
+interface InstitutionResponse{
+  title:string
+  id:string
+  name: string
+  description: string
+  image: string
+  category: string
+  children: Course[]
+}
 @Injectable({
   providedIn: 'root'
 })
 export class InstitutionService {
+  path: string = path.local + '/api/institutions'
   institutions: Institution[]
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.institutions = institutions
   }
 
   getById = (id:string):Observable<Institution | undefined> => of(this.institutions.find(c => c.id == id))
 
-  getAll = ():Observable<Institution[]> => of(this.institutions)
+  getAll = ():Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path)
 
 }

@@ -1,6 +1,8 @@
 <div class="card-container">
   <mat-card class="institution-card">
-    <img class="mat-card-image" [src]="entity?.image">
+    <div class="mat-card-image-container">
+      <img class="mat-card-image" [ngClass]="{'cover':!isInstitution()}" [src]="entity?.image">
+    </div>
     <mat-card-content class="institution-card-content">
         <h2>{{entity?.title}}</h2>
         <h3>{{entity?.category}}</h3>
