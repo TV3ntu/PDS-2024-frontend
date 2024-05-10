@@ -64,7 +64,7 @@ button.mat-calendar-body-cell.special-date {
   button.mat-calendar-body-cell.special-date span {
     color: white ;
   }
-  .cdk-overlay-pane{
+  .mat-datepicker-popup.cdk-overlay-pane{
     top: 0;
     left: 0;
     transform: translate(20%,70%);
@@ -95,7 +95,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 1%;
 }
 @media (min-width: 700px) {
-    .cdk-overlay-pane{
+    .mat-datepicker-popup.cdk-overlay-pane{
         top: 50%;
         left: 50%;
         transform: translate(70%,70%);
@@ -103,13 +103,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 @media (min-width: 1000px) {
-    .cdk-overlay-pane{
+    .mat-datepicker-popup.cdk-overlay-pane{
         transform: translate(120%,70%);
     }
 }
 
 @media (min-width: 1200px) {
-    .cdk-overlay-pane{
+    .mat-datepicker-popup.cdk-overlay-pane{
         transform: translate(250%,70%);
     }
 }

@@ -11,7 +11,7 @@
         <!-- <input type="date" [(ngModel)]="selectedDate" (ngModelChange)="updateSchedule()" > -->
         <input matInput [matDatepicker]="picker" (dateChange)="updateSchedule($event.value)">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker  [dateClass]="dateClass" (selectedChange)="updateSchedule($event)" #picker></mat-datepicker>
+        <mat-datepicker class="date-picker"  [dateClass]="dateClass" (selectedChange)="updateSchedule($event)" #picker></mat-datepicker>
       </section>
       <label>
         {{spanishSelectedDate()}}
