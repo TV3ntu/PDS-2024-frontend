@@ -13,6 +13,7 @@ interface InstitutionResponse{
   image: string
   category: string
   children: Course[]
+  courses: Course[]
 }
 @Injectable({
   providedIn: 'root'

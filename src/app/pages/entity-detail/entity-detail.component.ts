@@ -40,6 +40,7 @@ export class EntityDetailComponent {
   getCourse(): void {
     this.courseService.getById(this.courseId)
     .subscribe(data => {
+      console.log(data)
       this.entity = data
     })
   }
@@ -49,7 +50,8 @@ export class EntityDetailComponent {
     .subscribe(institution => {
       const transformedInstitution = {
         ...institution,
-        title: institution.name
+        title: institution.name,
+        children: institution.courses
       }
       this.entity = transformedInstitution
     })
