@@ -1,10 +1,10 @@
-<form class="form-overlay" (ngSubmit)="guardarUsuario()">
+<form *ngIf="user" class="form-overlay" (ngSubmit)="guardarUsuario()">
 
   <h2>Datos del Perfil</h2>
 
   <div class="form-group">
     <label for="name">Nombre</label>
-    <input id="name" type="text" name="name" class="form-input" [(ngModel)]="user.name" required #nameField="ngModel">
+    <input id="name" type="text" name="name" class="form-input" [(ngModel)]="user!.name" required #nameField="ngModel">
     <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)">
       <small *ngIf="nameField.errors?.['required']">El nombre es obligatorio</small>
     </div>
@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <label for="lastName">Apellido</label>
-    <input id="lastName" type="text" name="lastname" class="form-input" [(ngModel)]="user.lastName" required #lastnameField="ngModel">
+    <input id="lastName" type="text" name="lastname" class="form-input" [(ngModel)]="user!.lastName" required #lastnameField="ngModel">
     <div *ngIf="lastnameField.invalid && (lastnameField.dirty || lastnameField.touched)">
       <small *ngIf="lastnameField.errors?.['required']">El apellido es obligatorio</small>
     </div>
@@ -20,7 +20,7 @@
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input id="email" type="email" name="email" class="form-input" [(ngModel)]="user.email" required email #emailField="ngModel">
+    <input id="email" type="email" name="email" class="form-input" [(ngModel)]="user!.email" required email #emailField="ngModel">
     <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
       <small *ngIf="emailField.errors?.['required']">El email es obligatorio</small>
       <small *ngIf="emailField.errors?.['email']">El email no es válido</small>

@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import {  MatFormFieldModule } from '@angular/material/form-field'
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     AssignmentDayCardComponent,
     ProfileFormComponent,
     LoginPageComponent,
-    NotificationComponent
+    NotificationComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

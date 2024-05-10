@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { User } from '../../models/user';
+import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-form',
@@ -7,14 +9,22 @@ import { User } from '../../models/user';
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent {
-  @Input() user!: User
+  @Input() user!: User | null
+  constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit() {
-    // TODO: Si el user esta logeado, inicializar this.user con los valores correspondientes
-    this.user = new User('', '', '', '', '');
+    if(!this.userService.isLogged()) {
+      this.router.navigate(['/ingresar'])
+    }else{
+      this.userService.getUserLoggedData().subscribe(user => {
+        this.user = user
+      })
+      /* this.user = this.userService.getLoggedUser() */
+    }
   }
 
   guardarUsuario() {
+    console.log(this.user)
       // TODO: Guardar User
   }
 }

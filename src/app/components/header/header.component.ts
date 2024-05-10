@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import {User} from '../../models/user';
 import {UserService} from "../../services/user/user.service";
 import { NotificationService } from 'src/app/services/notification/notification.service';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -11,30 +11,31 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  user = this.userService.getUser()
+  user = this.userService.getLoggedUser()
   private subscription: Subscription
+  isLogged: boolean = false
 
 
   constructor(private router:Router, private userService: UserService,private notificationService: NotificationService) {
     this.subscription = this.notificationService.notification$.subscribe(()=>{
-      if (this.userService.isLogged()) {
-        this.user = this.userService.getUser()
-      }
+      this.checkUser()
     })
   }
 
   goTo(route: string){
     this.router.navigate([`/${route}`])
   }
+
   ngOnInit(): void {
-    if (this.userService.isLogged()) {
-      this.user = this.userService.getUser()
-    }
+    this.checkUser()
   }
 
-  ngOnChanges(): void {
-    if (this.userService.isLogged()) {
-      this.user = this.userService.getUser()
+  checkUser (){
+    if(this.userService.isLogged()){
+      this.isLogged = true
+      this.userService.getUserLoggedData().subscribe(user => {
+        this.user = user
+      })
     }
   }
 
@@ -42,10 +43,10 @@ export class HeaderComponent {
     this.subscription.unsubscribe()
   }
 
-  isLogged = () => this.userService.isLogged()
-
   logOut() {
     this.goTo("instituciones")
     this.userService.logout()
+    this.isLogged = false
+    this.notificationService.notify(200, 'Sesión cerrada')
   }
 }
