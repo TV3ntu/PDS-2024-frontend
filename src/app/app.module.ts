@@ -22,6 +22,7 @@ import { EntityDetailComponent } from './pages/entity-detail/entity-detail.compo
 import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
 import { AssignmentDayCardComponent } from './components/assignment-day-card/assignment-day-card.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
     EntityDetailComponent,
     AssignmentsModalComponent,
     AssignmentDayCardComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
