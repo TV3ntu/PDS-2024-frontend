@@ -7,6 +7,7 @@ header{
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    height: 10vh;
 }
 header h1{
     margin: 0;
