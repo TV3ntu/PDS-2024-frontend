@@ -24,6 +24,7 @@ import { AssignmentsModalComponent } from './components/assignments-modal/assign
 import { AssignmentDayCardComponent } from './components/assignment-day-card/assignment-day-card.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     AssignmentDayCardComponent,
     ProfileFormComponent,
     LoginPageComponent,
-    NotificationComponent
+    NotificationComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
