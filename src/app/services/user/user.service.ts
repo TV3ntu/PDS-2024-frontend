@@ -24,6 +24,8 @@ export class UserService {
     UserService.currentUser = null
   }
 
+  isLogged = () => UserService.currentUser != null
+
   updateUser(user: User): Observable<User> {
     return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id + '/detail', user)
       .pipe( tap(updatedUser => UserService.currentUser = updatedUser) )
