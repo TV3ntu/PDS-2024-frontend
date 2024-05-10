@@ -25,7 +25,8 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.serverUrl}/api/users`, user)
+    return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id + '/detail', user)
       .pipe( tap(updatedUser => UserService.currentUser = updatedUser) )
+    // FIXME: El servicio al que le pega funciona bien pero desde Angular tira CORS error
   }
 }
