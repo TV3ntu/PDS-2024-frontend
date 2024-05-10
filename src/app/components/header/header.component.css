@@ -41,8 +41,7 @@ header button mat-icon{
     color: var(--light-color);
 }
 .icon-container{
-    display: none;
-    justify-items: flex;
+    display: flex;
     width: 21%;
     justify-content: flex-end;
 }
