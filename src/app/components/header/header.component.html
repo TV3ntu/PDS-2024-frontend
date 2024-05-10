@@ -1,6 +1,6 @@
 <header>
     <h1><img src="/assets/weekbook-logo.png" alt='WeekBook' >WeekBook</h1>
-    <div *ngIf="isLogged()" class="user-data-container">{{user.name}} {{user.lastName}}</div>
+    <div *ngIf="isLogged()" class="user-data-container">{{user?.name}}</div>
     <div class="icon-container">
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
