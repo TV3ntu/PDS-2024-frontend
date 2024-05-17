@@ -1,4 +1,6 @@
-
+:host{
+    width: 100%;
+}
 
 article > h3{
     width: 100%;
