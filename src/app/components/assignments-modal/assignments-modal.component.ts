@@ -12,7 +12,7 @@ import {MatCalendarCellClassFunction} from '@angular/material/datepicker'
   styleUrls: ['./assignments-modal.component.css']
 })
 export class AssignmentsModalComponent {
-  @Input() assignments: Assignment[] | undefined
+  @Input() assignments: Assignment[] = []
   @Input() showModal: boolean = false
   @Output() closeModal = new EventEmitter()
   /* selectedDate: string = '' */

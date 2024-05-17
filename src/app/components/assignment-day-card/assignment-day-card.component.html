@@ -1,13 +1,6 @@
+<li>
+    <span>{{time.startTime}} a {{time.endTime}}</span>
+    <button *ngIf="show()" type="button" (click)="subscribe()"  mat-raised-button color="primary">Inscribirse</button>
+    <button *ngIf="!show()" type="button" (click)="unsubscribe()"  mat-raised-button class="secondary-button">Desuscribirse</button>
+</li>
 
-<article>
-    <!-- <h3>{{day}} <i class="fa fa-chevron-down" (click)="toggleShowDay()" ></i></h3> -->
-    <section>
-        <ul>
-            <li *ngFor="let time of times">
-                <span>{{time.startTime}} a {{time.endTime}}</span>
-                <button (click)="subscribe()" *ngIf="time.isActive" mat-raised-button color="primary">Inscribirse</button>
-                <button (click)="unsubscribe()" *ngIf="!time.isActive" mat-raised-button class="secondary-button">Desuscribirse</button>
-            </li>
-        </ul>
-    </section>
-</article>

@@ -42,6 +42,17 @@
   /* background-color: var(--dark-gray-color); */
   /* color: var(--light-color); */
 }
+.assignment-overlay ul{
+  list-style: none;
+  padding: 1rem 0;
+  list-style: none;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-direction: column;
+  width: 100%;
+}
 .modal-content > header{
   display: flex;
   justify-content: space-between;

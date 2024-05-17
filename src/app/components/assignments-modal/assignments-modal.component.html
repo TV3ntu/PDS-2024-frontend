@@ -22,7 +22,9 @@
 
 
     <section  class="assignment-overlay" *ngIf="hasTimes()">
-      <app-assignment-day-card [times]="getAllTimes()" ></app-assignment-day-card>
+        <ul>
+          <app-assignment-day-card *ngFor="let time of getAllTimes()" [time]="time" ></app-assignment-day-card>
+        </ul>
     </section>
 
     <section  class="assignment-overlay" *ngIf="!hasTimes()">
