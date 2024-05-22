@@ -20,7 +20,10 @@ export class CourseService {
     this.institutions = institutions
   }
 
-  getById = (id:string):Observable<Course | undefined> => of(this.courses.find(c => c.id == id))
+  getById(id: string): Observable<Course|undefined> {
+    return this.http.get<Course>(this.path + '/api/courses/' + id)
+  }
+ // getById = (id:string):Observable<Course | undefined> => of(this.courses.find(c => c.id == id))
 
   getAll = ():Observable<Course[]> => this.http.get<Course[]>(this.path)
 
