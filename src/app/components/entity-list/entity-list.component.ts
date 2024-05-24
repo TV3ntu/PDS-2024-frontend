@@ -1,8 +1,7 @@
 import { InstitutionService } from 'src/app/services/institution/institution.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Entity } from 'src/app/models/entity';
-import { Institution } from 'src/app/models/institution';
 import { CourseService } from 'src/app/services/course/course.service';
 
 @Component({
@@ -16,6 +15,8 @@ export class EntityListComponent {
   entityList: Entity[] | undefined = [ ]
   mode: string = ''
   institutionId: string = ''
+  @Input() coursesFilter: string = ''
+
   constructor(private courseService: CourseService,private institutionService: InstitutionService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -29,12 +30,18 @@ export class EntityListComponent {
     if(this.mode === 'institution') this.getInstitutions()
 
   }
+
+  ngOnChanges(){
+    if (this.coursesFilter != '') this.getCourses()
+  }
+
   getCourses(){
-    this.courseService.getAll()
+    this.courseService.getAll(this.coursesFilter)
     .subscribe(courses => {
       this.entityList = courses
     })
   }
+
   getInstitutions(){
     this.institutionService.getAll()
     .subscribe(institutions => {
