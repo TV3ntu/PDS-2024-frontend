@@ -1,4 +1,4 @@
 <main>
-    <app-search-bar></app-search-bar>
-    <app-entity-list></app-entity-list>
+    <app-search-bar (searchEvent)="updateQuery($event)"></app-search-bar>
+    <app-entity-list [coursesFilter]="query"></app-entity-list>
 </main>

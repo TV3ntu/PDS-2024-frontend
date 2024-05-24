@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  query: string = ''
 
+  updateQuery(query: string) {
+    this.query = query
+  }
 }
