@@ -20,7 +20,7 @@ export class CourseService {
   }
 
   getById(id: string): Observable<Course|undefined> {
-    return this.http.get<Course>(this.path + '/api/courses/' + id)
+    return this.http.get<Course>(this.path + '/' + id)
   }
 
   getAll(filter: String = ""): Observable<Course[]> {
