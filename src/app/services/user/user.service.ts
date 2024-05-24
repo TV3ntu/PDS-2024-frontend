@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {User} from "../../models/user";
+import { Course } from 'src/app/models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -47,4 +48,9 @@ export class UserService {
   updateUser(user: User): Observable<User> {
     return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, user)
   }
+
+  getSuscribedCourses(id: string): Observable<Course> {
+    return this.http.get<Course>(this.serverUrl + '/api/users/' + id + '/courses')
+  }
+
 }
