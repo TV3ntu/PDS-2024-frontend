@@ -7,7 +7,7 @@
 }
 
 input {
-  width: 30%;
+  width: 75%;
   height: 100%;
   border-radius: var(--secondary-border-radius);
   padding: 1rem;
@@ -29,12 +29,12 @@ button {
   border-color: var(--dark-gray-color);
   color: var(--light-color);
   cursor: pointer;
+  border: none;
 }
 
 button:hover {
-  background-color: var(--light-color);
-  color: var(--dark-gray-color);
-  transition: all 0.2s ease-in-out;
+  opacity: 80%;
+  transition: all 0.5s ease-in-out;
 }
 
 @media (max-width: 426px) {

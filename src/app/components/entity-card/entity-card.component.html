@@ -4,10 +4,12 @@
       <img class="mat-card-image" [ngClass]="{'cover':!isInstitution()}" [src]="entity?.image">
     </div>
     <mat-card-content class="institution-card-content">
-        <h2>{{entity?.title}}</h2>
-        <h3>{{entity?.category}}</h3>
-        <p>{{entity?.description}}</p>
+      <h2>{{entity?.title}}</h2> 
+      <p>{{entity?.description}}</p>
+      <h3>{{entity?.category}}</h3>
+      <div class="institution-card-button">
         <button mat-raised-button color="primary" (click)="navigateToDetail(entity?.id)">{{goToButtonText()}}</button>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
