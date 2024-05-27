@@ -96,7 +96,7 @@
     width: 100%;
     align-items: stretch;
     justify-content: space-between;
-    height: 35vh;
+    height: 40vh;
   }
   .institution-card-content{
     padding: 1rem;
@@ -120,7 +120,7 @@
 
 @media (min-width: 1000px) {
   .institution-card{
-    height: 35vh;
+    height: 40vh;
   }
   .mat-card-image-container {
     width: 600px;
@@ -135,7 +135,7 @@
 
 @media (min-width: 1200px) {
   .institution-card{
-    height: 35vh;
+    height: 40vh;
   }
   .mat-card-image-container {
     width: 650px;
