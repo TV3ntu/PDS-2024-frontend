@@ -7,7 +7,7 @@ import { Reserve } from 'src/app/models/reserve';
   styleUrls: ['./reserve-card.component.css']
 })
 export class ReserveCardComponent {
-  @Input() reserve: Reserve = new Reserve("Nombre del curso", "Nombre de la institucion", "12/07/2024", "18:00", "Confirmado")
+  @Input() reserve!: Reserve
 
   getDayOfWeek(): string {
     const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
