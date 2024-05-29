@@ -8,12 +8,16 @@
 
       <mat-menu #menu="matMenu" class="mat-menu">
         <button (click)="goTo('instituciones')" mat-menu-item>
-          <mat-icon>school</mat-icon>
+          <mat-icon>domain</mat-icon>
           <span>Instituciones</span>
         </button>
         <button (click)="goTo('cursos')" mat-menu-item>
-          <mat-icon>history_edu</mat-icon>
+          <mat-icon>school</mat-icon>
           <span>Cursos</span>
+        </button>
+        <button *ngIf="isLogged" (click)="goTo('cursos')" mat-menu-item>
+          <mat-icon>history_edu</mat-icon>
+          <span>Reservas</span>
         </button>
         <button *ngIf="isLogged" (click)="goTo('perfil')" mat-menu-item>
           <mat-icon>account_circle</mat-icon>

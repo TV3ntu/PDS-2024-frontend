@@ -4,7 +4,7 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 input {
@@ -50,5 +50,11 @@ button:hover {
 
   button {
     width: 95%;
+  }
+}
+
+@media (min-width: 426px) { 
+  .search-bar {
+    padding: 1rem 2rem;
   }
 }

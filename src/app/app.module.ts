@@ -29,6 +29,7 @@ import {  MatFormFieldModule } from '@angular/material/form-field'
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
+import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ReserveCardComponent } from './components/reserve-card/reserve-card.com
     LoginPageComponent,
     NotificationComponent,
     ProfilePageComponent,
-    ReserveCardComponent
+    ReserveCardComponent,
+    BottomNavComponent
   ],
   imports: [
     BrowserModule,
