@@ -28,6 +28,7 @@ import { MatNativeDateModule } from '@angular/material/core'
 import {  MatFormFieldModule } from '@angular/material/form-field'
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ProfileFormComponent,
     LoginPageComponent,
     NotificationComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ReserveCardComponent
   ],
   imports: [
     BrowserModule,
