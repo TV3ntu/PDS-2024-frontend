@@ -65,6 +65,7 @@ export class AssignmentsModalComponent {
       /* console.log(assignmentDateString ,dateString) */
       return assignmentDateString === dateString;
     }).map(a => ({
+      id: a.id,
       startTime: a.startTime,
       endTime: a.endTime,
       isActive: a.isActive
