@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Course } from 'src/app/models/course';
+import { ActivatedRoute } from '@angular/router'
 import { Entity } from 'src/app/models/entity';
-import { CourseService } from 'src/app/services/course/course.service';
-import { InstitutionService } from 'src/app/services/institution/institution.service';
+import { CourseService } from 'src/app/services/course/course.service'
+import { InstitutionService } from 'src/app/services/institution/institution.service'
 
 @Component({
   selector: 'app-entity-detail',
