@@ -1,0 +1,14 @@
+<section *ngIf="reserve" class="reserve-container">
+    <section class="detail">
+        <div class="status">
+            <p>{{reserve.status}}</p>
+        </div>
+        <h3>{{reserve.courseName}}</h3>
+        <p>en {{reserve.institutionName}}</p>
+    </section>
+    <section class="schedule">
+        <p>{{getDayOfWeek()}}</p>
+        <h2>{{getDay()}}/{{getMonth()}}</h2>
+        <p>{{reserve.hour}}</p>
+    </section>
+</section>

@@ -1,4 +1,10 @@
 <main>
     <app-search-bar (searchEvent)="updateQuery($event)"></app-search-bar>
+    <section *ngIf="isLogged()" class="reserve-container">
+        <p>Proximas reserva</p>
+        <div class="reserve-cards">
+            <app-reserve-card></app-reserve-card>
+        </div>
+    </section>
     <app-entity-list [coursesFilter]="query"></app-entity-list>
 </main>
