@@ -14,7 +14,7 @@ export class BottomNavComponent {
   user = this.userService.getLoggedUser()
   private subscription: Subscription
   isLogged: boolean = false
-
+  activeButton: string = '';
 
   constructor(private router:Router, private userService: UserService,private notificationService: NotificationService) {
     this.subscription = this.notificationService.notification$.subscribe(()=>{
@@ -23,6 +23,7 @@ export class BottomNavComponent {
   }
 
   goTo(route: string){
+    this.activeButton = route;
     this.router.navigate([`/${route}`])
   }
 
@@ -44,9 +45,14 @@ export class BottomNavComponent {
   }
 
   logOut() {
+    this.activeButton = 'logOut';
     this.goTo("instituciones")
     this.userService.logout()
     this.isLogged = false
     this.notificationService.notify(200, 'Sesión cerrada')
+  }
+
+  isActive(route: string){
+    return this.activeButton === route
   }
 }

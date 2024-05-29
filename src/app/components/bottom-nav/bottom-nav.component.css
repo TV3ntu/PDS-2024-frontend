@@ -16,11 +16,16 @@ mat-icon {
 button{
     background-color: var(--primary-color);
     border: none;
+    width: 100%;
 }
 
 .button-red{
     color: var(--danger-color);
 }
+
+.bottom-nav button.active {
+    background-color: var(--dark-gray-color)
+  }
 
 @media (min-width: 660px) {
     .bottom-nav{
