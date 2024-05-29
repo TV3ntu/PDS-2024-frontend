@@ -2,5 +2,17 @@ section{
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 2rem;
+    padding: 1rem 2rem;
 }
+
+
+h3 {
+  margin: 0;
+}
+
+
+@media (min-width: 1120px) {
+    section{
+      padding: 1rem 2rem 10rem;
+    }
+  }
