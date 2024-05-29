@@ -1,0 +1,20 @@
+<section class="bottom-nav">
+    <button (click)="goTo('instituciones')">
+      <mat-icon>domain</mat-icon>
+    </button>
+    <button (click)="goTo('cursos')" >
+      <mat-icon>school</mat-icon>
+    </button>
+    <button *ngIf="isLogged" (click)="goTo('cursos')" >
+      <mat-icon>history_edu</mat-icon>
+    </button>
+    <button *ngIf="isLogged" (click)="goTo('perfil')">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button class="log-out-button" *ngIf="isLogged" (click)="logOut()">
+      <mat-icon class="button-red">logout</mat-icon>
+    </button>
+    <button *ngIf="!isLogged" (click)="goTo('ingresar')" aria-label="log in or register">
+      <mat-icon>login</mat-icon>
+    </button>
+</section>

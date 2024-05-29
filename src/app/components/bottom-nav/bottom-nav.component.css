@@ -1,0 +1,29 @@
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--primary-color);
+    z-index: 999;
+    height: 4rem;
+}
+
+mat-icon {
+    color: var(--light-color);
+}
+
+button{
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.button-red{
+    color: var(--danger-color);
+}
+
+@media (min-width: 660px) {
+    .bottom-nav{
+        display: none;
+    }
+}
