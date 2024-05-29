@@ -4,17 +4,32 @@
 
   <div class="modal-content">
     <header>
-      <h2>Seleccione día y horario</h2>
       <button class="secondary-button" (click)="closeModalEvent()">Cerrar</button>
+      <h2>Seleccione día y horario</h2>
+      <section class="date-picker">
+
+        <!-- <input type="date" [(ngModel)]="selectedDate" (ngModelChange)="updateSchedule()" > -->
+        <input matInput [matDatepicker]="picker" (dateChange)="updateSchedule($event.value)">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker class="date-picker"  [dateClass]="dateClass" (selectedChange)="updateSchedule($event)" #picker></mat-datepicker>
+      </section>
+      <label>
+        {{spanishSelectedDate()}}
+      </label>
     </header>
 
-    <section  class="assignment-overlay">
-      <app-assignment-day-card *ngFor="let day of getAllDays()" [day]="day" [times]="getAllTimes(day)"></app-assignment-day-card>
+
+
+
+    <section  class="assignment-overlay" *ngIf="hasTimes()">
+        <ul>
+          <app-assignment-day-card *ngFor="let time of getAllTimes()" [time]="time" ></app-assignment-day-card>
+        </ul>
     </section>
 
-    <div class="buttons-overlay">
-      <!-- <button>Inscribirse</button> -->
-    </div>
+    <section  class="assignment-overlay" *ngIf="!hasTimes()">
+      <h4>La fecha seleccionada no tiene horarios</h4>
+    </section>
 
   </div>
 

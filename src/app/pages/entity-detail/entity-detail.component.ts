@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Course } from 'src/app/models/course';
+import { ActivatedRoute } from '@angular/router'
 import { Entity } from 'src/app/models/entity';
-import { CourseService } from 'src/app/services/course/course.service';
-import { InstitutionService } from 'src/app/services/institution/institution.service';
+import { CourseService } from 'src/app/services/course/course.service'
+import { InstitutionService } from 'src/app/services/institution/institution.service'
 
 @Component({
   selector: 'app-entity-detail',
@@ -39,17 +38,29 @@ export class EntityDetailComponent {
 
   getCourse(): void {
     this.courseService.getById(this.courseId)
-    .subscribe(data => {
-      this.entity = data
+    .subscribe(course => {
+      console.log(course)
+      const transformedCourse = {
+        ...course,
+        title: course.title,
+        children: course.assignments
+      }
+      this.entity = transformedCourse
     })
   }
 
   getInstitution():void{
     this.institutionService.getById(this.institutionId)
-    .subscribe(data => {
-      this.entity = data
+    .subscribe(institution => {
+      const transformedInstitution = {
+        ...institution,
+        title: institution.name,
+        children: institution.courses
+      }
+      this.entity = transformedInstitution
     })
   }
+  hasCourses = () => this.entity?.children?.length > 0
 
   openAssignmentsModal = () => {
     this.showAssignmentsModal = true

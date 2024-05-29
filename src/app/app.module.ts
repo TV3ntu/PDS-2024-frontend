@@ -23,6 +23,9 @@ import { EntityDetailComponent } from './pages/entity-detail/entity-detail.compo
 import { AssignmentsModalComponent } from './components/assignments-modal/assignments-modal.component';
 import { AssignmentDayCardComponent } from './components/assignment-day-card/assignment-day-card.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
+import {  MatFormFieldModule } from '@angular/material/form-field'
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
@@ -55,7 +58,11 @@ import { ReserveCardComponent } from './components/reserve-card/reserve-card.com
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

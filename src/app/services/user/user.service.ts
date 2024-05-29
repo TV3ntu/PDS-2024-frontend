@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import {HttpClient} from "@angular/common/http"
 import { Observable, tap} from "rxjs"
 import {User} from "../../models/user"
-import { Assignment } from 'src/app/models/assignment'
 import { Course } from 'src/app/models/course'
 
 @Injectable({
@@ -42,9 +41,9 @@ export class UserService {
 
   getById = (id: string): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + id)
 
-  subscribe = (user:User, assignment:Assignment): Observable<User> => this.http.post<User>(this.serverUrl + '/api/users/subscribe', {user, assignment})
+  //subscribe = (user:User, assignment:Assignment): Observable<User> => this.http.post<User>(this.serverUrl + '/api/users/subscribe', {user, assignment})
 
-  unsuscribe = (user:User, assignment:Assignment): Observable<User> => this.http.post<User>(this.serverUrl + '/api/users/unsubscribe', {user, assignment})
+  //unsuscribe = (user:User, assignment:Assignment): Observable<User> => this.http.post<User>(this.serverUrl + '/api/users/unsubscribe', {user, assignment})
 
   updateUser = (user: User): Observable<User> => this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, user)
 

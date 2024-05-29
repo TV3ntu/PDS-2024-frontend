@@ -9,8 +9,11 @@
             <p>{{ entity?.description }}</p>
         </section>
     </header>
-    <section class="entity-list" *ngIf="isInstitution()">
+    <section class="entity-list" *ngIf="isInstitution() && hasCourses()">
             <app-entity-card *ngFor="let child of entity?.children" [entity]="child"></app-entity-card>
+    </section>
+    <section *ngIf="isInstitution() && !hasCourses()">
+        <p>No hay cursos disponibles</p>
     </section>
 
     <section *ngIf="!isInstitution()">

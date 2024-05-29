@@ -1,4 +1,6 @@
-
+:host{
+    width: 100%;
+}
 
 article > h3{
     width: 100%;
@@ -31,7 +33,6 @@ article > section{
     margin: 0.5rem 0;
     border-radius: 0.5rem;
     width: 100%;
-    max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-in-out;
 }
@@ -50,7 +51,7 @@ article > section > ul{
     width: 100%;
 }
 
-article > section > ul > li{
+li{
     width: 100%;
     display: flex;
     align-items: center;
