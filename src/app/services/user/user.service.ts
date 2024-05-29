@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import {HttpClient} from "@angular/common/http"
 import { Observable, tap} from "rxjs"
 import {User} from "../../models/user"
-import { Assignment } from 'src/app/models/assignment'
 import { Course } from 'src/app/models/course'
 
 @Injectable({
