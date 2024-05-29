@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +9,13 @@ import { Component } from '@angular/core';
 export class HomePageComponent {
   query: string = ''
 
+  constructor(private userService: UserService) {}
+
   updateQuery(query: string) {
     this.query = query
+  }
+
+  isLogged(){
+    return this.userService.isLogged()
   }
 }

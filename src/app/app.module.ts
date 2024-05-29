@@ -25,6 +25,7 @@ import { AssignmentDayCardComponent } from './components/assignment-day-card/ass
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ProfileFormComponent,
     LoginPageComponent,
     NotificationComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ReserveCardComponent
   ],
   imports: [
     BrowserModule,
