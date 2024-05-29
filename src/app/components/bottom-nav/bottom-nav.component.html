@@ -1,0 +1,20 @@
+<section class="bottom-nav">
+  <button (click)="goTo('instituciones')" [ngClass]="{'active': isActive('instituciones')}">
+    <mat-icon>domain</mat-icon>
+  </button>
+  <button (click)="goTo('cursos')" [ngClass]="{'active': isActive('cursos')}">
+    <mat-icon>school</mat-icon>
+  </button>
+  <button *ngIf="isLogged" (click)="goTo('reserve')" [ngClass]="{'active': isActive('reserve')}">
+    <mat-icon>history_edu</mat-icon>
+  </button>
+  <button *ngIf="isLogged" (click)="goTo('perfil')" [ngClass]="{'active': isActive('perfil')}">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <button class="log-out-button" *ngIf="isLogged" (click)="logOut()" [ngClass]="{'active': activeButton === 'logOut'}">
+    <mat-icon class="button-red">logout</mat-icon>
+  </button>
+  <button *ngIf="!isLogged" (click)="goTo('ingresar')" [ngClass]="{'active': activeButton === 'ingresar'}" aria-label="log in or register">
+    <mat-icon>login</mat-icon>
+  </button>
+</section>
