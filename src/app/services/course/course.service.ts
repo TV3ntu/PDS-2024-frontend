@@ -6,6 +6,14 @@ import { Institution } from 'src/app/models/institution';
 import { path } from '../api.path';
 import { HttpClient } from '@angular/common/http';
 
+interface CourseResponse{
+  id: string
+  title: string
+  description: string
+  image: string
+  category: string
+  assignments: any[]
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +27,8 @@ export class CourseService {
     this.institutions = institutions
   }
 
-  getById(id: string): Observable<Course|undefined> {
-    return this.http.get<Course>(this.path + '/' + id)
+  getById(id: string): Observable<CourseResponse> {
+    return this.http.get<CourseResponse>(this.path + '/' + id)
   }
 
   getAll(filter: String = ""): Observable<Course[]> {
