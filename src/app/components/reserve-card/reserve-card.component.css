@@ -36,6 +36,11 @@
   color: green;
 }
 
+.status.complete{
+  background-color: var(--light-gray-color);
+  color: var(--primary-color);
+}
+
 h3, h2, p{
   margin: 0;
 }

@@ -12,7 +12,7 @@ app-search-bar{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
 }
 
 .reserve-cards{
@@ -22,6 +22,15 @@ app-search-bar{
 
 app-reserve-card{
     width: 190%;
+}
+
+.reserve-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 @media (min-width: 1000px) {
