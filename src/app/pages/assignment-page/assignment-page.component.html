@@ -10,15 +10,16 @@
             type="number"
             placeholder=0
             id="quota"
-            [(ngModel)]="assignment.quota"
+            [(ngModel)]="assignment.quantityAvailable"
             name="quota"
             required
             class="form-input"
             Quota
             #quotaField="ngModel"
+            minvalue="1"
             >
             <div *ngIf="quotaField.invalid && (quotaField.dirty || quotaField.touched)">
-              <div *ngIf="assignment.quota == 0">
+              <div *ngIf="assignment.quantityAvailable <= 1">
                   La cantidad de suscripciones permitidas debe ser mayor que 0.
               </div>
             </div>
@@ -190,10 +191,9 @@
         <div class="form-group">
           <label for="recurrenceWeek">Recurrencia:</label>
           <select class="form-input" id="" [(ngModel)]="assignment.recurrenceWeek" name="college_name" required>
-            <option value="diario"> Diario</option>
-            <option value="semanal">Semanal</option>
-            <option value="quincenal"> Quincenal</option>
-            <option value="mensual">Mensual</option>
+            <option value="WEEKLY">Semanal</option>
+            <option value="BIWEEKLY"> Quincenal</option>
+            <option value="MONTHLY">Mensual</option>
           </select>
           
         </div>

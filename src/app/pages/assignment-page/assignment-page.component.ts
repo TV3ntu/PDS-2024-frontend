@@ -3,17 +3,24 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { AssignmentService } from 'src/app/services/assignment/assignment.service'; 
-import { assignments } from 'src/app/mocks/mocks';
+import { Schedule } from 'src/app/models/schedule';
+import { catchError } from 'rxjs';
+
 
 interface NewAssignment{
-  quota: number
+  id:string
+  quantityAvailable: number
+  isActive: boolean
   price: number
   startDate: Date
   endDate: Date
   days:string[]
   startTime: Date
   endTime: Date
-  recurrenceWeek: string[]
+  recurrenceWeek: string
+  listDates:string[]
+  schedule: Schedule
+
 }
 @Component({
   selector: 'app-assignment-page',
@@ -22,6 +29,7 @@ interface NewAssignment{
 })
 export class assignmentPageComponent {
   @ViewChild('assignmentForm') assignmentForm!: NgForm
+  errorMessage: string = ''
   mondaySelected: boolean = false;
   tuesdaySelected: boolean = false;
   wednesdaySelected: boolean = false;
@@ -31,23 +39,39 @@ export class assignmentPageComponent {
   sundaySelected: boolean = false;
 
 
-  assignment: NewAssignment = {quota: 0, 
+  assignment: NewAssignment = {
+    id:'',
+    quantityAvailable: 0,
+    isActive:true, 
     price: 0,
     startDate: new Date("01-01-1999"),
     endDate: new Date("01-01-1999"),
     days:[],
     startTime: new Date("00:00:00"),
     endTime: new Date("00:00:00"),
-    recurrenceWeek:[]
-    
+    recurrenceWeek:'',
+    listDates:[],
+    schedule:new Schedule([],'','','','','',[])
   }
 
   constructor(private router: Router,private assignmentService:AssignmentService,private notificationService: NotificationService) { }
 
   create(e: Event){
+    this.errorMessage = ''
     this.setWeekDays()
+    this.setSchedule
     console.log(e)
     console.log(this.assignment)
+    this.assignmentService.create(this.assignment)
+    .pipe(
+      catchError((error) => {
+        console.log(error)
+        this.errorMessage = error.message
+        error.error.status = 401
+        error.error.message = 'Usuario o contraseña incorrectos'
+        return this.notificationService.handleError(error)
+      })
+    )
   }
 
   setWeekDays(){
@@ -60,6 +84,8 @@ export class assignmentPageComponent {
     if(this.sundaySelected) this.assignment.days.push('SUNDAY')
   }
 
-  
+  setSchedule(){
+    this.assignment.schedule = new Schedule(this.assignment.days,String(this.assignment.startTime),String(this.assignment.endTime),String(this.assignment.startDate),String(this.assignment.endDate),this.assignment.recurrenceWeek,this.assignment.listDates)
+  }
     
   }
