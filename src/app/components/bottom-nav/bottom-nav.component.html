@@ -5,7 +5,7 @@
   <button (click)="goTo('cursos')" [ngClass]="{'active': isActive('cursos')}">
     <mat-icon>school</mat-icon>
   </button>
-  <button *ngIf="isLogged" (click)="goTo('reserve')" [ngClass]="{'active': isActive('reserve')}">
+  <button *ngIf="isLogged" (click)="goTo('suscripciones')" [ngClass]="{'active': isActive('suscripciones')}">
     <mat-icon>history_edu</mat-icon>
   </button>
   <button *ngIf="isLogged" (click)="goTo('perfil')" [ngClass]="{'active': isActive('perfil')}">

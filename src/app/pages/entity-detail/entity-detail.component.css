@@ -98,7 +98,7 @@ main .entity-list{
 
 @media (min-width: 900px) {
     main{
-        padding: 1rem 15rem;
+        padding: 1rem 20rem;
     }
 
     main > header{

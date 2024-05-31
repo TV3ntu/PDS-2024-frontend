@@ -6,6 +6,7 @@
   justify-content: space-between;
   border: 1px solid var(--light-gray-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .detail{
@@ -34,6 +35,11 @@
   border-radius: 1rem;
   background-color: rgba(113, 179, 113, 0.5);
   color: green;
+}
+
+.status.complete{
+  background-color: var(--light-gray-color);
+  color: var(--primary-color);
 }
 
 h3, h2, p{
