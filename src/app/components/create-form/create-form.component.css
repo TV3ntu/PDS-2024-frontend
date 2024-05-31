@@ -1,0 +1,45 @@
+.form-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0.2rem solid var(--primary-color);
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: 0 none;
+  border-radius: var(--secondary-border-radius);
+  cursor: pointer;
+}
+
+small {
+  color: var(--danger-color);
+}
+
+/* DESKTOP */
+
+@media (min-width: 769px) {
+  .form-input {
+    width: 50%;
+  }
+}
