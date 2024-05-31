@@ -3,6 +3,7 @@ import { Observable } from 'rxjs'
 import { Course } from 'src/app/models/course'
 import { path } from '../api.path'
 import { HttpClient } from '@angular/common/http'
+import { Assignment } from 'src/app/models/assignment'
 
 interface CourseResponse{
   id: string
@@ -10,7 +11,7 @@ interface CourseResponse{
   description: string
   image: string
   category: string
-  assignments: any[]
+  assignments: Assignment[]
 }
 @Injectable({
   providedIn: 'root'
