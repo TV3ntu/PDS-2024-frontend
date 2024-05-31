@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding: 2rem;
 }
 
 h3{
@@ -37,8 +38,16 @@ h3{
 
 @media (min-width: 660px) {
 
+    .admin-panel{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem 15rem;
+    }
+
     h3{
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 
     .admin-buttons{
