@@ -9,8 +9,8 @@ import { Reserve } from 'src/app/models/reserve';
 export class SubscriptionsPageComponent {
 
   subscriptionsList: Reserve[] = [
-    new Reserve("Nombre de la institucion", "a396426d-850c-45cc-8c53-01c3c4ed0847","Nombre del curso", "12/07/2024", "18:00", "Confirmado"),
-  new Reserve("Nombre de la institucion", "a396426d-850c-45cc-8c53-01c3c4ed0847", "Nombre del curso", "12/07/2024", "18:00", "Finalizado")
+    new Reserve("Sportclub", "a396426d-850c-45cc-8c53-01c3c4ed0847","Entrenamiento funcional", "12/07/2024", "18:00", "Confirmado"),
+  new Reserve("Sportclub", "a396426d-850c-45cc-8c53-01c3c4ed0847", "Entrenamiento funcional", "12/07/2024", "18:00", "Finalizado")
   ]
 
 
