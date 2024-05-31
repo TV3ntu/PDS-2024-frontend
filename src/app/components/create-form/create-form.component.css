@@ -20,6 +20,7 @@
   width: 100%;
   padding: 0.5rem;
   border: 0.2rem solid var(--primary-color);
+  box-sizing: border-box;
 }
 
 .btn {
@@ -27,13 +28,19 @@
   color: var(--light-color);
   padding: 1rem;
   margin-top: 0.5rem;
-  border: 0 none;
+  border: none;
   border-radius: var(--secondary-border-radius);
   cursor: pointer;
 }
 
-small {
+.btn:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.error {
   color: var(--danger-color);
+  font-size: 0.875rem;
 }
 
 /* DESKTOP */
