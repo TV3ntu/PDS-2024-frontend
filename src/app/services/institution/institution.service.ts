@@ -30,4 +30,8 @@ export class InstitutionService {
 
   getAll = (filter: String = ""):Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path + '?query=' + filter)
 
+  create = (institution:Institution) => this.http.post<Institution>(this.path+'/api/courses',{institution})
+
+  delete = (institution:Institution) => this.http.delete<Institution>(this.path+'/api/courses/'+institution.id)
+  
 }

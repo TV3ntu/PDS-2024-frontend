@@ -38,4 +38,9 @@ export class CourseService {
   getAllFromInstitution = (institutionID:string):Observable<Course[] | undefined> => of(this.institutions.find(i => i.id == institutionID)?.children)
 
   getByCategory = (category:string):Course[] => this.courses.filter(c => c.category == category)
+
+  create = (course:Course) => this.http.post<Course>(this.path+'/api/courses',{course})
+
+  delete = (course:Course) => this.http.delete<Course>(this.path+'/api/courses/'+course.id)
+
 }
