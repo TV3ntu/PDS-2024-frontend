@@ -1,0 +1,203 @@
+<main>
+    <form #assignmentForm="ngForm" class="form-overlay" (ngSubmit)="create($event)">
+
+        <h2>Asigna los horarios a tu curso</h2>
+
+
+        <div class="form-group">
+          <label for="quota">Cantidad de suscripciones permitidas:</label>
+          <input
+            type="number"
+            placeholder=0
+            id="quota"
+            [(ngModel)]="assignment.quota"
+            name="quota"
+            required
+            class="form-input"
+            Quota
+            #quotaField="ngModel"
+            >
+            <div *ngIf="quotaField.invalid && (quotaField.dirty || quotaField.touched)">
+              <div *ngIf="assignment.quota == 0">
+                  La cantidad de suscripciones permitidas debe ser mayor que 0.
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price">Precio:</label>
+            <input
+                type="number"
+                placeholder=0
+                id="price"
+                [(ngModel)]="assignment.price"
+                name="price"
+                required
+                class="form-input"
+                price
+                #priceField="ngModel">
+            
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">fecha de inicio del curso:</label>
+            <input
+                type="date"
+                placeholder=0
+                id="startDate"
+                [(ngModel)]="assignment.startDate"
+                name="startDate"
+                required
+                class="form-input"
+                price
+                #priceField="ngModel">
+            
+      </div>
+
+      <div class="form-group">
+          <label for="endDate">fecha de fin del curso:</label>
+          <input
+              type="date"
+              placeholder=0
+              id="endDate"
+              [(ngModel)]="assignment.endDate"
+              name="endDate"
+              required
+              class="form-input"
+              price
+              #priceField="ngModel">
+        </div>
+
+        <div class="form-group">
+          <label for="days">Seleccione los días en los que se brinda el curso:</label>
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+            <input
+                type="checkbox"
+                placeholder=0
+                id="lunes"
+                [(ngModel)]="mondaySelected"
+                name="lunes"
+                class="form-input"
+                value="MONDAY"
+                >
+            <label for="lunes">Lunes</label>
+            </div>
+            <div class="checkbox-item">
+            <input
+                type="checkbox"
+                placeholder=1
+                id="martes"
+                [(ngModel)]="tuesdaySelected"
+                name="martes"
+                class="form-input"
+                value="Martes"
+                #martesField="ngModel">
+              <label for="martes">Martes</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                placeholder=2
+                id="miercoles"
+                [(ngModel)]="wednesdaySelected"
+                name="miercoles"
+                class="form-input"
+                value="miercoles"
+                #miercolesField="ngModel">
+              <label for="miercoles">Miercoles</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                placeholder=3
+                id="jueves"
+                [(ngModel)]="thursdaySelected"
+                name="jueves"
+                class="form-input"
+                value="jueves"
+                #miercolesField="ngModel">
+              <label for="jueves">Jueves</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                placeholder=4
+                id="viernes"
+                [(ngModel)]="fridaySelected"
+                name="viernes"
+                class="form-input"
+                value="viernes"
+                #miercolesField="ngModel">
+              <label for="viernes">Viernes</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                placeholder=5
+                id="sabado"
+                [(ngModel)]="saturdaySelected"
+                name="sabado"
+                class="form-input"
+                value="sabado"
+                #miercolesField="ngModel">
+              <label for="sabado">Sabado</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                placeholder=6
+                id="domingo"
+                [(ngModel)]="sundaySelected"
+                name="domingo"
+                class="form-input"
+                value="domingo"
+                #miercolesField="ngModel">
+              <label for="domingo">Domingo</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="startTime">Horario de inicio del curso:</label>
+          <input
+              type="time"
+              placeholder=0
+              id="endDate"
+              [(ngModel)]="assignment.startTime"
+              name="startTime"
+              required
+              class="form-input"
+              price
+              #priceField="ngModel">
+          
+        </div>
+
+        <div class="form-group">
+          <label for="endTime">Horario de fin del curso:</label>
+          <input
+              type="time"
+              placeholder=0
+              id="endDate"
+              [(ngModel)]="assignment.endTime"
+              name="endTime"
+              required
+              class="form-input"
+              price
+              #priceField="ngModel">
+          
+        </div>
+
+        <div class="form-group">
+          <label for="recurrenceWeek">Recurrencia:</label>
+          <select class="form-input" id="" [(ngModel)]="assignment.recurrenceWeek" name="college_name" required>
+            <option value="diario"> Diario</option>
+            <option value="semanal">Semanal</option>
+            <option value="quincenal"> Quincenal</option>
+            <option value="mensual">Mensual</option>
+          </select>
+          
+        </div>
+      <button type="submit" class="btn" >Asignar horario</button>
+
+    </form>
+</main>

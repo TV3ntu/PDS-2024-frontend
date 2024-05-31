@@ -30,6 +30,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
+import { assignmentPageComponent } from './pages/assignment-page/assignment-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component
     AssignmentDayCardComponent,
     ProfileFormComponent,
     LoginPageComponent,
+    assignmentPageComponent,
     NotificationComponent,
     ProfilePageComponent,
     ReserveCardComponent,
