@@ -1,0 +1,34 @@
+<form class="form-overlay" (ngSubmit)="onSubmit()">
+
+  <h2>{{ isCourseForm ? 'Crear Curso' : 'Crear Institución' }}</h2>
+
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input id="name" type="text" name="name" [(ngModel)]="form.name" class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <input id="description" type="text" name="description" [(ngModel)]="form.description" class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="category">Categoría</label>
+    <input id="category" type="text" name="category" [(ngModel)]="form.category" class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="image">Imagen</label>
+    <input id="image" type="text" name="image" [(ngModel)]="form.image" class="form-input">
+  </div>
+
+  <div class="form-group" *ngIf="isCourseForm">
+    <label for="institution">Institución</label>
+    <select id="institution" name="institution" [(ngModel)]="form.institution" class="form-input">
+      <option *ngFor="let institution of institutions" [value]="institution">{{ institution }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn">Crear</button>
+
+</form>

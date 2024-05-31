@@ -36,7 +36,7 @@ app-reserve-card{
 @media (min-width: 1000px) {
 
     main{
-        padding: 1rem 5rem;
+        padding: 1rem 15rem;
         min-height: 100vh;
     }
 }

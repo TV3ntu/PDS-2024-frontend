@@ -2,6 +2,7 @@ import { Assignment } from "./assignment"
 import { Entity } from "./entity"
 
 export class Course extends Entity{
+    institution: string = ''
 
     subscribe(){
         console.log("You've subscribed to course: " + this.title)

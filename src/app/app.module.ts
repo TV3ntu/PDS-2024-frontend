@@ -31,6 +31,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component';
+import { CreateFormComponent } from './components/create-form/create-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscript
     ProfilePageComponent,
     ReserveCardComponent,
     BottomNavComponent,
-    SubscriptionsPageComponent
+    SubscriptionsPageComponent,
+    CreateFormComponent
   ],
   imports: [
     BrowserModule,
