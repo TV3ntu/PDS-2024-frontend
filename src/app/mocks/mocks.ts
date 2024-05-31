@@ -7,7 +7,7 @@ import { Assignment } from '../models/assignment'
 // Crea los mocks, puede stomar de ejmplo los que agregué en los services
 // Crea mocks de assignments genéricos
 
-export const assignments: Assignment[] = [
+/* export const assignments: Assignment[] = [
     new Assignment("1","09:00","10:00","lunes",20,false,1500),
     new Assignment("2","10:00","11:00","martes",20,true,1500),
     new Assignment("3","11:00","12:00","miercoles",20,true,1500),
@@ -22,9 +22,9 @@ export const assignments: Assignment[] = [
     new Assignment("12","20:00","21:00","viernes",20,true,1500),
     new Assignment("13","21:00","22:00","sabado",20,true,1500),
     new Assignment("14","22:00","23:00","domingo",20,true,1500)
-]
+] */
 
-export const courses: Course[] = [
+/* export const courses: Course[] = [
     new Course("1","Curso de Angular","Angular","Aprende Angular desde cero","https://wallpapers.com/images/hd/angular-js-logo-in-gray-7mrokd29izt1eyog.jpg",assignments.slice(0,3)),
     new Course("2","Curso de React","React","Aprende React desde cero","https://e1.pxfuel.com/desktop-wallpaper/556/915/desktop-wallpaper-how-to-install-reactjs-frontend.jpg",assignments),
     new Course("4","Curso de Node","Node","Aprende Node desde cero","https://wallpapercave.com/wp/wp5070716.jpg",assignments),
@@ -43,13 +43,13 @@ export const courses: Course[] = [
     new Course("14","Curso de Android","Android","Aprende Android desde cero","https://wallpaperaccess.com/full/1650612.jpg",assignments),
 
 
-]
+] */
 
-export const institutions: Institution[] = [
+/* export const institutions: Institution[] = [
     new Institution("1","Institución Frontend","Frontend","AngularInstitute of UNSAM, the M is for Masachusets","https://programmerblog.net/wp-content/uploads/2021/02/what-is-front-end-development-3.png",courses.slice(0,2)),
     new Institution("2","institución Backend","Backend","Backend Institute","https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/167120044/original/beef562e48eac77b71c87cb2c998a386208fe02b/be-your-awesome-nodejs-backend-developer.jpg",courses.slice(2,8)),
     new Institution("3","Institucion FullStack","FullStack","VueInstitute","https://e1.pxfuel.com/desktop-wallpaper/574/84/desktop-wallpaper-net-full-stack-developer-full-stack.jpg",courses.slice(8,10)),
     new Institution("4","Institución de Datos","Datos","NodeInstitute","https://t4.ftcdn.net/jpg/02/62/17/37/360_F_262173764_3sxll45SOaGP5uEC7PukV3LHOB7H8dp2.jpg",courses.slice(9,12)),
     new Institution("5","Institución de SO","Sistemas Operativos","Institución de educación de sistemas operativos  ","https://e1.pxfuel.com/desktop-wallpaper/58/880/desktop-wallpaper-operating-systems-systems.jpg",courses.slice(12,16))
-]
+] */
 
