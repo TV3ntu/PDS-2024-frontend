@@ -25,4 +25,8 @@ export class CourseService {
 
   getAll = (filter: String = ""): Observable<Course[]> => this.http.get<Course[]>(this.path + '?query=' + filter)
 
+  create = (course:Course) => this.http.post<Course>(this.path+'/api/courses',{course})
+
+  delete = (course:Course) => this.http.delete<Course>(this.path+'/api/courses/'+course.id)
+
 }

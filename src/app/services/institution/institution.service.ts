@@ -3,6 +3,7 @@ import { Observable } from 'rxjs'
 import { path } from '../api.path'
 import { HttpClient } from '@angular/common/http'
 import { Course } from 'src/app/models/course'
+import { Institution } from 'src/app/models/institution'
 interface InstitutionResponse{
   title:string
   id:string
@@ -23,5 +24,10 @@ export class InstitutionService {
 
   getById = (id:string):Observable<InstitutionResponse> => this.http.get<InstitutionResponse>(`${this.path}/${id}`)
 
-  getAll = ():Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path)
+  getAll = (filter: String = ""):Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path + '?query=' + filter)
+
+  create = (institution:Institution) => this.http.post<Institution>(this.path+'/api/courses',{institution})
+
+  delete = (institution:Institution) => this.http.delete<Institution>(this.path+'/api/courses/'+institution.id)
+
 }

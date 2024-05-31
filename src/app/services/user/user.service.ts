@@ -49,4 +49,8 @@ export class UserService {
 
   getSuscribedCourses = (id: string): Observable<Course> => this.http.get<Course>(this.serverUrl + '/api/users/' + id + '/courses')
 
+  create = (user:User) => this.http.post<User>(this.serverUrl+'/api/user',{user})
+
+  delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/user/'+user.id)
+
 }
