@@ -15,7 +15,7 @@ export class EntityListComponent {
   entityList: Entity[] | undefined = [ ]
   mode: string = ''
   institutionId: string = ''
-  @Input() coursesFilter: string = ''
+  @Input() filter: string = ''
 
   constructor(private courseService: CourseService,private institutionService: InstitutionService, private activatedRoute:ActivatedRoute) { }
 
@@ -32,18 +32,21 @@ export class EntityListComponent {
   }
 
   ngOnChanges(){
-    if (this.coursesFilter != '') this.getCourses()
+    if (this.filter != '') {
+      if(this.mode === 'course') this.getCourses()
+      if(this.mode === 'institution') this.getInstitutions()
+    }
   }
 
   getCourses(){
-    this.courseService.getAll(this.coursesFilter)
+    this.courseService.getAll(this.filter)
     .subscribe(courses => {
       this.entityList = courses
     })
   }
 
   getInstitutions(){
-    this.institutionService.getAll()
+    this.institutionService.getAll(this.filter)
     .subscribe(institutions => {
       const transformedInstitutions = institutions.map(institution => {
         return {
