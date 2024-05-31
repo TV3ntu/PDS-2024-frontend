@@ -32,6 +32,8 @@ import { ReserveCardComponent } from './components/reserve-card/reserve-card.com
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AdminButtonComponent } from './components/admin-button/admin-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,9 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
     ReserveCardComponent,
     BottomNavComponent,
     SubscriptionsPageComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    AdminPageComponent,
+    AdminButtonComponent
   ],
   imports: [
     BrowserModule,
