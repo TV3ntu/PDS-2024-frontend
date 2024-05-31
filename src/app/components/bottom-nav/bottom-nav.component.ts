@@ -55,4 +55,8 @@ export class BottomNavComponent {
   isActive(route: string){
     return this.activeButton === route
   }
+
+  isAdmin(){
+    return this.userService.currentUser?.isAdmin
+  }
 }
