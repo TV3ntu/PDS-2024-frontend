@@ -6,6 +6,7 @@ import { EntityDetailComponent } from './pages/entity-detail/entity-detail.compo
 import { LoginPageComponent } from './pages/login-page/login-page.component'
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component'
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component'
+import { AdminPageComponent } from './pages/admin-page/admin-page.component'
 
 const routes: Routes = [
   /* { path: '', component: HomePageComponent, pathMatch: 'full'}, */
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path:'suscripciones', component: SubscriptionsPageComponent,pathMatch: 'full',data: { mode: 'suscripciones' } },
   { path:'instituciones/:institutionId', component: EntityDetailComponent },
   { path:'cursos/:courseId', component: EntityDetailComponent,pathMatch: 'full'},
+  { path:'admin', component: AdminPageComponent,pathMatch: 'full'},
   { path:'', redirectTo: 'instituciones', pathMatch: 'full'}
   //TODO Agregar las rutas de los componentes
 ]

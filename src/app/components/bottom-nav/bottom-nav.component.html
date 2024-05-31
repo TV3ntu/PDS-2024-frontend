@@ -1,4 +1,7 @@
 <section class="bottom-nav">
+  <button *ngIf="isAdmin()" (click)="goTo('admin')" [ngClass]="{'active': isActive('admin')}">
+    <mat-icon>admin_panel_settings</mat-icon>
+  </button>
   <button (click)="goTo('instituciones')" [ngClass]="{'active': isActive('instituciones')}">
     <mat-icon>domain</mat-icon>
   </button>

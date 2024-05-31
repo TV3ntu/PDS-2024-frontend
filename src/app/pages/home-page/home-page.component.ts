@@ -12,6 +12,12 @@ export class HomePageComponent {
 
   constructor(private userService: UserService, private router:Router) {}
 
+  ngOnInit(){
+    if(this.isAdmin()){
+      this.router.navigate([`/admin`])
+    }
+  } 
+  
   updateQuery(query: string) {
     this.query = query
   }
@@ -22,5 +28,9 @@ export class HomePageComponent {
 
   goToSubscriptions(){
     this.router.navigate([`/suscripciones`])
+  }
+
+  isAdmin(){
+    return this.userService.currentUser?.isAdmin
   }
 }
