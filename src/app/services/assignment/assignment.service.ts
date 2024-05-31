@@ -1,18 +1,13 @@
-import { assignments } from './../../mocks/mocks';
-import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
-import {Assignment} from "../../models/assignment";
+import { Injectable } from '@angular/core'
+import {Observable } from "rxjs"
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentService {
-  assignments: Assignment[]
 
-  constructor() {
-    this.assignments = assignments
-  }
+  constructor() {  }
 
-  getById = (id:string):Observable<Assignment | undefined> => of(this.assignments.find(c => c.id == id))
+  //getById = (id:string):Observable<Assignment | undefined> => of(this.assignments.find(c => c.id == id))
 
-  getAll = ():Observable<Assignment[]> => of(this.assignments)
+  //getAll = ():Observable<Assignment[]> => of(this.assignments)
 }
