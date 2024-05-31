@@ -39,8 +39,8 @@ export class CourseService {
 
   getByCategory = (category:string):Course[] => this.courses.filter(c => c.category == category)
 
-  create ={}
+  create = (course:Course) => this.http.post<Course>(this.path+'/api/courses',{course})
 
-  delete={}
+  delete = (course:Course) => this.http.delete<Course>(this.path+'/api/courses/'+course.id)
 
 }
