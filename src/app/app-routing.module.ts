@@ -5,11 +5,14 @@ import { HomePageComponent } from './pages/home-page/home-page.component'
 import { EntityDetailComponent } from './pages/entity-detail/entity-detail.component'
 import { LoginPageComponent } from './pages/login-page/login-page.component'
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component'
+import { assignmentPageComponent } from './pages/assignment-page/assignment-page.component'
+
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component'
 import { AdminPageComponent } from './pages/admin-page/admin-page.component'
 
 const routes: Routes = [
   /* { path: '', component: HomePageComponent, pathMatch: 'full'}, */
+  { path:'admin/agregar/horario', component: assignmentPageComponent,pathMatch: 'full' },
   { path:'ingresar', component: LoginPageComponent,pathMatch: 'full' },
   { path:'perfil', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path:'instituciones', component: HomePageComponent,pathMatch: 'full',data: { mode: 'institution' } },
