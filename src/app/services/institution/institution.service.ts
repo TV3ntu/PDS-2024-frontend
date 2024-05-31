@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable,of } from 'rxjs';
-import { Institution } from 'src/app/models/institution';
-import { institutions } from 'src/app/mocks/mocks';
-import { path } from '../api.path';
-import { HttpClient } from '@angular/common/http';
-import { Course } from 'src/app/models/course';
+import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
+import { path } from '../api.path'
+import { HttpClient } from '@angular/common/http'
+import { Course } from 'src/app/models/course'
 interface InstitutionResponse{
   title:string
   id:string
@@ -20,14 +18,10 @@ interface InstitutionResponse{
 })
 export class InstitutionService {
   path: string = path.local + '/api/institutions'
-  institutions: Institution[]
 
-  constructor(private http: HttpClient) {
-    this.institutions = institutions
-  }
+  constructor(private http: HttpClient) {  }
 
   getById = (id:string):Observable<InstitutionResponse> => this.http.get<InstitutionResponse>(`${this.path}/${id}`)
 
   getAll = ():Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path)
-
 }
