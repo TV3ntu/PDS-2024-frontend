@@ -1,10 +1,15 @@
 <main>
-    <app-search-bar (searchEvent)="updateQuery($event)"></app-search-bar>
-    <section *ngIf="isLogged()" class="reserve-container">
-        <p>Proxima reserva</p>
-        <div class="reserve-cards">
-            <app-reserve-card></app-reserve-card>
-        </div>
+    <section>
+        <app-search-bar (searchEvent)="updateQuery($event)"></app-search-bar>
+        <section *ngIf="isLogged()" class="reserve-container">
+            <div class="reserve-title">
+                <p>Proxima reserva</p>
+                <p (click)="goToSubscriptions()" class="pointer">Mostrar todo ></p>
+            </div>
+            <div class="reserve-cards">
+                <app-reserve-card></app-reserve-card>
+            </div>
+        </section>
+        <app-entity-list [filter]="query"></app-entity-list>
     </section>
-    <app-entity-list [coursesFilter]="query"></app-entity-list>
 </main>

@@ -31,6 +31,10 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 import { assignmentPageComponent } from './pages/assignment-page/assignment-page.component';
+import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component';
+import { CreateFormComponent } from './components/create-form/create-form.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AdminButtonComponent } from './components/admin-button/admin-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +54,11 @@ import { assignmentPageComponent } from './pages/assignment-page/assignment-page
     NotificationComponent,
     ProfilePageComponent,
     ReserveCardComponent,
-    BottomNavComponent
+    BottomNavComponent,
+    SubscriptionsPageComponent,
+    CreateFormComponent,
+    AdminPageComponent,
+    AdminButtonComponent
   ],
   imports: [
     BrowserModule,

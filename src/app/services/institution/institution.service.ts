@@ -28,7 +28,7 @@ export class InstitutionService {
 
   getById = (id:string):Observable<InstitutionResponse> => this.http.get<InstitutionResponse>(`${this.path}/${id}`)
 
-  getAll = ():Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path)
+  getAll = (filter: String = ""):Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path + '?query=' + filter)
 
   create = (institution:Institution) => this.http.post<Institution>(this.path+'/api/courses',{institution})
 

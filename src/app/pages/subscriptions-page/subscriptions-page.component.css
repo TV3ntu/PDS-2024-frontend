@@ -1,0 +1,23 @@
+article{
+    min-height: 90vh;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+h3,p {
+    margin: 0;
+}
+
+.subscription{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 900px) {
+    article{
+        padding: 1rem 15rem;
+    }
+}

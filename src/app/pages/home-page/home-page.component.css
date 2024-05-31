@@ -12,7 +12,7 @@ app-search-bar{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
 }
 
 .reserve-cards{
@@ -24,10 +24,31 @@ app-reserve-card{
     width: 190%;
 }
 
-@media (min-width: 1000px) {
+.reserve-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.admin-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 660px) {
 
     main{
-        padding: 1rem 5rem;
+        padding: 1rem 15rem;
         min-height: 100vh;
+    }
+
+    .admin-buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 }

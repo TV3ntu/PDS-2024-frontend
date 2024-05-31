@@ -2,13 +2,15 @@
     <header>
         <img [src]="entity?.image" alt="entity?.name">
         <section>
-            <h2>{{ entity?.title }} <i class="fa fa-arrow-up-from-bracket"></i></h2>
 
-            <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
+            <h2>{{ entity?.title }}</h2>
             <span class="header-category">{{entity?.category}}</span>
+            <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
+            
             <p>{{ entity?.description }}</p>
         </section>
     </header>
+    <p *ngIf="isInstitution()">Resultados ({{entity?.children.length}})</p>
     <section class="entity-list" *ngIf="isInstitution() && hasCourses()">
             <app-entity-card *ngFor="let child of entity?.children" [entity]="child"></app-entity-card>
     </section>
@@ -16,7 +18,7 @@
         <p>No hay cursos disponibles</p>
     </section>
 
-    <section *ngIf="!isInstitution()">
+    <section class="button-container" *ngIf="!isInstitution()">
         <button mat-raised-button color="primary" (click)="openAssignmentsModal()">Ver horarios</button>
     </section>
     <app-assignments-modal *ngIf="showAssignmentsModal" [assignments]="entity?.children" (closeModal)="closeAssignmentsModal()"></app-assignments-modal>
