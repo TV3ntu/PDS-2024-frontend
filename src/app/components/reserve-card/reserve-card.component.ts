@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Reserve } from 'src/app/models/reserve';
 
 @Component({
@@ -23,5 +24,9 @@ export class ReserveCardComponent {
 
   getMonth(){
     return new Date(this.reserve.date).getMonth();
+  }
+
+  goToCourse(){
+    this.router.navigate([`/cursos/${this.reserve.courseId}`])
   }
 }
