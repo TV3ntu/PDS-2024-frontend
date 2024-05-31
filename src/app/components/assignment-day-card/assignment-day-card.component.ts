@@ -1,20 +1,19 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Assignment } from 'src/app/models/assignment';
 import { UserService } from 'src/app/services/user/user.service';
-
-interface Time{startTime: string, endTime: string, isActive:boolean}
 
 @Component({
   selector: 'app-assignment-day-card',
   templateUrl: './assignment-day-card.component.html',
-  styleUrls: ['./assignment-day-card.component.css']
+  styleUrls: ['./assignment-day-card.component.css'],
 })
 export class AssignmentDayCardComponent {
-  @Input() time: Time = {startTime: '', endTime: '', isActive: false}
+  @Input() assignment!: Assignment
   showDay: boolean = true
 
-  constructor(private router:Router,private userService:UserService,private cd: ChangeDetectorRef){
-  }
+  constructor(private router:Router,private userService:UserService,private cd: ChangeDetectorRef){ }
 
   toggleShowDay() {
     this.showDay = !this.showDay
@@ -42,5 +41,6 @@ export class AssignmentDayCardComponent {
       this.showDay = true
     }
     console.log(this.showDay)
+    console.log(this.assignment)
   }
 }

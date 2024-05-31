@@ -1,21 +1,23 @@
+import { Schedule } from "./schedule"
+
 export class Assignment{
     id: string
-    startTime: string
-    endTime: string
-    date: string
-    quotas: number
+    quantityAvailable: number
     isActive: boolean
     price: number
-
-    constructor(id:string, startTime: string, endTime: string, date: string,
-        quotas: number,isActive:boolean,price: number){
+    schedule: Schedule
+    constructor(
+        id:string,
+        quantityAvailable: number,
+        isActive:boolean,
+        price: number,
+        schedule: Schedule
+    ){
         this.id= id
-        this.startTime=startTime
-        this.endTime = endTime
-        this.date = date
-        this.quotas = quotas
+        this.quantityAvailable = quantityAvailable
         this.isActive = isActive
         this.price = price
+        this.schedule = schedule
     }
 
     join(){

@@ -2,6 +2,12 @@
     width: 100%;
 }
 
+.assignment-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 article > h3{
     width: 100%;
     text-align: center;
