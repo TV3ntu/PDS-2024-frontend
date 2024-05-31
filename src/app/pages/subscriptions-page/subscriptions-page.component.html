@@ -1,0 +1,14 @@
+<article>
+    <section class="subscription">
+        <h3>Suscripciones</h3>
+        <section *ngFor="let sub of filterByStatus('Confirmado')">
+            <app-reserve-card [reserve]="sub"></app-reserve-card>
+        </section>
+    </section>
+    <section class="subscription">
+        <h3>Finalizados</h3>
+        <section *ngFor="let sub of filterByStatus('Finalizado')">
+            <app-reserve-card [reserve]="sub"></app-reserve-card>
+        </section>
+    </section>
+</article>
