@@ -15,3 +15,9 @@ h3,p {
     flex-direction: column;
     gap: 1rem;
 }
+
+@media (min-width: 900px) {
+    article{
+        padding: 1rem 15rem;
+    }
+}
