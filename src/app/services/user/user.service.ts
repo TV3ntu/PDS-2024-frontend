@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import {HttpClient} from "@angular/common/http"
 import { Observable, tap} from "rxjs"
-import {User} from "../../models/user"
+import {NewUser, User} from "../../models/user"
 import { Course } from 'src/app/models/course'
 
 @Injectable({
@@ -49,7 +49,7 @@ export class UserService {
 
   getSuscribedCourses = (id: string): Observable<Course> => this.http.get<Course>(this.serverUrl + '/api/users/' + id + '/courses')
 
-  create = (user:User) => this.http.post<User>(this.serverUrl+'/api/user',{user})
+  create = (user:NewUser) => this.http.post<User>(this.serverUrl+'/api/users/register',user)
 
   delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/user/'+user.id)
 
