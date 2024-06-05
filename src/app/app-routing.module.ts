@@ -9,11 +9,13 @@ import { assignmentPageComponent } from './pages/assignment-page/assignment-page
 
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component'
 import { AdminPageComponent } from './pages/admin-page/admin-page.component'
+import { RegisterPageComponent } from './pages/register-page/register-page.component'
 
 const routes: Routes = [
   /* { path: '', component: HomePageComponent, pathMatch: 'full'}, */
   { path:'admin/agregar/horario', component: assignmentPageComponent,pathMatch: 'full' },
   { path:'ingresar', component: LoginPageComponent,pathMatch: 'full' },
+  { path:'register', component: RegisterPageComponent,pathMatch: 'full' },
   { path:'perfil', component: ProfilePageComponent, canActivate: [AuthGuard]},
   { path:'instituciones', component: HomePageComponent,pathMatch: 'full',data: { mode: 'institution' } },
   { path:'cursos', component: HomePageComponent,pathMatch: 'full',data: { mode: 'course' } },

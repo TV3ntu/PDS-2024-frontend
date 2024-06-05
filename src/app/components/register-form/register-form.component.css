@@ -1,7 +1,3 @@
-main{
-    height: 90vh;
-}
-
 .form-overlay {
     display: flex;
     flex-direction: column;
@@ -9,9 +5,8 @@ main{
     align-items: center;
     gap: 1rem;
     width: 100%;
-    padding: 2rem;
   }
-
+  
   .form-group {
     display: flex;
     flex-direction: column;
@@ -19,36 +14,40 @@ main{
     gap: 1rem;
     width: 100%;
   }
-
+  
   .form-input {
     width: 100%;
     padding: 0.5rem;
     border: 0.2rem solid var(--primary-color);
+    box-sizing: border-box;
   }
-
+  
   .btn {
     background-color: var(--primary-color);
     color: var(--light-color);
     padding: 1rem;
     margin-top: 0.5rem;
-    border: 0 none;
+    border: none;
     border-radius: var(--secondary-border-radius);
     cursor: pointer;
     min-width: 15rem;
   }
-
-  .register {
-    background-color: var(--dark-gray-color);
+  
+  .btn:disabled {
+    background-color: grey;
+    cursor: not-allowed;
   }
-
-  small {
+  
+  .error {
     color: var(--danger-color);
+    font-size: 0.875rem;
   }
-
+  
   /* DESKTOP */
-
+  
   @media (min-width: 769px) {
     .form-input {
       width: 50%;
     }
   }
+  

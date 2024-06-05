@@ -35,6 +35,8 @@ import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscript
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AdminButtonComponent } from './components/admin-button/admin-button.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,9 @@ import { AdminButtonComponent } from './components/admin-button/admin-button.com
     SubscriptionsPageComponent,
     CreateFormComponent,
     AdminPageComponent,
-    AdminButtonComponent
+    AdminButtonComponent,
+    RegisterFormComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
