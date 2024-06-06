@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Entity } from 'src/app/models/entity';
-import { Institution } from 'src/app/models/institution';
+import {InstitutionService} from "../../services/institution/institution.service";
+import {CourseService} from "../../services/course/course.service";
+import {NotificationService} from "../../services/notification/notification.service";
 
 @Component({
   selector: 'app-entity-card',
@@ -9,11 +11,14 @@ import { Institution } from 'src/app/models/institution';
   styleUrls: ['./entity-card.component.css']
 })
 export class EntityCardComponent{
-  @Input()entity?: Entity
-  institutionId:string = ''
+  @Input() entity?: Entity
+  institutionId: string = ''
   courseId: string = ''
   mode: string = ''
-  constructor(private router:Router,private activatedRoute:ActivatedRoute) { }
+  @Output() entityDeleted = new EventEmitter<void>();
+
+  constructor(private router:Router, private activatedRoute:ActivatedRoute, private institutionService:InstitutionService,
+              private courseService:CourseService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((data) => {
@@ -24,11 +29,31 @@ export class EntityCardComponent{
       this.mode = data['mode']
     })
   }
+
   isInstitution = () => this.courseId === '' && this.mode === 'institution'
 
   navigateToDetail = (id:string|undefined) => {
     if(this.isInstitution()) this.router.navigate(['instituciones', this.entity?.id])
     if(!this.isInstitution()) this.router.navigate(['cursos', id])
   }
+
   goToButtonText=() => this.isInstitution() ? 'Ver cursos' : 'Más Detalles'
+
+  isAdmin = () => true //this.userService.getLoggedUser()?.isAdmin
+
+  deleteEntity(idEntity: string | undefined) {
+    if (this.isInstitution()) {
+      this.institutionService.delete(idEntity!)
+        .subscribe(() => {
+          this.notificationService.notify(200, 'Institución eliminada exitosamente');
+          this.entityDeleted.emit();
+        })
+    } else {
+      this.courseService.delete(idEntity!)
+        .subscribe(() => {
+          this.notificationService.notify(200, 'Curso eliminado exitosamente');
+          this.entityDeleted.emit();
+        })
+    }
+  }
 }
