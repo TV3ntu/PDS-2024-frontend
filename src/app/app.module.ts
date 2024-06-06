@@ -30,10 +30,14 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ReserveCardComponent } from './components/reserve-card/reserve-card.component';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
+import { assignmentPageComponent } from './pages/assignment-page/assignment-page.component';
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AdminButtonComponent } from './components/admin-button/admin-button.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +53,7 @@ import { AdminButtonComponent } from './components/admin-button/admin-button.com
     AssignmentDayCardComponent,
     ProfileFormComponent,
     LoginPageComponent,
+    assignmentPageComponent,
     NotificationComponent,
     ProfilePageComponent,
     ReserveCardComponent,
@@ -56,7 +61,10 @@ import { AdminButtonComponent } from './components/admin-button/admin-button.com
     SubscriptionsPageComponent,
     CreateFormComponent,
     AdminPageComponent,
-    AdminButtonComponent
+    AdminButtonComponent,
+    RegisterFormComponent,
+    RegisterPageComponent,
+    CourseStatsPageComponent
   ],
   imports: [
     BrowserModule,

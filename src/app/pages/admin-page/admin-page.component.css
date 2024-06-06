@@ -4,14 +4,33 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 2rem;
+    padding: 1rem 2rem;
+    gap: 1rem;
 }
+.trash-button-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1%;
+    color: var(--danger-color);
+    z-index: 20;
+    background-color: var(--light-color);
+    border-radius: 50%;
+  }
 
 h3{
-    margin: 0;
-    width: 100%;
     display: flex;
     justify-content: center;
+    margin: 0;
+    width: 100%;
+}
+
+p{
+    font-size: 1rem;
+    width: 100%;
+    display: flex;
+    margin: 0;
+    white-space: normal;
 }
 
 .admin-buttons{
@@ -25,7 +44,6 @@ h3{
     flex-wrap: wrap;
     row-gap: 1rem;
     justify-content: center;
-    margin-bottom: 3rem;
 }
 
 .admin-metrics{
@@ -34,6 +52,61 @@ h3{
     flex-wrap: wrap;
     row-gap: 1rem;
     width: 100%;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--light-gray-color);
+}
+
+.course{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    border: 1px solid var(--primary-color-lighter);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-height: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+.course .main-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.course .course-actions{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+.course .course-actions button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.course .course-actions .stats-button{
+    border-radius: 50rem;
+    background-color: var(--green-color);
+}
+.course .course-actions .stats-icon{
+    color: var(--primary-color);
+}
+.course .course-actions .delete-icon{
+    color: var(--danger-color);
+}
+
+.title{
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (min-width: 660px) {

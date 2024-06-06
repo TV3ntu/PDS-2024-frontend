@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Course } from 'src/app/models/course'
 import { path } from '../api.path'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient,HttpParams } from '@angular/common/http'
 import { Assignment } from 'src/app/models/assignment'
 
 interface CourseResponse{
@@ -27,6 +27,18 @@ export class CourseService {
 
   create = (course:Course) => this.http.post<Course>(this.path+'/api/courses',{course})
 
-  delete = (course:Course) => this.http.delete<Course>(this.path+'/api/courses/'+course.id)
+  delete = (courseId:string) => this.http.delete<Course>(this.path + '/' + courseId)
+
+  deleteAll(courses: string[]): Observable<Course[]> {
+    let params = new HttpParams();
+    courses.forEach(course => {
+    params = params.append('idCourses', course);
+    });
+
+
+    return this.http.delete<Course[]>(`${this.path}/api/courses`, { params });
+  }
+
+  getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats')  
 
 }

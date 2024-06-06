@@ -49,4 +49,5 @@ export class HeaderComponent {
     this.isLogged = false
     this.notificationService.notify(200, 'Sesión cerrada')
   }
+  isAdmin = () => this.userService.getLoggedUser()?.isAdmin
 }

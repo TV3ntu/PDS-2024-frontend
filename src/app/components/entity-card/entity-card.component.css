@@ -15,6 +15,7 @@
   -moz-box-shadow: -2px 2px 91px -31px rgba(0,0,0,0.3);
   overflow: hidden;
 }
+
 .mat-card-image-container {
   margin: 0;
   height: 20vh;
@@ -26,6 +27,7 @@
   overflow: hidden;
   border-radius: 1rem;
 }
+
 .mat-card-image{
   width: 100%;
   height: 100%;
@@ -35,9 +37,11 @@
   border-bottom: 0.5px solid var(--light-gray-color);
   border-radius: 1rem;
 }
+
 .mat-card-image.cover{
   object-fit: cover;
 }
+
 .mat-card-image-bg{
   width: 100%;
   height: 100%;
@@ -48,6 +52,7 @@
   left: 0;
   filter: blur(5px);
 }
+
 .institution-card {
     width: 100%;
     align-items: center;
@@ -74,7 +79,9 @@
 .institution-card-content h2{
   width: 100%;
   margin: 0;
+  padding-right: 3rem;
 }
+
 .institution-card-content h3{
   border: 1px solid var(--dark-gray-color);
   padding: 0.5rem;
@@ -87,6 +94,9 @@
   width: 100%;
   justify-content: end;
 }
+
+
+
 @media (min-width: 660px) {
   .card-container{
     border-radius: 1rem;

@@ -20,11 +20,4 @@ export class Assignment{
         this.schedule = schedule
     }
 
-    join(){
-        console.log("You've joined to course ")
-    }
-
-    leave(){
-        console.log("You've left from course ")
-    }
 }
