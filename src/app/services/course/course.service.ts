@@ -35,6 +35,10 @@ export class CourseService {
     params = params.append('idCourses', course);
     });
 
+
     return this.http.delete<Course[]>(`${this.path}/api/courses`, { params });
   }
+
+  getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats')  
+
 }
