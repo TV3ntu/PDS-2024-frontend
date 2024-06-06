@@ -40,4 +40,5 @@ export class CourseService {
   }
   
 
+  getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats')  
 }

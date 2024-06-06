@@ -1,13 +1,20 @@
 <article class="admin-panel">
-    <h3>Panel de administrador</h3>
     <div class="admin-buttons">
+        <h3>Panel de administrador</h3>
+        <div class="admin-metrics">
+            <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-chart-simple'" ></app-admin-button>
+            <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-calendar-days'" ></app-admin-button>
+            <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-users'" ></app-admin-button>
+        </div>
         <app-admin-button [style]="'button'" [type]="'institucion'" ></app-admin-button>
         <app-admin-button [style]="'button'" [type]="'curso'" ></app-admin-button>
         <app-admin-button [style]="'button'" [type]="'clase'" ></app-admin-button>
     </div>
     <div class="admin-metrics">
-        <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-chart-simple'" ></app-admin-button>
-        <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-calendar-days'" ></app-admin-button>
-        <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-users'" ></app-admin-button>
+        <h3>Cursos</h3>
+        <div (click)="goToStats(c.id)" *ngFor="let c of courses" class="course">
+            {{c.title}}
+            <p>Categoria: {{c.category}} </p>
+        </div>
     </div>
 </article>
