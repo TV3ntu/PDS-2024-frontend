@@ -7,6 +7,10 @@
       </button>
 
       <mat-menu #menu="matMenu" class="mat-menu">
+        <button *ngIf="isAdmin()" (click)="goTo('admin')" mat-menu-item>
+          <mat-icon>admin_panel_settings</mat-icon>
+          <span>Administrador</span>
+        </button>
         <button (click)="goTo('instituciones')" mat-menu-item>
           <mat-icon>domain</mat-icon>
           <span>Instituciones</span>

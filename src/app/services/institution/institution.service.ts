@@ -28,6 +28,5 @@ export class InstitutionService {
 
   create = (institution:Institution) => this.http.post<Institution>(this.path+'/api/courses',{institution})
 
-  delete = (institution:Institution) => this.http.delete<Institution>(this.path+'/api/courses/'+institution.id)
-
+  delete = (institutionId:string) => this.http.delete<Institution>(this.path + '/' + institutionId)
 }

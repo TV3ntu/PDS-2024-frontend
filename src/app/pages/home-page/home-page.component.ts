@@ -12,12 +12,6 @@ export class HomePageComponent {
 
   constructor(private userService: UserService, private router:Router) {}
 
-  ngOnInit(){
-    if(this.isAdmin()){
-      this.router.navigate([`/admin`])
-    }
-  } 
-  
   updateQuery(query: string) {
     this.query = query
   }

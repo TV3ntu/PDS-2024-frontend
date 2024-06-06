@@ -27,18 +27,18 @@ export class CourseService {
 
   create = (course:Course) => this.http.post<Course>(this.path+'/api/courses',{course})
 
-  delete = (course:Course) => this.http.delete<Course>(this.path+'/api/courses/'+course.id)
+  delete = (courseId:string) => this.http.delete<Course>(this.path + '/' + courseId)
 
   deleteAll(courses: string[]): Observable<Course[]> {
-  let params = new HttpParams();
-  courses.forEach(course => {
-  params = params.append('idCourses', course);
-  });
-  
-  return this.http.delete<Course[]>(`${this.path}/api/courses`, { params });
-  
+    let params = new HttpParams();
+    courses.forEach(course => {
+    params = params.append('idCourses', course);
+    });
+
+
+    return this.http.delete<Course[]>(`${this.path}/api/courses`, { params });
   }
-  
 
   getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats')  
+
 }

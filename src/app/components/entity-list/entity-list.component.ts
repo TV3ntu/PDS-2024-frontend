@@ -57,4 +57,9 @@ export class EntityListComponent {
       this.entityList = transformedInstitutions;
     })
   }
+
+  onEntityDeleted(): void {
+    if (this.mode === 'course') this.getCourses();
+    if (this.mode === 'institution') this.getInstitutions();
+  }
 }
