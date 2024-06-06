@@ -4,6 +4,7 @@ import { Entity } from 'src/app/models/entity';
 import {InstitutionService} from "../../services/institution/institution.service";
 import {CourseService} from "../../services/course/course.service";
 import {NotificationService} from "../../services/notification/notification.service";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-entity-card',
@@ -18,7 +19,7 @@ export class EntityCardComponent{
   @Output() entityDeleted = new EventEmitter<void>();
 
   constructor(private router:Router, private activatedRoute:ActivatedRoute, private institutionService:InstitutionService,
-              private courseService:CourseService, private notificationService: NotificationService) { }
+              private courseService:CourseService, private notificationService: NotificationService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((data) => {
@@ -39,7 +40,7 @@ export class EntityCardComponent{
 
   goToButtonText=() => this.isInstitution() ? 'Ver cursos' : 'Más Detalles'
 
-  isAdmin = () => true //this.userService.getLoggedUser()?.isAdmin
+  isAdmin = () => this.userService.getLoggedUser()?.isAdmin
 
   deleteEntity(idEntity: string | undefined) {
     if (this.isInstitution()) {
