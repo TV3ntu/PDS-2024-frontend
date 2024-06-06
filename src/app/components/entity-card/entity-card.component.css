@@ -95,15 +95,7 @@
   justify-content: end;
 }
 
-.trash-button-container {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  color: var(--danger-color);
-  z-index: 20;
-  background-color: var(--light-color);
-  border-radius: 50%;
-}
+
 
 @media (min-width: 660px) {
   .card-container{

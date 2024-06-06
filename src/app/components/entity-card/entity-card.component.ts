@@ -16,7 +16,7 @@ export class EntityCardComponent{
   institutionId: string = ''
   courseId: string = ''
   mode: string = ''
-  @Output() entityDeleted = new EventEmitter<void>();
+  
 
   constructor(private router:Router, private activatedRoute:ActivatedRoute, private institutionService:InstitutionService,
               private courseService:CourseService, private notificationService: NotificationService, private userService: UserService) { }
@@ -42,19 +42,5 @@ export class EntityCardComponent{
 
   isAdmin = () => this.userService.getLoggedUser()?.isAdmin
 
-  deleteEntity(idEntity: string | undefined) {
-    if (this.isInstitution()) {
-      this.institutionService.delete(idEntity!)
-        .subscribe(() => {
-          this.notificationService.notify(200, 'Institución eliminada exitosamente');
-          this.entityDeleted.emit();
-        })
-    } else {
-      this.courseService.delete(idEntity!)
-        .subscribe(() => {
-          this.notificationService.notify(200, 'Curso eliminado exitosamente');
-          this.entityDeleted.emit();
-        })
-    }
-  }
+
 }

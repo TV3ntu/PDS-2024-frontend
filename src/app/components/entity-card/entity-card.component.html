@@ -3,11 +3,7 @@
     <div class="mat-card-image-container">
       <img class="mat-card-image" [ngClass]="{'cover':!isInstitution()}" [src]="entity?.image">
     </div>
-    <div class="trash-button-container">
-      <button *ngIf="this.isAdmin()" mat-icon-button (click)="deleteEntity(entity?.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </div>
+    
     <mat-card-content class="institution-card-content">
       <h2>{{entity?.title}}</h2>
       <p>{{entity?.description}}</p>
