@@ -10,6 +10,7 @@ import { assignmentPageComponent } from './pages/assignment-page/assignment-page
 import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscriptions-page.component'
 import { AdminPageComponent } from './pages/admin-page/admin-page.component'
 import { RegisterPageComponent } from './pages/register-page/register-page.component'
+import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component'
 
 const routes: Routes = [
   /* { path: '', component: HomePageComponent, pathMatch: 'full'}, */
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path:'instituciones/:institutionId', component: EntityDetailComponent },
   { path:'cursos/:courseId', component: EntityDetailComponent,pathMatch: 'full'},
   { path:'admin', component: AdminPageComponent,pathMatch: 'full'},
+  { path:'admin/curso/:courseId', component: CourseStatsPageComponent,pathMatch: 'full'},
   { path:'', redirectTo: 'instituciones', pathMatch: 'full'}
   //TODO Agregar las rutas de los componentes
 ]
