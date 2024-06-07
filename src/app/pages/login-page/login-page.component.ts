@@ -40,9 +40,6 @@ export class LoginPageComponent {
         console.log(response)
         this.notificationService.notify(200, 'Inicio de sesión exitoso')
         this.router.navigate(['/instituciones'])
-      },
-      (error) => {
-        console.log(error)
       }
     )
   }
