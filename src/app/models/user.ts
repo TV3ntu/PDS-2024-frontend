@@ -1,3 +1,5 @@
+import { Reserve } from "./reserve"
+
 export class User {
     id: string
     name: string
@@ -5,7 +7,7 @@ export class User {
     email: string
     image: string
     isAdmin: boolean
-
+    nextClass: Reserve | null = null
     constructor(id:string, name: string, lastName: string, email: string, image:string, isAdmin: boolean) {
         this.id= id
         this.name=name
