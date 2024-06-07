@@ -5,68 +5,37 @@
 
 
         <div class="form-group">
-          <label for="quota">Cantidad de suscripciones permitidas:</label>
-          <input
-            type="number"
-            placeholder=0
-            id="quota"
-            [(ngModel)]="assignment.quantityAvailable"
-            name="quota"
-            required
-            class="form-input"
-            Quota
-            #quotaField="ngModel"
-            minvalue="1"
-            >
-            <div *ngIf="quotaField.invalid && (quotaField.dirty || quotaField.touched)">
-              <div *ngIf="assignment.quantityAvailable <= 1">
-                  La cantidad de suscripciones permitidas debe ser mayor que 0.
-              </div>
+          <label for="quantityAvailable">Cantidad de suscripciones permitidas:</label>
+          <input id="quantityAvailable" type="number" name="quantityAvailable" [(ngModel)]="assignment.quantityAvailable" class="form-input" required #quantityAvailable="ngModel">
+            <div *ngIf="quantityAvailable.invalid && (quantityAvailable.dirty || quantityAvailable.touched)" class="error">
+              <div *ngIf="quantityAvailable.errors?.['required']" class="error">Ingrese un Número válido</div>
             </div>
         </div>
         <div class="form-group">
             <label for="price">Precio:</label>
-            <input
-                type="number"
-                placeholder=0
-                id="price"
-                [(ngModel)]="assignment.price"
-                name="price"
-                required
-                class="form-input"
-                price
-                #priceField="ngModel">
+            <input id="price" type="number" name="price" [(ngModel)]="assignment.price" class="form-input" required #price="ngModel">
+            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="error">
+              <div *ngIf="price.errors?.['required']" class="error">Ingrese un Número válido</div>
+            </div>
             
         </div>
 
         <div class="form-group">
             <label for="startDate">fecha de inicio del curso:</label>
-            <input
-                type="date"
-                placeholder=0
-                id="startDate"
-                [(ngModel)]="assignment.startDate"
-                name="startDate"
-                required
-                class="form-input"
-                price
-                #priceField="ngModel">
+            <input id="startDate" type="date" name="startDate" [(ngModel)]="assignment.startDate" class="form-input" required #startDate="ngModel">
+            <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="error">
+              <div *ngIf="startDate.errors?.['required']" class="error">Ingrese una fecha válida</div>
+            </div>
             
       </div>
 
       <div class="form-group">
           <label for="endDate">fecha de fin del curso:</label>
-          <input
-              type="date"
-              placeholder=0
-              id="endDate"
-              [(ngModel)]="assignment.endDate"
-              name="endDate"
-              required
-              class="form-input"
-              price
-              #priceField="ngModel">
-        </div>
+          <input id="endDate" type="date" name="endDate" [(ngModel)]="assignment.endDate" class="form-input" required #endDate="ngModel">
+            <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="error">
+              <div *ngIf="endDate.errors?.['required']" class="error">Ingrese una fecha válida</div>
+            </div>
+      </div>
 
         <div class="form-group">
           <label for="days">Seleccione los días en los que se brinda el curso:</label>
@@ -80,6 +49,8 @@
                 name="lunes"
                 class="form-input"
                 value="MONDAY"
+                #lunesField="ngModel"
+                (change)="daySelectedCheck()"
                 >
             <label for="lunes">Lunes</label>
             </div>
@@ -92,7 +63,8 @@
                 name="martes"
                 class="form-input"
                 value="Martes"
-                #martesField="ngModel">
+                #martesField="ngModel"
+                (change)="daySelectedCheck()">
               <label for="martes">Martes</label>
             </div>
             <div class="checkbox-item">
@@ -104,7 +76,8 @@
                 name="miercoles"
                 class="form-input"
                 value="miercoles"
-                #miercolesField="ngModel">
+                #miercolesField="ngModel"
+                (change)="daySelectedCheck()">
               <label for="miercoles">Miercoles</label>
             </div>
             <div class="checkbox-item">
@@ -116,7 +89,8 @@
                 name="jueves"
                 class="form-input"
                 value="jueves"
-                #miercolesField="ngModel">
+                #juevesField="ngModel"
+                (change)="daySelectedCheck()">
               <label for="jueves">Jueves</label>
             </div>
             <div class="checkbox-item">
@@ -128,7 +102,8 @@
                 name="viernes"
                 class="form-input"
                 value="viernes"
-                #miercolesField="ngModel">
+                #viernesField="ngModel"
+                (change)="daySelectedCheck()">
               <label for="viernes">Viernes</label>
             </div>
             <div class="checkbox-item">
@@ -140,7 +115,8 @@
                 name="sabado"
                 class="form-input"
                 value="sabado"
-                #miercolesField="ngModel">
+                #sabadoField="ngModel"
+                (change)="daySelectedCheck()">
               <label for="sabado">Sabado</label>
             </div>
             <div class="checkbox-item">
@@ -152,51 +128,45 @@
                 name="domingo"
                 class="form-input"
                 value="domingo"
-                #miercolesField="ngModel">
+                #domingoField="ngModel"
+                (change)="daySelectedCheck()">
               <label for="domingo">Domingo</label>
             </div>
-          </div>
+          </div>          
+        </div>
+        <div *ngIf="!newTimeOnPage && !atLeastOneDaySelected" class="error">
+          Seleccione al menos un día para el curso.
         </div>
 
         <div class="form-group">
           <label for="startTime">Horario de inicio del curso:</label>
-          <input
-              type="time"
-              placeholder=0
-              id="endDate"
-              [(ngModel)]="assignment.startTime"
-              name="startTime"
-              required
-              class="form-input"
-              price
-              #priceField="ngModel">
+          <input id="startTime" type="time" name="startTime" [(ngModel)]="assignment.startTime" class="form-input" required #startTime="ngModel">
+            <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="error">
+              <div *ngIf="startTime.errors?.['required']" class="error">Ingrese un horario válido</div>
+            </div>
           
         </div>
 
         <div class="form-group">
           <label for="endTime">Horario de fin del curso:</label>
-          <input
-              type="time"
-              placeholder=0
-              id="endDate"
-              [(ngModel)]="assignment.endTime"
-              name="endTime"
-              required
-              class="form-input"
-              price
-              #priceField="ngModel">
+          <input id="endTime" type="time" name="endTime" [(ngModel)]="assignment.endTime" class="form-input" required #endTime="ngModel">
+            <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)" class="error">
+              <div *ngIf="endTime.errors?.['required']" class="error">Ingrese un horario válido</div>
+            </div>
           
         </div>
 
         <div class="form-group">
           <label for="recurrenceWeek">Recurrencia:</label>
-          <select class="form-input" id="" [(ngModel)]="assignment.recurrenceWeek" name="college_name" required>
+          <select class="form-input" id="recurrenceWeek" [(ngModel)]="assignment.recurrenceWeek" name="college_name" required #recurrenceWeek="ngModel">
             <option value="WEEKLY">Semanal</option>
             <option value="BIWEEKLY"> Quincenal</option>
             <option value="MONTHLY">Mensual</option>
           </select>
-          
-        </div>
+          <div *ngIf="recurrenceWeek.invalid && (recurrenceWeek.dirty || recurrenceWeek.touched)" class="error">
+            <div *ngIf="recurrenceWeek.errors?.['required']" class="error">seleccione una opción</div>
+          </div>
+        </div>  
       <button type="submit" class="btn" >Asignar horario</button>
 
     </form>

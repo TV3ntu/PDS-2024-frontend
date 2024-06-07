@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { AssignmentService } from 'src/app/services/assignment/assignment.service'; 
 import { Schedule } from 'src/app/models/schedule';
-import { catchError } from 'rxjs';
 
 
 interface NewAssignment{
@@ -20,7 +19,6 @@ interface NewAssignment{
   recurrenceWeek: string
   listDates:string[]
   schedule: Schedule
-
 }
 @Component({
   selector: 'app-assignment-page',
@@ -37,6 +35,11 @@ export class assignmentPageComponent {
   fridaySelected: boolean = false;
   saturdaySelected: boolean = false;
   sundaySelected: boolean = false;
+  atLeastOneDaySelected: boolean=false;
+  //flag to don't display error when enter at page
+  newTimeOnPage: boolean=true
+  invalidDate: boolean=false
+  currentDate: Date= new Date()
 
 
   assignment: NewAssignment = {
@@ -44,17 +47,22 @@ export class assignmentPageComponent {
     quantityAvailable: 0,
     isActive:true, 
     price: 0,
-    startDate: new Date("01-01-1999"),
-    endDate: new Date("01-01-1999"),
+    startDate: new Date(),
+    endDate: new Date(),
     days:[],
     startTime: new Date("00:00:00"),
     endTime: new Date("00:00:00"),
     recurrenceWeek:'',
     listDates:[],
-    schedule:new Schedule([],'','','','','',[])
+    schedule:new Schedule([],'','','','','',[]),
   }
 
   constructor(private router: Router,private assignmentService:AssignmentService,private notificationService: NotificationService) { }
+
+  daySelectedCheck() {
+    this.newTimeOnPage=false
+    this.atLeastOneDaySelected = this.mondaySelected || this.tuesdaySelected || this.wednesdaySelected || this.thursdaySelected || this.fridaySelected || this.saturdaySelected || this.sundaySelected
+  }
 
   create(e: Event){
     this.errorMessage = ''
@@ -63,15 +71,6 @@ export class assignmentPageComponent {
     console.log(e)
     console.log(this.assignment)
     this.assignmentService.create(this.assignment)
-    .pipe(
-      catchError((error) => {
-        console.log(error)
-        this.errorMessage = error.message
-        error.error.status = 401
-        error.error.message = 'Usuario o contraseña incorrectos'
-        return this.notificationService.handleError(error)
-      })
-    )
   }
 
   setWeekDays(){
@@ -87,5 +86,5 @@ export class assignmentPageComponent {
   setSchedule(){
     this.assignment.schedule = new Schedule(this.assignment.days,String(this.assignment.startTime),String(this.assignment.endTime),String(this.assignment.startDate),String(this.assignment.endDate),this.assignment.recurrenceWeek,this.assignment.listDates)
   }
-    
+
   }
