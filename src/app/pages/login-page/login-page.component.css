@@ -36,6 +36,11 @@ main{
     cursor: pointer;
     min-width: 15rem;
   }
+  .btn.btn-secondary{
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+  }
 
   .register {
     background-color: var(--dark-gray-color);
