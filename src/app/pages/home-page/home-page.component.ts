@@ -16,15 +16,20 @@ export class HomePageComponent {
     this.query = query
   }
 
-  isLogged(){
-    return this.userService.isLogged()
-  }
-
   goToSubscriptions(){
     this.router.navigate([`/suscripciones`])
   }
 
-  isAdmin(){
-    return this.userService.currentUser?.isAdmin
+  isLogged = () => this.userService.isLogged()
+  isAdmin = ()=>  this.userService.currentUser?.isAdmin
+
+  nextReserve = () => {
+    if(this.userService.isLogged()){
+      console.log(this.userService.currentUser)
+      return this.userService.currentUser?.nextClass
+    }
+    return null
   }
+  hasReserve = () => this.nextReserve() != null
+
 }
