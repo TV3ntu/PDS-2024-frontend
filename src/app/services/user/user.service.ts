@@ -4,6 +4,7 @@ import { Observable, tap} from "rxjs"
 import {NewUser, User} from "../../models/user"
 import { Course } from 'src/app/models/course'
 import { Assignment } from 'src/app/models/assignment'
+import { Reserve } from 'src/app/models/reserve'
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class UserService {
 
   updateUser = (user: User): Observable<User> => this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, user)
 
-  getSuscribedCourses = (id: string): Observable<Course> => this.http.get<Course>(this.serverUrl + '/api/users/' + id + '/courses')
+  getSuscribedCourses = (id: string): Observable<Reserve[]> => this.http.get<Reserve[]>(this.serverUrl + '/api/users/' + id + '/subscriptions')
 
   create = (user:NewUser) => this.http.post<User>(this.serverUrl+'/api/users/register',user)
 
