@@ -1,14 +1,18 @@
-<article>
+<main *ngIf="hasSuscriptions()">
     <section class="subscription">
         <h3>Suscripciones</h3>
-        <section *ngFor="let sub of filterByStatus('Confirmado')">
+        <article *ngFor="let sub of filterByStatus('CONFIRMED')">
             <app-reserve-card [reserve]="sub"></app-reserve-card>
-        </section>
+        </article>
     </section>
     <section class="subscription">
         <h3>Finalizados</h3>
-        <section *ngFor="let sub of filterByStatus('Finalizado')">
+        <article *ngFor="let sub of filterByStatus('FINISHED')">
             <app-reserve-card [reserve]="sub"></app-reserve-card>
-        </section>
+        </article>
     </section>
-</article>
+</main>
+
+<main *ngIf="!hasSuscriptions()">
+    <h2>Aún no tiene suscripciones</h2>
+</main>

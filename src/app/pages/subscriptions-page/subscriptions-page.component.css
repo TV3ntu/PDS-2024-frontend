@@ -1,4 +1,4 @@
-article{
+main{
     min-height: 90vh;
     padding: 1rem 2rem;
     display: flex;
@@ -17,7 +17,7 @@ h3,p {
 }
 
 @media (min-width: 900px) {
-    article{
+    main{
         padding: 1rem 15rem;
     }
 }
