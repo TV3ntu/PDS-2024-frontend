@@ -1,7 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { Assignment } from 'src/app/models/assignment';
+import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -19,6 +21,7 @@ export class AssignmentDayCardComponent {
     private userService:UserService,
     private cd: ChangeDetectorRef,
     private notificationService: NotificationService,
+    private assignmentService: AssignmentService
   ){ }
 
   toggleShowDay() {
@@ -30,7 +33,19 @@ export class AssignmentDayCardComponent {
     if(this.userService.isLogged()){
       this.showDay = false;
       console.log("Subscribed, showDay is now", this.showDay)
-      this.notificationService.notify(200, "Suscripción exitosa!")
+      this.assignmentService.subscribeAssigment(this.userService.getLoggedUser()!, this.assignment)
+        .pipe(
+          catchError((error) => {
+            console.log(error)
+            error.error.status = 401
+            error.error.message = 'No se pudo actualizar usuario'
+            return this.notificationService.handleError(error)
+          })
+        )
+        .subscribe((data)=>{
+          console.log(data)
+          this.notificationService.notify(200, "Suscripción exitosa!")
+      })
       this.cd.detectChanges()
     }else{
       this.router.navigate(['/ingresar'])
@@ -40,7 +55,19 @@ export class AssignmentDayCardComponent {
   unsubscribe(){
     this.showDay = true
     console.log("Unsubscribed, showDay is now", this.showDay)
-    this.notificationService.notify(200, "Desuscripción exitosa!")
+    this.assignmentService.unsuscribeAssignment(this.userService.getLoggedUser()!, this.assignment)
+    .pipe(
+      catchError((error) => {
+        console.log(error)
+        error.error.status = 401
+        error.error.message = 'No se pudo actualizar usuario'
+        return this.notificationService.handleError(error)
+      })
+    )
+    .subscribe((data)=>{
+      console.log(data)
+      this.notificationService.notify(200, "Desuscripción exitosa!")
+    })
     this.cd.detectChanges()
   }
 
