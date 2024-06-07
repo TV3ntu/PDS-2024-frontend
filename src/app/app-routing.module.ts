@@ -11,6 +11,7 @@ import { SubscriptionsPageComponent } from './pages/subscriptions-page/subscript
 import { AdminPageComponent } from './pages/admin-page/admin-page.component'
 import { RegisterPageComponent } from './pages/register-page/register-page.component'
 import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component'
+import { CreateFormComponent } from './components/create-form/create-form.component'
 
 const routes: Routes = [
   /* { path: '', component: HomePageComponent, pathMatch: 'full'}, */
@@ -24,7 +25,10 @@ const routes: Routes = [
   { path:'instituciones/:institutionId', component: EntityDetailComponent },
   { path:'cursos/:courseId', component: EntityDetailComponent,pathMatch: 'full'},
   { path:'admin', component: AdminPageComponent,pathMatch: 'full'},
+  { path:'admin/curso/agregar', component: CreateFormComponent,pathMatch: 'full'},
   { path:'admin/curso/:courseId', component: CourseStatsPageComponent,pathMatch: 'full'},
+  /* { path:'admin/institucion/agregar', component: CreateFormComponent,pathMatch: 'full'}, */
+  /* { path:'admin/clase/agregar', component: CreateFormComponent,pathMatch: 'full'}, */
   { path:'', redirectTo: 'instituciones', pathMatch: 'full'}
   //TODO Agregar las rutas de los componentes
 ]
