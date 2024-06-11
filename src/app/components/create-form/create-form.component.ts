@@ -50,6 +50,7 @@ export class CreateFormComponent {
       )
       .subscribe((data)=>{
         console.log(data)
+        this.router.navigate(['/admin'])
         this.notificationService.notify(200, "Curso creado exitosamente!")
       })
       // TODO: Llamar al servicio de creación de cursos
