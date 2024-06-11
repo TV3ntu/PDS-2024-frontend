@@ -56,4 +56,7 @@ main{
     .form-input {
       width: 50%;
     }
+    main{
+      height: 80vh;
+  }
   }
