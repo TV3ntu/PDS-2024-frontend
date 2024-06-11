@@ -36,7 +36,7 @@
   <div class="form-group" *ngIf="isCourseForm">
     <label for="institution">Institución</label>
     <select id="institution" name="institution" [(ngModel)]="form.institution" class="form-input" required #institution="ngModel">
-      <option *ngFor="let institution of institutions" [value]="institution">{{ institution }}</option>
+      <option *ngFor="let institution of institutions" [value]="institution.id">{{ institution.name }}</option>
     </select>
     <div *ngIf="institution.invalid && (institution.dirty || institution.touched)" class="error">
       <div *ngIf="institution.errors?.['required']">La institución es obligatoria</div>
