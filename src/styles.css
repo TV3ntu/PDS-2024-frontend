@@ -66,6 +66,10 @@ button.mat-calendar-body-cell.special-date {
   button.mat-calendar-body-cell.special-date span {
     color: white ;
   }
+  button.mat-calendar-body-cell.subscribed-date {
+    background-color: var(--green-color);
+    border-radius: 100% ;
+  }
   .mat-datepicker-popup.cdk-overlay-pane{
     top: 0;
     left: 0;
