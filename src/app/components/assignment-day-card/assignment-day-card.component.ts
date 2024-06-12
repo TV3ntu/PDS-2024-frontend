@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class AssignmentDayCardComponent {
   @Input() assignment!: Assignment
-  showDay: boolean = true
+  @Input() showDay: boolean = true
 
   constructor(
     private router:Router,
