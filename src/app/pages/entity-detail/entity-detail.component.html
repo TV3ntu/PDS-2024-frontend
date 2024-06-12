@@ -6,20 +6,23 @@
             <h2>{{ entity?.title }}</h2>
             <span class="header-category">{{entity?.category}}</span>
             <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
-            
+
             <p>{{ entity?.description }}</p>
         </section>
     </header>
     <p *ngIf="isInstitution()">Resultados ({{entity?.children.length}})</p>
-    <section class="entity-list" *ngIf="isInstitution() && hasCourses()">
+    <section class="entity-list" *ngIf="isInstitution() && hasChildren()">
             <app-entity-card *ngFor="let child of entity?.children" [entity]="child"></app-entity-card>
     </section>
-    <section *ngIf="isInstitution() && !hasCourses()">
+    <section *ngIf="isInstitution() && !hasChildren()">
         <p>No hay cursos disponibles</p>
     </section>
 
-    <section class="button-container" *ngIf="!isInstitution()">
+    <section class="button-container" *ngIf="!isInstitution() && hasChildren()">
         <button mat-raised-button color="primary" (click)="openAssignmentsModal()">Ver horarios</button>
+    </section>
+    <section *ngIf="!isInstitution() && !hasChildren()">
+        <p>No hay horarios disponibles</p>
     </section>
     <app-assignments-modal *ngIf="showAssignmentsModal" [assignments]="entity?.children" (closeModal)="closeAssignmentsModal()"></app-assignments-modal>
 

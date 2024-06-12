@@ -60,7 +60,9 @@ export class EntityDetailComponent {
       this.entity = transformedInstitution
     })
   }
-  hasCourses = () => this.entity?.children?.length > 0
+  hasChildren = () => {
+    console.log(this.entity?.children)
+    return this.entity?.children?.length > 0}
 
   openAssignmentsModal = () => {
     this.showAssignmentsModal = true
@@ -68,4 +70,6 @@ export class EntityDetailComponent {
   closeAssignmentsModal(){
     this.showAssignmentsModal = false
   }
+
+
 }
