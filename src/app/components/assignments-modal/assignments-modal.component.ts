@@ -33,6 +33,7 @@ export class AssignmentsModalComponent {
     // Usar getFullYear(), getMonth() y getDate() para asegurarse de que la fecha es local
     const dateCheck = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate())
 
+    if(this.checkSubscribed(this.userAssignments,dateCheck)) return 'subscribed-date'
     if(this.checkAssignments(this.assignments,dateCheck)) return 'special-date'
 
     return ''
@@ -101,8 +102,19 @@ export class AssignmentsModalComponent {
       })
     }
 
-  isSuscribed = (assignmentId: string) => {
-    console.log(this.userAssignments,assignmentId)
+  isSuscribed = (assignmentId: string) =>  this.userAssignments.some(id => id === assignmentId)
 
-    return this.userAssignments.some(id => id === assignmentId)}
+  getAssignmentId = (date:Date) => {
+    const weekday = this.getWeekDay(date)
+    const assignment = this.assignments.find(a => a.schedule.days.includes(weekday))
+    return assignment ? assignment.id : ''
+  }
+
+  checkSubscribed = (assignments:string[],dateToCheck:Date) =>{
+    const assignmentId = this.getAssignmentId(dateToCheck)
+    return assignments.some(
+      assignment => {
+        return assignment === assignmentId
+    }) && dateToCheck >= new Date()
+  }
 }
