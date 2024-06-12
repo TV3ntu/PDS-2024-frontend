@@ -8,7 +8,7 @@ import { Reserve } from 'src/app/models/reserve';
   styleUrls: ['./reserve-card.component.css']
 })
 export class ReserveCardComponent {
-  @Input() reserve: Reserve | null | undefined = new Reserve("Sportclub","a396426d-850c-45cc-8c53-01c3c4ed0847", "Entrenamiento funcional", "12/07/2024", "18:00", "Confirmado")
+  @Input() reserve: Reserve | null | undefined = null
 
   constructor(private router:Router) { }
 

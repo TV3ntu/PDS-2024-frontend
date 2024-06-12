@@ -11,10 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class SubscriptionsPageComponent {
 
-  subscriptionsList: Reserve[] = [
-    new Reserve("Sportclub", "a396426d-850c-45cc-8c53-01c3c4ed0847","Entrenamiento funcional", "12/07/2024", "18:00", "Confirmado"),
-  new Reserve("Sportclub", "a396426d-850c-45cc-8c53-01c3c4ed0847", "Entrenamiento funcional", "12/07/2024", "18:00", "Finalizado")
-  ]
+  subscriptionsList: Reserve[] = [ ]
 
   constructor(private userService:UserService,private notificationService:NotificationService) { }
 
