@@ -29,4 +29,5 @@ export class ReserveCardComponent {
   goToCourse(){
     this.router.navigate([`/cursos/${this.reserve!.courseId}`])
   }
+  getStatus = () => this.reserve?.status =='CONFIRMED'? 'CONFIRMADA' : 'FINALIZADA'
 }

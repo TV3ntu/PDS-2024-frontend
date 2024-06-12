@@ -37,6 +37,12 @@
   background-color: var(--green-color);
   color: green;
 }
+.status p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
 
 .status.complete{
   background-color: var(--light-gray-color);

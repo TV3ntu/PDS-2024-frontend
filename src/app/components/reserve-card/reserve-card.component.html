@@ -1,7 +1,7 @@
 <section (click)="goToCourse()" *ngIf="reserve" class="reserve-container">
     <section class="detail">
         <div class="status" [ngClass]="{'complete': reserve.status == 'Finalizado'}">
-            <p>{{reserve.status}}</p>
+            <p>{{getStatus()}}</p>
         </div>
         <h3>{{reserve.courseName}}</h3>
         <p>en {{reserve.institutionName}}</p>
