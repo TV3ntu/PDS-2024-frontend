@@ -22,7 +22,11 @@
         <h3>Clases</h3>
         <div *ngFor="let c of courseStats.assignments" class="assignments">
             <div>
-                {{translateDay(c.name)}}
+                {{translateDay(c.name)}} | {{c.schedule.startTime.slice(0,5)}} - {{c.schedule.endTime.slice(0,5)}}
+            </div>
+
+            <div>
+                De {{c.schedule.startDate}} a {{c.schedule.endDate}}
             </div>
             <div>
                 Suscriptores:

@@ -39,7 +39,7 @@ export class CourseStatsPageComponent {
       const translatedDay = daysTranslationMap[trimmedDay.toUpperCase()];
       return translatedDay ? translatedDay : "Día no válido";
     });
-  
+
     // Unir las traducciones en una sola cadena separada por comas
     return translatedDaysArray.join(', ');
   }
