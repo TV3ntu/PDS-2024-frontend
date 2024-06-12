@@ -46,4 +46,6 @@ export class UserService {
 
   delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/user/'+user.id)
 
+  refreshUser = () => this.getUserLoggedData().subscribe(user => this.currentUser = user)
+
 }
