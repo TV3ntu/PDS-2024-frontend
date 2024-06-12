@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { Entity } from 'src/app/models/entity';
 import { CourseService } from 'src/app/services/course/course.service'
 import { InstitutionService } from 'src/app/services/institution/institution.service'
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-entity-detail',
@@ -17,8 +18,14 @@ export class EntityDetailComponent {
   constructor(
     private courseService:CourseService,
     private institutionService: InstitutionService,
-    private route:ActivatedRoute
-  ){ }
+    private route:ActivatedRoute,
+    private notificationService:NotificationService
+  ){
+    this.notificationService.notification$.subscribe(()=>{
+      if(this.isInstitution()) this.getInstitution()
+      if(!this.isInstitution()) this.getCourse()
+    })
+   }
 
   ngOnInit(){
     // Obtengo el modo de la entidad a mostrar
