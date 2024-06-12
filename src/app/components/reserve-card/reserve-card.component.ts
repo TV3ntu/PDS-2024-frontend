@@ -8,25 +8,26 @@ import { Reserve } from 'src/app/models/reserve';
   styleUrls: ['./reserve-card.component.css']
 })
 export class ReserveCardComponent {
-  @Input() reserve: Reserve = new Reserve("Sportclub","a396426d-850c-45cc-8c53-01c3c4ed0847", "Entrenamiento funcional", "12/07/2024", "18:00", "Confirmado")
+  @Input() reserve: Reserve | null | undefined = null
 
   constructor(private router:Router) { }
 
   getDayOfWeek(): string {
-    const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']
     const dayIndex = this.getDay()
-    return days[dayIndex];
+    return days[dayIndex]
   }
 
-  getDay(){
-    return new Date(this.reserve.date).getDay();
+  getDay = () => new Date(this.reserve!.date).getDay()+1
+
+  getDayOnMonthFormat = () => {
+    console.log(new Date(this.reserve!.date).getDate()+1)
+    return new Date(this.reserve!.date).getDate()+1
   }
 
-  getMonth(){
-    return new Date(this.reserve.date).getMonth();
-  }
 
   goToCourse(){
-    this.router.navigate([`/cursos/${this.reserve.courseId}`])
+    this.router.navigate([`/cursos/${this.reserve!.courseId}`])
   }
+  getStatus = () => this.reserve?.status =='CONFIRMED'? 'CONFIRMADA' : 'FINALIZADA'
 }

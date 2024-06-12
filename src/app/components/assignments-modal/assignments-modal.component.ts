@@ -1,9 +1,12 @@
+import { NotificationService } from './../../services/notification/notification.service';
+import { UserService } from './../../services/user/user.service';
 import {Component, EventEmitter, Input, Output} from '@angular/core'
 import {Assignment} from "../../models/assignment"
 import {Course} from "../../models/course"
 import {AssignmentService} from "../../services/assignment/assignment.service"
 import { Entity } from 'src/app/models/entity'
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker'
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-assignments-modal',
@@ -15,9 +18,13 @@ export class AssignmentsModalComponent {
   @Input() showModal: boolean = false
   @Output() closeModal = new EventEmitter()
   selectedDate: Date = new Date()
+  userAssignments: string[] = []
+  constructor(private userService: UserService,private notificationService:NotificationService) {
+    this.notificationService.notification$.subscribe(()=>{
+      this.updateAssignments()
+    })
 
-  constructor() {
-  }
+   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Solo aplicar el estilo en la vista de mes
@@ -26,6 +33,7 @@ export class AssignmentsModalComponent {
     // Usar getFullYear(), getMonth() y getDate() para asegurarse de que la fecha es local
     const dateCheck = new Date(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate())
 
+    if(this.checkSubscribed(this.userAssignments,dateCheck)) return 'subscribed-date'
     if(this.checkAssignments(this.assignments,dateCheck)) return 'special-date'
 
     return ''
@@ -36,6 +44,12 @@ export class AssignmentsModalComponent {
     const weekday = this.getWeekDay(this.selectedDate)
 
     return this.assignments.filter(a => a.schedule.days.includes(weekday))
+    //Sort by time and id
+    .sort((a,b) => {
+      if(a.schedule.startTime > b.schedule.startTime) return 1
+      if(a.schedule.startTime < b.schedule.startTime) return -1
+      return a.id > b.id ? 1 : -1
+    })
   }
   hasTimes = () => this.getAllTimes()!.length > 0
 
@@ -67,4 +81,40 @@ export class AssignmentsModalComponent {
     })
   }
 
+
+
+  ngOnInit() {
+    this.updateAssignments()
+  }
+
+  updateAssignments = () => {
+    this.userService.getSuscribedCourses(this.userService.getLoggedUser()!.id)
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          error.error.status = 401
+          error.error.message = 'No se pudieron obtener las clases del usuario'
+          return this.notificationService.handleError(error)
+        })
+      )
+      .subscribe(courses => {
+        this.userAssignments = courses.map(c => c.assignmentId)
+      })
+    }
+
+  isSuscribed = (assignmentId: string) =>  this.userAssignments.some(id => id === assignmentId)
+
+  getAssignmentId = (date:Date) => {
+    const weekday = this.getWeekDay(date)
+    const assignment = this.assignments.find(a => a.schedule.days.includes(weekday))
+    return assignment ? assignment.id : ''
+  }
+
+  checkSubscribed = (assignments:string[],dateToCheck:Date) =>{
+    const assignmentId = this.getAssignmentId(dateToCheck)
+    return assignments.some(
+      assignment => {
+        return assignment === assignmentId
+    }) && dateToCheck >= new Date()
+  }
 }

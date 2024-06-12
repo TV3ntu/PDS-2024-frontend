@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course/course.service';
 import { InstitutionService } from 'src/app/services/institution/institution.service';
@@ -45,6 +46,14 @@ export class AdminPageComponent {
         })
     } else { */
       this.courseService.delete(idEntity!)
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          error.error.status = 401
+          /* error.error.message = error.menssage */
+          return this.notificationService.handleError(error)
+        })
+      )
         .subscribe(() => {
           this.notificationService.notify(200, 'Curso eliminado exitosamente')
           this.getCourses()

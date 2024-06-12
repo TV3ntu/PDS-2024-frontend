@@ -21,7 +21,7 @@
 
     <section  class="assignment-overlay" *ngIf="hasTimes()">
         <ul>
-          <app-assignment-day-card *ngFor="let assignment of getAllTimes()" [assignment]="assignment" ></app-assignment-day-card>
+          <app-assignment-day-card *ngFor="let assignment of getAllTimes()" [assignment]="assignment" [showDay]="isSuscribed(assignment.id)" ></app-assignment-day-card>
         </ul>
     </section>
 

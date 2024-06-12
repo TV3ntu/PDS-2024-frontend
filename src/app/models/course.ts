@@ -2,7 +2,7 @@ import { Assignment } from "./assignment"
 import { Entity } from "./entity"
 
 export class Course extends Entity{
-    institution: string = ''
+    institutionId: string = ''
 
     subscribe(){
         console.log("You've subscribed to course: " + this.title)
@@ -15,7 +15,8 @@ export class Course extends Entity{
     override children: Assignment[]
 
     constructor(id:string, title: string, description: string, image: string,category:string, children: Assignment[]){
-        super(id, title, description, image,category)
+        super(id, title,category, description,image)
+
         this.children = children
     }
 }
