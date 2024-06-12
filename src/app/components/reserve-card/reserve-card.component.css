@@ -34,7 +34,7 @@
   align-items: center;
   padding: 0.2rem;
   border-radius: 1rem;
-  background-color: rgba(113, 179, 113, 0.5);
+  background-color: var(--green-color);
   color: green;
 }
 
