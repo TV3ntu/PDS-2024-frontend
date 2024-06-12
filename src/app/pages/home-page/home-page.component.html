@@ -11,7 +11,7 @@
             </div>
         </section>
         <section *ngIf="isLogged() && !hasReserve()" class="reserve-container">
-            <p>Aún no se tienen reservas</p>
+            <p>Aún no tiene reservas</p>
         </section>
         <app-entity-list [filter]="query"></app-entity-list>
     </section>
