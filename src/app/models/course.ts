@@ -19,4 +19,8 @@ export class Course extends Entity{
 
         this.children = children
     }
+
+    isCourse(){
+        return true
+    }
 }

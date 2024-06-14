@@ -56,7 +56,7 @@ p{
     border-bottom: 0.5px solid var(--light-gray-color);
 }
 
-.course{
+.entity{
     display: flex;
     flex-direction: row;
     padding: 0.5rem;
@@ -72,35 +72,35 @@ p{
     position: relative;
     z-index: 10;
 }
-.course .main-info{
+.entity .main-info{
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
-.course .course-actions{
+.entity .entity-actions{
     width: 30%;
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0.5rem;
 }
-.course .course-actions button{
+.entity .entity-actions button{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.course .course-actions .stats-button{
+.entity .entity-actions .stats-button{
     border-radius: 50rem;
     background-color: var(--green-color);
 }
-.course .course-actions .stats-icon{
+.entity .entity-actions .stats-icon{
     color: var(--primary-color);
 }
-.course .course-actions .delete-icon{
+.entity .entity-actions .delete-icon{
     color: var(--danger-color);
 }
 
