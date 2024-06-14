@@ -19,7 +19,10 @@
         </div>
     </section>
     <section class="assignments-container">
-        <h3>Clases</h3>
+        <div class="assignments-labels">
+          <h3>Clases</h3>
+          <button class="btn" (click)="goToCreateAssignment()">Agregar clase</button>
+        </div>
         <div *ngFor="let c of courseStats.assignments" class="assignments">
             <div>
                 {{translateDay(c.name)}} | {{c.schedule.startTime.slice(0,5)}} - {{c.schedule.endTime.slice(0,5)}}

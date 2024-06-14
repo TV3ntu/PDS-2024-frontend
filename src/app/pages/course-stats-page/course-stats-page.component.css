@@ -75,6 +75,25 @@ img{
     box-shadow: none;
   }
 
+.btn {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: 0 none;
+  border-radius: var(--secondary-border-radius);
+  cursor: pointer;
+}
+
+.assignments-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
 @media (min-width: 900px) {
     article{
         padding: 1rem 20rem;
