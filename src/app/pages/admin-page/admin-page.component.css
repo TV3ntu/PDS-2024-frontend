@@ -71,12 +71,17 @@ p{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 10;
+    justify-content: space-between;
 }
 .entity .main-info{
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     gap: 0.5rem;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
 }
 .entity .entity-actions{
     width: 30%;
@@ -84,7 +89,7 @@ p{
     flex-direction: row;
     gap: 1rem;
     justify-content: flex-end;
-    align-items: center;
+    align-items:flex-end;
     padding: 0.5rem;
 }
 .entity .entity-actions button{
@@ -127,5 +132,10 @@ p{
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+
+    .main-info{
+        text-overflow:ellipsis;
+        overflow:hidden;
     }
 }
