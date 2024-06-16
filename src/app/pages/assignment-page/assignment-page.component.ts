@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm} from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
-import { AssignmentService } from 'src/app/services/assignment/assignment.service'; 
+import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { Schedule } from 'src/app/models/schedule';
 
 
@@ -40,12 +40,13 @@ export class assignmentPageComponent {
   newTimeOnPage: boolean=true
   invalidDate: boolean=false
   currentDate: Date= new Date()
+  courseId: string = ''
 
 
   assignment: NewAssignment = {
     id:'',
     quantityAvailable: 0,
-    isActive:true, 
+    isActive:true,
     price: 0,
     startDate: new Date(),
     endDate: new Date(),
@@ -57,7 +58,12 @@ export class assignmentPageComponent {
     schedule:new Schedule([],'','','','','',[]),
   }
 
-  constructor(private router: Router,private assignmentService:AssignmentService,private notificationService: NotificationService) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+              private assignmentService:AssignmentService, private notificationService: NotificationService) { }
+
+  ngOnInit() {
+    this.courseId = this.route.snapshot.paramMap.get('courseId')!;
+  }
 
   daySelectedCheck() {
     this.newTimeOnPage=false
@@ -70,7 +76,12 @@ export class assignmentPageComponent {
     this.setSchedule
     console.log(e)
     console.log(this.assignment)
+
     this.assignmentService.create(this.assignment)
+      .subscribe((data)=>{
+        this.notificationService.notify(200, "Horario creado!")
+        this.router.navigate(['/admin/curso/' + this.courseId])
+      })
   }
 
   setWeekDays(){

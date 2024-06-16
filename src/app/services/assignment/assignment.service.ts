@@ -16,7 +16,7 @@ export class AssignmentService {
 
   //getAll = ():Observable<Assignment[]> => of(this.assignments)
 
-  create = (assignment:Assignment) => this.http.post<Assignment>(this.path+'/api/assignments',{assignment})
+  create = (assignment:Assignment) => this.http.post<Assignment>(this.path + '/create',{assignment})
 
   delete = (assignment:Assignment) => this.http.delete<Assignment>(this.path+'/api/assignment/'+assignment.id)
 

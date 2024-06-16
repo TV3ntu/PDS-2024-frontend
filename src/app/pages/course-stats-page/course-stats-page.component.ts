@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { CourseStats } from 'src/app/models/courseStats';
 import { CourseService } from 'src/app/services/course/course.service';
 
@@ -12,7 +12,7 @@ export class CourseStatsPageComponent {
   courseId: string = ''
   courseStats!: CourseStats
 
-  constructor(private route:ActivatedRoute, private courseService: CourseService){ }
+  constructor(private route:ActivatedRoute, private courseService: CourseService, private router: Router){ }
 
   ngOnInit(){
     this.route.paramMap.subscribe((params: any) => {
@@ -32,7 +32,7 @@ export class CourseStatsPageComponent {
   translateDay(days: string): string {
     // Dividir la cadena de entrada en un array de días
     const daysArray = days.split(',');
-  
+
     // Traducir cada día individualmente
     const translatedDaysArray = daysArray.map(day => {
       const trimmedDay = day.trim(); // Eliminar espacios adicionales
@@ -42,6 +42,10 @@ export class CourseStatsPageComponent {
 
     // Unir las traducciones en una sola cadena separada por comas
     return translatedDaysArray.join(', ');
+  }
+
+  goToCreateAssignment() {
+    this.router.navigate([`/admin/${this.courseId}/clase/agregar`])
   }
 }
 
