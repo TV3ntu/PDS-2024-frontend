@@ -47,6 +47,10 @@ export class CourseStatsPageComponent {
   goToCreateAssignment() {
     this.router.navigate([`/admin/${this.courseId}/clase/agregar`])
   }
+
+  deleteAssignment(id: string){ 
+    console.log('borra assignment: ', id)
+  }
 }
 
 const daysTranslationMap: { [key: string]: string } = {

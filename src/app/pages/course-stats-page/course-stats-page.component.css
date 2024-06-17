@@ -34,16 +34,23 @@ p, h3{
     border-bottom: 0.5px solid var(--light-gray-color);
 }
 
-.assignments{
+.assignments-stats{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: var(--secondary-padding);
     border-radius: var(--secondary-border-radius);
     width: 100%;
     border: 1px solid var(--light-gray-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.assignments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .assignments-container{
@@ -92,6 +99,14 @@ img{
   align-items: center;
   width: 100%;
   padding: 1rem;
+}
+
+.assignments-stats {
+    width: 100%;
+}
+
+.delete-icon{
+    color: var(--danger-color);
 }
 
 @media (min-width: 900px) {
