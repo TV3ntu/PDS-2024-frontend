@@ -38,6 +38,7 @@ import { AdminButtonComponent } from './components/admin-button/admin-button.com
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component';
+import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats
     AdminButtonComponent,
     RegisterFormComponent,
     RegisterPageComponent,
-    CourseStatsPageComponent
+    CourseStatsPageComponent,
+    SubscribeModalComponent
   ],
   imports: [
     BrowserModule,

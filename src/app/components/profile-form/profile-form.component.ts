@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent {
-  @Input() user: User = new User('','','','','', false)
+  @Input() user: User = new User('','','','','', false, 100)
   constructor(private userService:UserService,private router:Router,private notificationService:NotificationService) { }
 
   ngOnInit() {
