@@ -15,7 +15,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class AdminPageComponent {
   courses: Course[] = []
-  institutions: InstitutionResponse[]=[]
+  institutions: Institution[]=[]
 
   constructor(
     private courseService: CourseService,

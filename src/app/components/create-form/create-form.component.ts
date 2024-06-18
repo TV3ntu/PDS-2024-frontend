@@ -41,7 +41,7 @@ export class CreateFormComponent {
 
   onSubmit() {
     if ( this.isCourseForm ) {
-      const course = new Course('', this.form.name, this.form.description, this.form.image, this.form.category, [])
+      const course = new Course('', this.form.name,'', this.form.description, this.form.image, this.form.category, [])
       course.institutionId = this.form.institution
       console.log(course)
       this.courseService.create(course)
@@ -59,7 +59,7 @@ export class CreateFormComponent {
         this.notificationService.notify(200, "Curso creado exitosamente!")
       })
     } else {
-      const inst = new Institution('', this.form.name, this.form.description, this.form.image, this.form.category, [])
+      const inst = new Institution('', this.form.name,'', this.form.description, this.form.image, this.form.category, [])
       console.log(inst)
       // TODO: Llamar al servicio de creación de instituciones
     }
