@@ -34,6 +34,8 @@ export class AssignmentDayCardComponent {
   show = () => this.showDay
 
   toggleShowModal(){
+    this.currentUser = this.userService.getLoggedUser()
+    console.log('currenty user: ', this.currentUser)
     this.showModal = !this.showModal
   }
 

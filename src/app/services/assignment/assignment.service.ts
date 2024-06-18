@@ -16,12 +16,12 @@ export class AssignmentService {
 
   //getAll = ():Observable<Assignment[]> => of(this.assignments)
 
-  create = (assignment:Assignment) => this.http.post<Assignment>(this.path + '/create',{assignment})
+  create = (assignment:Assignment) => this.http.post<Assignment>(this.path + '/create',{assignment}, { withCredentials: true })
 
-  delete = (assignment:Assignment) => this.http.delete<Assignment>(this.path+'/api/assignment/'+assignment.id)
+  delete = (assignment:Assignment) => this.http.delete<Assignment>(this.path+'/api/assignment/'+assignment.id, { withCredentials: true })
 
-  subscribeAssigment = (user:User, assignment:Assignment): Observable<any> =>  this.http.post<any>(this.path + '/subscribe', {idUser:user.id, idAssignment: assignment.id})
-
-  unsuscribeAssignment = (user:User, assignment:Assignment): Observable<any> => this.http.post<any>(this.path + '/unsubscribe', {idUser:user.id, idAssignment: assignment.id})
+  subscribeAssigment = (user: User, assignment: Assignment): Observable<any> => { return this.http.post<any>( this.path + '/subscribe', { idUser: user.id, idAssignment: assignment.id }, { withCredentials: true })}
+  
+  unsuscribeAssignment = (user:User, assignment:Assignment): Observable<any> => this.http.post<any>(this.path + '/unsubscribe', {idUser:user.id, idAssignment: assignment.id}, { withCredentials: true })
 
 }
