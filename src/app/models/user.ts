@@ -8,13 +8,16 @@ export class User {
     image: string
     isAdmin: boolean
     nextClass: Reserve | null = null
-    constructor(id:string, name: string, lastName: string, email: string, image:string, isAdmin: boolean) {
+    credits: number
+
+    constructor(id:string, name: string, lastName: string, email: string, image:string, isAdmin: boolean, credits: number) {
         this.id= id
         this.name=name
         this.lastName = lastName
         this.email = email
         this.image = image
         this.isAdmin = false
+        this.credits = credits
     }
 }
 

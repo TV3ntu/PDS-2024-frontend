@@ -21,9 +21,9 @@ export class CourseService {
 
   constructor(private http: HttpClient) {  }
 
-  getById = (id: string): Observable<CourseResponse> => this.http.get<CourseResponse>(this.path + '/' + id)
+  getById = (id: string): Observable<CourseResponse> => this.http.get<CourseResponse>(this.path + '/' + id, { withCredentials: true })
 
-  getAll = (filter: String = ""): Observable<Course[]> => this.http.get<Course[]>(this.path + '?query=' + filter)
+  getAll = (filter: String = ""): Observable<Course[]> => this.http.get<Course[]>(this.path + '?query=' + filter, { withCredentials: true } )
 
   create = (course:Course):Observable<Course> => {
     const courseToCreate = {
@@ -33,21 +33,19 @@ export class CourseService {
       image: course.image,
       institutionId: course.institutionId
     }
-    return this.http.post<Course>(this.path,courseToCreate)
+    return this.http.post<Course>(this.path,courseToCreate, { withCredentials: true } )
   }
 
-  delete = (courseId:string) => this.http.delete<Course>(this.path + '/' + courseId)
+  delete = (courseId:string) => this.http.delete<Course>(this.path + '/' + courseId, { withCredentials: true })
 
   deleteAll(courses: string[]): Observable<Course[]> {
     let params = new HttpParams();
     courses.forEach(course => {
     params = params.append('idCourses', course);
     });
-
-
     return this.http.delete<Course[]>(`${this.path}/api/courses`, { params });
   }
 
-  getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats')
+  getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats', { withCredentials: true })
 
 }

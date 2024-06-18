@@ -1,0 +1,23 @@
+<div class="modal">
+    <div *ngIf="checkCredits()" class="modal-content">
+        <h3 class="text">Confirmación de Inscripción</h3>
+        <span class="text">Creditos disponibles: {{credits}} créditos</span>
+        <span class="text">Te quedarán  {{calculateCredits()}} creditos</span>
+        <span class="text">¿Desea continuar?</span>
+        <div class="modal-buttons">
+            <button type="button" (click)="subscribeEvent()"  mat-raised-button color="primary">Aceptar</button>
+            <button type="button" (click)="closeModalEvent()"  mat-raised-button class="secondary-button">Cancelar</button>
+        </div>
+        <span class="text text-danger">Importante: Si se desuscribe con menos de 48 horas de anticipación al inicio del curso, no se reembolsarán los créditos.</span>
+    </div>
+    <div *ngIf="!checkCredits()" class="modal-content">
+        <h3 class="text">Créditos insuficientes</h3>
+        <span class="text">Tus créditos: {{credits}} </span>
+        <span class="text">Valor de la clase: {{price}} </span>
+        <span class="text">¿Desea cargar mas créditos?</span>
+        <div class="modal-buttons">
+            <button type="button" mat-raised-button color="primary">Agregar créditos</button>
+            <button type="button" (click)="closeModalEvent()"  mat-raised-button class="secondary-button">Cancelar</button>
+        </div>
+    </div>
+</div>
