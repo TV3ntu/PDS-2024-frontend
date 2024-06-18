@@ -115,6 +115,14 @@ img{
     color: var(--danger-color);
 }
 
+@media (min-width: 760px) {
+
+    .assignments-container{
+        width: 80%;
+    }
+}
+
+
 @media (min-width: 900px) {
     article{
         padding: 1rem 20rem;
