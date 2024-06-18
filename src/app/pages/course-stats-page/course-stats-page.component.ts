@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import { catchError } from 'rxjs';
 import { CourseStats } from 'src/app/models/courseStats';
+import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { CourseService } from 'src/app/services/course/course.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-course-stats-page',
@@ -12,7 +15,13 @@ export class CourseStatsPageComponent {
   courseId: string = ''
   courseStats!: CourseStats
 
-  constructor(private route:ActivatedRoute, private courseService: CourseService, private router: Router){ }
+  constructor(
+    private route:ActivatedRoute,
+    private courseService: CourseService,
+    private router: Router,
+    private assignmentService: AssignmentService,
+    private notificationService: NotificationService
+  ){ }
 
   ngOnInit(){
     this.route.paramMap.subscribe((params: any) => {
@@ -48,8 +57,22 @@ export class CourseStatsPageComponent {
     this.router.navigate([`/admin/${this.courseId}/clase/agregar`])
   }
 
-  deleteAssignment(id: string){ 
+  deleteAssignment(id: string){
     console.log('borra assignment: ', id)
+
+    this.assignmentService.delete(id)
+    .pipe(
+      catchError((error) => {
+        console.log(error)
+        error.error.status = 401
+        /* error.error.message = 'No se pudieron obtener las clases del usuario' */
+        return this.notificationService.handleError(error)
+      })
+    )
+    .subscribe(() => {
+      this.getCourse()
+      this.notificationService.notify(200, "Se eliminó la clase exitosamente!")
+    })
   }
 }
 

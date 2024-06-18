@@ -44,6 +44,12 @@ p, h3{
     border: 1px solid var(--light-gray-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.assignments-stats .delete-button,
+.assignments-stats .delete-button .delete-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .assignments {
     display: flex;
