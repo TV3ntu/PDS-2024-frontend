@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { Assignment } from 'src/app/models/assignment';
+import { User } from 'src/app/models/user';
 import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -16,6 +17,9 @@ export class AssignmentDayCardComponent {
   @Input() assignment!: Assignment
   @Input() showDay: boolean = true
 
+  showModal: boolean = false
+  currentUser: User | null = null
+
   constructor(
     private router:Router,
     private userService:UserService,
@@ -28,6 +32,10 @@ export class AssignmentDayCardComponent {
     this.showDay = !this.showDay
   }
   show = () => this.showDay
+
+  toggleShowModal(){
+    this.showModal = !this.showModal
+  }
 
   subscribe(){
     if(this.userService.isLogged()){
