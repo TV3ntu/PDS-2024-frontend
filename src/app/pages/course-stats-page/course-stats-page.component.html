@@ -23,22 +23,29 @@
           <h3>Clases</h3>
           <button class="btn" (click)="goToCreateAssignment()">Agregar clase</button>
         </div>
-        <div *ngFor="let c of courseStats.assignments" class="assignments">
-            <div>
-                {{translateDay(c.name)}} | {{c.schedule.startTime.slice(0,5)}} - {{c.schedule.endTime.slice(0,5)}}
-            </div>
-
-            <div>
-                De {{c.schedule.startDate}} a {{c.schedule.endDate}}
-            </div>
-            <div>
-                Suscriptores:
-                {{c.subscribers.length}}
-            </div>
-            <div>
-                Ingresos:
-                {{c.totalIncome}}
-            </div>
+        <div *ngFor="let c of courseStats.assignments" class="assignments-stats">
+            <section class="assignments">
+                <div>
+                    {{translateDay(c.name)}} | {{c.schedule.startTime.slice(0,5)}} - {{c.schedule.endTime.slice(0,5)}}
+                </div>
+    
+                <div>
+                    De {{c.schedule.startDate}} a {{c.schedule.endDate}}
+                </div>
+                <div>
+                    Suscriptores:
+                    {{c.subscribers.length}}
+                </div>
+                <div>
+                    Ingresos:
+                    {{c.totalIncome}}
+                </div>
+            </section>
+            <section>
+                <button class="delete-button" mat-icon-button (click)="deleteAssignment(c.id)">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+            </section>
         </div>
     </section>
 </article>

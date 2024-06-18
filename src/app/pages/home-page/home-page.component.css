@@ -42,7 +42,7 @@ app-reserve-card{
 @media (min-width: 660px) {
 
     main{
-        padding: 1rem 15rem;
+        padding: 1rem 5rem;
         min-height: 100vh;
     }
 
@@ -50,5 +50,19 @@ app-reserve-card{
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+}
+
+@media (min-width: 900px) {
+
+    main{
+        padding: 1rem 15rem;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    main{
+        padding: 1rem 35rem;
     }
 }

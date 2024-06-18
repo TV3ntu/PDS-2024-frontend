@@ -79,7 +79,7 @@
 .institution-card-content h2{
   width: 100%;
   margin: 0;
-  padding-right: 3rem;
+  /* padding-right: 3rem; */
 }
 
 .institution-card-content h3{
@@ -108,9 +108,17 @@
     justify-content: space-between;
     height: 40vh;
   }
-  .institution-card-content{
+  .institution-card .institution-card-content{
     padding: 1rem;
     width: 100%;
+    flex-wrap: nowrap;
+  }
+  .institution-card-content p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
   .institution-card-content button{
     align-self: flex-end;
@@ -141,6 +149,13 @@
     border-right: 0.5px solid var(--light-gray-color);
     border-radius: 1rem;
   }
+  .institution-card .institution-card-content{
+    padding: 2rem;
+  }
+
+  .institution-card-content p{
+    -webkit-line-clamp: 5;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -150,6 +165,9 @@
   .mat-card-image-container {
     width: 650px;
     height: auto;
+  }
+  .institution-card .institution-card-content{
+    padding: 3rem;
   }
 
   .mat-card-image{
