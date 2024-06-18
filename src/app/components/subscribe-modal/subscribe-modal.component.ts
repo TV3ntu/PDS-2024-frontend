@@ -17,8 +17,7 @@ export class SubscribeModalComponent {
   }
 
   checkCredits(){
-    this.credits = 90
-    return this.credits >= this.price!
+    return this.credits! >= this.price!
   }
 
   calculateCredits(){
