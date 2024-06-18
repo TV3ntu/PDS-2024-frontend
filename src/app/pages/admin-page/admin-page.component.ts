@@ -4,7 +4,7 @@ import { catchError } from 'rxjs';
 import { Course } from 'src/app/models/course';
 import { Institution } from 'src/app/models/institution';
 import { CourseService } from 'src/app/services/course/course.service';
-import { InstitutionService,InstitutionResponse } from 'src/app/services/institution/institution.service';
+import { InstitutionService } from 'src/app/services/institution/institution.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 
 

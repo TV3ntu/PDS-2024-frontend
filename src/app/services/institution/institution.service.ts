@@ -4,7 +4,7 @@ import { path } from '../api.path'
 import { HttpClient } from '@angular/common/http'
 import { Course } from 'src/app/models/course'
 import { Institution } from 'src/app/models/institution'
-export interface InstitutionResponse{
+interface InstitutionResponse{
   title:string
   id:string
   name: string
