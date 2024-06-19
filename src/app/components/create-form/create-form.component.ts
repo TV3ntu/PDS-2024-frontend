@@ -61,7 +61,20 @@ export class CreateFormComponent {
     } else {
       const inst = new Institution('', this.form.name, this.form.description, this.form.image, this.form.category, [])
       console.log(inst)
-      // TODO: Llamar al servicio de creación de instituciones
+      this.institutionService.create(inst)
+      .pipe(
+          catchError((error) => {
+            console.log(error)
+            error.error.status = 401
+            error.error.message = 'No se pudo crear la institución'
+            return this.notificationService.handleError(error)
+          })
+      )
+      .subscribe((data)=>{
+        console.log(data)
+        this.router.navigate(['/admin'])
+        this.notificationService.notify(200, "Institución creada exitosamente!")
+      })
     }
   }
 

@@ -28,6 +28,11 @@
 
   </div>
 
+  <a routerLink="/admin/institucion/agregar">
+    ¿Quieres crear una institución?
+  </a>
+
+
   <div class="form-group">
     <label for="email">Cuenta</label>
     <h3>${{user.credits}}</h3>
@@ -57,6 +62,7 @@
     <button type="submit" class="btn">Agregar</button>
     <button type="button" (click)="closeModal()" class="btn btn-secondary">Cancelar</button>
   </form>
+
   <button type="submit" class="btn">Guardar</button>
 
 </form>

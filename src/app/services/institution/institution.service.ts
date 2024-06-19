@@ -26,7 +26,16 @@ export class InstitutionService {
 
   getAll = (filter: String = ""):Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path + '?query=' + filter, { withCredentials: true })
 
-  create = (institution:Institution) => this.http.post<Institution>(this.path+'/api/courses',{institution}, { withCredentials: true })
+  create = (institution:Institution):Observable<Institution> => {
+    const institutionToCreate = {
+      name: institution.title,
+      description: institution.description,
+      category: institution.category,
+      image: institution.image,
+    }
+    console.log(institutionToCreate)
+    return this.http.post<Institution>(this.path ,institutionToCreate, { withCredentials: true } )
+  }
 
-  delete = (institutionId:string) => this.http.delete<Institution>(this.path + '/' + institutionId, { withCredentials: true })
+  delete = (institutionId:string) => this.http.delete<Institution>(this.path + institutionId, { withCredentials: true })
 }
