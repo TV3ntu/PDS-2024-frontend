@@ -15,8 +15,7 @@ export class Course extends Entity{
     override children: Assignment[]
 
     constructor(id:string, title: string,name:string, description: string, image: string,category:string, children: Assignment[]){
-        super(id, title,name,category, description,image)
-        this.name=''
+        super(id, title,category, description,image)
         this.children = children
     }
 }

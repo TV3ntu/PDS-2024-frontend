@@ -39,8 +39,15 @@ export class AdminPageComponent {
 
   getInstitutions(){
     this.institutionService.getAll()
-    .subscribe(institutions=>{
-      this.institutions = institutions})
+    .subscribe(institutions => {
+      const transformedInstitutions = institutions.map(institution => {
+        return {
+            ...institution,  // Copia todas las propiedades existentes
+            title: institution.name,
+        }
+      })
+      this.institutions = transformedInstitutions;
+    })
   }
 
   goToStats(id: string){
@@ -50,18 +57,11 @@ export class AdminPageComponent {
   isAdmin = () => true
 
   deleteCourse(idCourse: string | undefined) {
-    /* if (this.isInstitution()) {
-      this.institutionService.delete(idEntity!)
-        .subscribe(() => {
-          this.notificationService.notify(200, 'Institución eliminada exitosamente');
-        })
-    } else { */
       this.courseService.delete(idCourse!)
       .pipe(
         catchError((error) => {
           console.log(error)
           error.error.status = 401
-          /* error.error.message = error.menssage */
           return this.notificationService.handleError(error)
         })
       )
@@ -72,18 +72,11 @@ export class AdminPageComponent {
   }
 
   deleteInstitution(idInstitution: string | undefined) {
-    /* if (this.isInstitution()) {
-      this.institutionService.delete(idEntity!)
-        .subscribe(() => {
-          this.notificationService.notify(200, 'Institución eliminada exitosamente');
-        })
-    } else { */
       this.institutionService.delete(idInstitution!)
       .pipe(
         catchError((error) => {
           console.log(error)
           error.error.status = 401
-          /* error.error.message = error.menssage */
           return this.notificationService.handleError(error)
         })
       )
