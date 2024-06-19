@@ -45,9 +45,16 @@ export class HeaderComponent {
 
   logOut() {
     this.goTo("instituciones")
-    this.userService.logout()
     this.isLogged = false
-    this.notificationService.notify(200, 'Sesión cerrada')
+    this.userService.logout()
+    .pipe(
+      catchError((error) => {
+        error.error.status = 401
+        error.error.message = 'No se pudo cerrar sesión'
+        return this.notificationService.handleError(error)
+      })
+    )
+    .subscribe(() => this.notificationService.notify(200, 'Sesión cerrada'))
   }
   isAdmin = () => this.userService.getLoggedUser()?.isAdmin
 }
