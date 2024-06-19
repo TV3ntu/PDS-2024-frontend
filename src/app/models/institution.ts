@@ -5,7 +5,7 @@ export class Institution extends Entity{
     override children: Course[]
 
     constructor(id:string, title: string, description: string, image: string,category:string, children: Course[]){
-        super(id, title, category, description, image)
+        super(id, title, category, image,description)
         this.children = children
     }
 }

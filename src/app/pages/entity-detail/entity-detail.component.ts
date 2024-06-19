@@ -50,6 +50,7 @@ export class EntityDetailComponent {
       const transformedCourse = {
         ...course,
         title: course.title,
+        name: '',
         children: course.assignments
       }
       this.entity = transformedCourse
