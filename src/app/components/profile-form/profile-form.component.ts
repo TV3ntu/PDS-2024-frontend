@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-form',
@@ -23,10 +24,12 @@ export class ProfileFormComponent {
     this.showCreditModal = false
   }
 
-  addCredits() {
-    this.user.credits += this.creditsToAdd
-    this.saveUser()
-    this.closeModal()
+  addCredits(form:NgForm) {
+    if(form.valid){
+      this.user.credits += this.creditsToAdd
+      this.saveUser()
+      this.closeModal()
+    }
   }
 
   ngOnInit() {

@@ -36,12 +36,22 @@
 
 
 
-  <form class="credits-modal" *ngIf="showCreditModal" (ngSubmit)="addCredits()">
+  <form #creditForm="ngForm" class="credits-modal" *ngIf="showCreditModal" (ngSubmit)="addCredits(creditForm)">
     <div class="form-group">
       <label for="credit">Créditos</label>
-      <input id="credit" type="number" name="credit" class="form-input" [(ngModel)]="creditsToAdd" required #creditField="ngModel">
+      <input
+        id="credit"
+        type="number"
+        name="credit"
+        class="form-input"
+        [(ngModel)]="creditsToAdd"
+        required
+        #creditField="ngModel"
+        min="1"
+      >
       <div *ngIf="creditField.invalid && (creditField.dirty || creditField.touched)">
         <small *ngIf="creditField.errors?.['required']">El crédito a agregar debe ser mayor a 0</small>
+        <small *ngIf="creditField.errors?.['min']">El crédito a agregar debe ser mayor a 0</small>
       </div>
     </div>
     <button type="submit" class="btn">Agregar</button>
