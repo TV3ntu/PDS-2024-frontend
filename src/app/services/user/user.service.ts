@@ -23,14 +23,14 @@ export class UserService {
     .pipe( tap(user => {
       localStorage.setItem('userId', user.id)
       this.currentUser = user
-      
     }))
   }
 
-  logout() {
+  logout():Observable<any> {
     localStorage.removeItem('userId')
     localStorage.clear()
     this.currentUser = null
+    return this.http.post<any>(this.serverUrl + '/api/users/logout',{}, { withCredentials: true })
   }
 
   getUserLoggedData = (): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + localStorage.getItem('userId'), { withCredentials: true })
@@ -39,13 +39,24 @@ export class UserService {
 
   getById = (id: string): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + id, { withCredentials: true })
 
-  updateUser = (user: User): Observable<User> => this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, user, { withCredentials: true })
+  updateUser = (user: User): Observable<User> => {
+    const userToUpdate = {
+      name: user.name,
+      lastName:user.lastName,
+      email: user.email,
+      image:user.image,
+      isAdmin:user.isAdmin,
+      credits: user.credits,
+      id: user.id,
+      nextClass: user.nextClass?.assignmentId,
+    }
+    return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, userToUpdate, { withCredentials: true })}
 
   getSuscribedCourses = (id: string): Observable<Reserve[]> => this.http.get<Reserve[]>(this.serverUrl + '/api/users/' + id + '/subscriptions', { withCredentials: true })
 
   create = (user:NewUser) => this.http.post<User>(this.serverUrl+'/api/users/register',user, { withCredentials: true })
 
-  delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/user/'+user.id, { withCredentials: true })
+  delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/users/'+user.id, { withCredentials: true })
 
   refreshUser = () => this.getUserLoggedData().subscribe(user => this.currentUser = user)
 

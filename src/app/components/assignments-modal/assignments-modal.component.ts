@@ -51,7 +51,9 @@ export class AssignmentsModalComponent {
       return a.id > b.id ? 1 : -1
     })
   }
-  hasTimes = () => this.getAllTimes()!.length > 0
+  hasTimes = () => {
+    console.log(this.getAllTimes()!.length > 0)
+    return this.getAllTimes()!.length > 0}
 
   updateSchedule(event: any){
     this.selectedDate = event
@@ -88,19 +90,21 @@ export class AssignmentsModalComponent {
   }
 
   updateAssignments = () => {
-    this.userService.getSuscribedCourses(this.userService.getLoggedUser()!.id)
-      .pipe(
-        catchError((error) => {
-          console.log(error)
-          error.error.status = 401
-          error.error.message = 'No se pudieron obtener las clases del usuario'
-          return this.notificationService.handleError(error)
+    if(this.userService.getLoggedUser()){
+      this.userService.getSuscribedCourses(this.userService.getLoggedUser()!.id)
+        .pipe(
+          catchError((error) => {
+            console.log(error)
+            error.error.status = 401
+            error.error.message = 'No se pudieron obtener las clases del usuario'
+            return this.notificationService.handleError(error)
+          })
+        )
+        .subscribe(courses => {
+          this.userAssignments = courses.map(c => c.assignmentId)
         })
-      )
-      .subscribe(courses => {
-        this.userAssignments = courses.map(c => c.assignmentId)
-      })
     }
+  }
 
   isSuscribed = (assignmentId: string) =>  this.userAssignments.some(id => id === assignmentId)
 

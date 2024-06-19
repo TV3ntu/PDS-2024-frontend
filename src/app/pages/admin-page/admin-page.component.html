@@ -12,16 +12,28 @@
     </div>
     <div class="admin-metrics">
         <h3>Cursos</h3>
-        <div  *ngFor="let c of courses" class="course">
+        <div  *ngFor="let c of courses" class="entity">
             <div class="main-info">
                 {{c.title}}
-                <p>Categoria: {{c.category}} </p>
+                <span>Categoria: {{c.category}}</span>
             </div>
-            <div class="course-actions">
+            <div class="entity-actions">
                 <button class="stats-button" mat-icon-button (click)="goToStats(c.id)">
                     <mat-icon class="stats-icon">query_stats</mat-icon>
                   </button>
-                <button class="delete-button" mat-icon-button (click)="deleteEntity(c.id)">
+                <button class="delete-button" mat-icon-button (click)="deleteCourse(c.id)">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+            </div>
+        </div>
+        <h3>Instituciones</h3>
+        <div  *ngFor="let i of institutions" class="entity">
+            <div class="main-info">
+                {{i.title}}
+                <span>Categoria: {{i.category}}</span>
+            </div>
+            <div class="entity-actions">
+                <button class="delete-button" mat-icon-button (click)="deleteInstitution(i.id)">
                   <mat-icon class="delete-icon">delete</mat-icon>
                 </button>
             </div>

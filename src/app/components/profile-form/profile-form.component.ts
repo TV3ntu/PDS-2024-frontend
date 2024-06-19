@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-form',
@@ -11,8 +12,25 @@ import { NotificationService } from 'src/app/services/notification/notification.
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent {
-  @Input() user: User = new User('','','','','', false, 100)
+  @Input() user!: User
   constructor(private userService:UserService,private router:Router,private notificationService:NotificationService) { }
+
+  showCreditModal = false
+  creditsToAdd = 0
+  showModal() {
+    this.showCreditModal = true
+  }
+  closeModal() {
+    this.showCreditModal = false
+  }
+
+  addCredits(form:NgForm) {
+    if(form.valid){
+      this.user.credits += this.creditsToAdd
+      this.saveUser()
+      this.closeModal()
+    }
+  }
 
   ngOnInit() {
     if(!this.userService.isLogged()) {
@@ -20,12 +38,13 @@ export class ProfileFormComponent {
     }else{
       this.userService.getUserLoggedData().subscribe(user => {
         this.user = user
+        console.log(user)
       })
       /* this.user = this.userService.getLoggedUser() */
     }
   }
 
-  guardarUsuario() {
+  saveUser() {
     console.log(this.user)
     this.userService.updateUser(this.user)
     .pipe(
