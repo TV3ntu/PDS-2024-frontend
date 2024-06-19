@@ -22,7 +22,14 @@ export class AdminPageComponent {
     private router:Router,
     private notificationService: NotificationService,
     private institutionService: InstitutionService
-  ) { }
+  ) {
+    this.notificationService.notification$.subscribe(()=>{
+      this.getCourses()
+      this.getInstitutions()
+    })
+
+
+   }
 
   ngOnInit(){
     this.getCourses()

@@ -37,5 +37,5 @@ export class InstitutionService {
     return this.http.post<Institution>(this.path ,institutionToCreate, { withCredentials: true } )
   }
 
-  delete = (institutionId:string) => this.http.delete<Institution>(this.path + institutionId, { withCredentials: true })
+  delete = (institutionId:string) => this.http.delete<Institution>(this.path +'/'+ institutionId, { withCredentials: true })
 }
