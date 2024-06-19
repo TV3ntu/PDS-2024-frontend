@@ -27,10 +27,16 @@ export class UserService {
     }))
   }
 
-  logout() {
-    localStorage.removeItem('userId')
-    localStorage.clear()
-    this.currentUser = null
+  logout(email2: string, password2: string): Observable<any> {
+    const body2 = { email2, password2 }
+    return this.http.post<any>(this.serverUrl + '/api/users/logout',body2 ,{ withCredentials: true })
+      .pipe(
+        tap(() => {
+          localStorage.removeItem('userId')
+          localStorage.clear()
+          this.currentUser = null
+        })
+      );
   }
 
   getUserLoggedData = (): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + localStorage.getItem('userId'), { withCredentials: true })
@@ -45,7 +51,7 @@ export class UserService {
 
   create = (user:NewUser) => this.http.post<User>(this.serverUrl+'/api/users/register',user, { withCredentials: true })
 
-  delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/user/'+user.id, { withCredentials: true })
+  delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/users/'+user.id, { withCredentials: true })
 
   refreshUser = () => this.getUserLoggedData().subscribe(user => this.currentUser = user)
 

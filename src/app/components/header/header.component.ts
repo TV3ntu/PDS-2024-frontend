@@ -14,6 +14,7 @@ export class HeaderComponent {
   user = this.userService.getLoggedUser()
   private subscription: Subscription
   isLogged: boolean = false
+  activeButton: string = '';
 
 
   constructor(private router:Router, private userService: UserService,private notificationService: NotificationService) {
@@ -44,10 +45,24 @@ export class HeaderComponent {
   }
 
   logOut() {
-    this.goTo("instituciones")
-    this.userService.logout()
-    this.isLogged = false
-    this.notificationService.notify(200, 'Sesión cerrada')
+    this.activeButton = 'logOut';
+    const email = this.user?.email || ''; // Assuming user object has an email property
+    const password = ''; // You should securely obtain the password
+
+    this.userService.logout(email, password).subscribe({
+      next: () => {
+        this.isLogged = false;
+        this.notificationService.notify(200, 'Sesión cerrada');
+        this.goTo("instituciones");
+      },
+      error: (err) => {
+        console.error('Error during logout:', err);
+        this.notificationService.notify(500, 'Error al cerrar la sesión');
+      }
+    });
   }
+
+
+
   isAdmin = () => this.userService.getLoggedUser()?.isAdmin
 }
