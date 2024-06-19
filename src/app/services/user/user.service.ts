@@ -39,7 +39,18 @@ export class UserService {
 
   getById = (id: string): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + id, { withCredentials: true })
 
-  updateUser = (user: User): Observable<User> => this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, user, { withCredentials: true })
+  updateUser = (user: User): Observable<User> => {
+    const userToUpdate = {
+      name: user.name,
+      lastName:user.lastName,
+      email: user.email,
+      image:user.image,
+      isAdmin:user.isAdmin,
+      credits: user.credits,
+      id: user.id,
+      nextClass: user.nextClass?.assignmentId,
+    }
+    return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, userToUpdate, { withCredentials: true })}
 
   getSuscribedCourses = (id: string): Observable<Reserve[]> => this.http.get<Reserve[]>(this.serverUrl + '/api/users/' + id + '/subscriptions', { withCredentials: true })
 
