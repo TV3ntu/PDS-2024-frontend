@@ -56,10 +56,10 @@ main > header > section .header-category{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-color-lighter-2);
+    border: 1px solid var(--dark-gray-color);
     padding: 1rem;
     border-radius: 1rem;
-    color: var(--light-color);
+    color: var(--dark-gray-color);
 }
 main > header > section> p{
     width: 100%;
