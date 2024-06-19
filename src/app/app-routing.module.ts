@@ -27,7 +27,7 @@ const routes: Routes = [
   { path:'admin', component: AdminPageComponent,pathMatch: 'full'},
   { path:'admin/curso/agregar', component: CreateFormComponent,pathMatch: 'full'},
   { path:'admin/curso/:courseId', component: CourseStatsPageComponent,pathMatch: 'full'},
-  /* { path:'admin/institucion/agregar', component: CreateFormComponent,pathMatch: 'full'}, */
+  { path:'admin/institucion/agregar', component: CreateFormComponent,pathMatch: 'full'},
   { path:'admin/:courseId/clase/agregar', component: assignmentPageComponent, pathMatch: 'full'},
   { path:'', redirectTo: 'instituciones', pathMatch: 'full'}
   //TODO Agregar las rutas de los componentes
