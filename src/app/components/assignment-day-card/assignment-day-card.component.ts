@@ -29,14 +29,17 @@ export class AssignmentDayCardComponent {
   ){ }
 
   toggleShowDay() {
-    this.showDay = !this.showDay
+      this.showDay = !this.showDay
   }
   show = () => this.showDay
 
   toggleShowModal(){
-    this.currentUser = this.userService.getLoggedUser()
-    console.log('currenty user: ', this.currentUser)
-    this.showModal = !this.showModal
+    if(this.userService.isLogged()){
+      this.showModal = !this.showModal
+      this.currentUser = this.userService.getLoggedUser()
+    }else{
+      this.router.navigate(['/ingresar'])
+    }
   }
 
   subscribe(){
