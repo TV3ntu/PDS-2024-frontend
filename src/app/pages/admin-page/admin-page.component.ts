@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { Course } from 'src/app/models/course';
+import { Institution } from 'src/app/models/institution';
 import { CourseService } from 'src/app/services/course/course.service';
 import { InstitutionService } from 'src/app/services/institution/institution.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+
 
 @Component({
   selector: 'app-admin-page',
@@ -13,6 +15,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class AdminPageComponent {
   courses: Course[] = []
+  institutions: Institution[]=[]
 
   constructor(
     private courseService: CourseService,
@@ -23,12 +26,27 @@ export class AdminPageComponent {
 
   ngOnInit(){
     this.getCourses()
+    this.getInstitutions()
   }
 
   getCourses(){
     this.courseService.getAll()
     .subscribe(courses => {
       this.courses = courses
+    })
+    console.log(this.courses)
+  }
+
+  getInstitutions(){
+    this.institutionService.getAll()
+    .subscribe(institutions => {
+      const transformedInstitutions = institutions.map(institution => {
+        return {
+            ...institution,  // Copia todas las propiedades existentes
+            title: institution.name,
+        }
+      })
+      this.institutions = transformedInstitutions;
     })
   }
 
@@ -38,19 +56,12 @@ export class AdminPageComponent {
 
   isAdmin = () => true
 
-  deleteEntity(idEntity: string | undefined) {
-    /* if (this.isInstitution()) {
-      this.institutionService.delete(idEntity!)
-        .subscribe(() => {
-          this.notificationService.notify(200, 'Institución eliminada exitosamente');
-        })
-    } else { */
-      this.courseService.delete(idEntity!)
+  deleteCourse(idCourse: string | undefined) {
+      this.courseService.delete(idCourse!)
       .pipe(
         catchError((error) => {
           console.log(error)
           error.error.status = 401
-          /* error.error.message = error.menssage */
           return this.notificationService.handleError(error)
         })
       )
@@ -59,4 +70,20 @@ export class AdminPageComponent {
           this.getCourses()
         })
   }
+
+  deleteInstitution(idInstitution: string | undefined) {
+      this.institutionService.delete(idInstitution!)
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          error.error.status = 401
+          return this.notificationService.handleError(error)
+        })
+      )
+        .subscribe(() => {
+          this.notificationService.notify(200, 'Institución eliminada exitosamente')
+          this.getInstitutions()
+        })
+  }
+
 }
