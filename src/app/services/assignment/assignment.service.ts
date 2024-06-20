@@ -16,7 +16,16 @@ export class AssignmentService {
 
   //getAll = ():Observable<Assignment[]> => of(this.assignments)
 
-  create = (assignment:Assignment) => this.http.post<Assignment>(this.path + '/create',{assignment}, { withCredentials: true })
+  create = (assignment:Assignment,courseId:string) => {
+    const newAssignment = {
+      quotas: assignment.quantityAvailable,
+      isActive: assignment.isActive,
+      price: assignment.price,
+      schedule: assignment.schedule,
+      idCourse: courseId
+    }
+    console.log(newAssignment)
+    return this.http.post<Assignment>(this.path,newAssignment, { withCredentials: true })}
 
   delete = (assignmentId:string) => this.http.delete<Assignment>(this.path+'/'+assignmentId, { withCredentials: true })
 

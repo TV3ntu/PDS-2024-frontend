@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { Schedule } from 'src/app/models/schedule';
+import { catchError } from 'rxjs';
 
 
 interface NewAssignment{
@@ -73,11 +74,19 @@ export class assignmentPageComponent {
   create(e: Event){
     this.errorMessage = ''
     this.setWeekDays()
-    this.setSchedule
+    this.setSchedule()
     console.log(e)
     console.log(this.assignment)
 
-    this.assignmentService.create(this.assignment)
+    this.assignmentService.create(this.assignment,this.courseId)
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          error.error.status = 401
+          return this.notificationService.handleError(error)
+        })
+      )
+
       .subscribe((data)=>{
         this.notificationService.notify(200, "Horario creado!")
         this.router.navigate(['/admin/curso/' + this.courseId])
