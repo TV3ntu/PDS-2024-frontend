@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-subscribe-modal',
@@ -11,7 +12,9 @@ export class SubscribeModalComponent {
   @Output() subscribe = new EventEmitter()
   @Output() closeModal = new EventEmitter()
   showModal: boolean = false
-  
+
+  constructor(private router: Router) {}
+
   toggleShowModal(){
     this.showModal = !this.showModal
   }
@@ -30,5 +33,9 @@ export class SubscribeModalComponent {
 
   closeModalEvent(){
     this.closeModal.emit()
+  }
+
+  goToEditProfile() {
+    this.router.navigate(['/perfil'])
   }
 }

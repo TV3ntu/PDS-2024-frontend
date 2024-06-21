@@ -16,7 +16,7 @@
         <span class="text">Valor de la clase: {{price}} </span>
         <span class="text">¿Desea cargar mas créditos?</span>
         <div class="modal-buttons">
-            <button type="button" mat-raised-button color="primary">Agregar créditos</button>
+            <button type="button" mat-raised-button color="primary" (click)="goToEditProfile()">Agregar créditos</button>
             <button type="button" (click)="closeModalEvent()"  mat-raised-button class="secondary-button">Cancelar</button>
         </div>
     </div>
