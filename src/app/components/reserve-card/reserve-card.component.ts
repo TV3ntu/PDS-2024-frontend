@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ReserveCardComponent {
   @Input() reserve: Reserve | null | undefined = null
+  showModal: boolean = false
 
   constructor(private router:Router, private userService: UserService, private cd: ChangeDetectorRef,
     private assignmentService: AssignmentService, private notificationService: NotificationService) { }
@@ -52,5 +53,10 @@ export class ReserveCardComponent {
       this.notificationService.notify(200, "Desuscripción exitosa!")
     })
     this.cd.detectChanges()
+  }
+
+  toggleShowModal(event?: Event){
+    event?.stopPropagation();
+    this.showModal = !this.showModal
   }
 }

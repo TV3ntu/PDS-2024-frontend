@@ -62,5 +62,23 @@ h3, h2, p{
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   outline: none;
-  z-index: 999;
+}
+
+.review-button {
+  margin-top: 1rem;
+  color: var(--green-color);
+  border: 0.1rem solid var(--green-color);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+
+.stats-button{
+  border-radius: 50rem;
+  background-color: var(--green-color);
+}
+.stats-icon{
+  color: var(--primary-color);
 }
