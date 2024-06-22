@@ -39,6 +39,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component';
 import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-modal.component';
+import { ReviewComponent } from './components/review/review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,8 @@ import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-
     RegisterFormComponent,
     RegisterPageComponent,
     CourseStatsPageComponent,
-    SubscribeModalComponent
+    SubscribeModalComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
