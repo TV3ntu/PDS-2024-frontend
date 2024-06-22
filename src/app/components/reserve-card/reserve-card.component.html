@@ -1,6 +1,6 @@
 <section (click)="goToCourse()" *ngIf="reserve" class="reserve-container">
     <section class="detail">
-        <div class="status" [ngClass]="{'complete': reserve.status == 'Finalizado'}">
+        <div class="status" [ngClass]="{'complete': reserve.status == 'FINISHED'}">
             <p>{{getStatus()}}</p>
         </div>
         <h3>{{reserve.courseName}}</h3>
@@ -10,6 +10,10 @@
         <p>{{getDayOfWeek()}}</p>
         <h2>{{getDayOnMonthFormat()}}</h2>
         <p>{{reserve.hour}}</p>
-        <button (click)="unsubscribe($event)" type="button" mat-raised-button class="secondary-button">Desinscribirse</button>
+        <button *ngIf="reserve.status == 'CONFIRMED'" (click)="unsubscribe($event)" type="button" mat-raised-button class="secondary-button">Desinscribirse</button>
+        <button *ngIf="reserve.status == 'FINISHED'" (click)="toggleShowModal($event)" type="button" 
+            mat-raised-button class="review-button">Calificar</button>
     </section>
 </section>
+
+<app-review-modal *ngIf="showModal" [courseId]="reserve?.courseId" (closeModal)="toggleShowModal()"></app-review-modal>

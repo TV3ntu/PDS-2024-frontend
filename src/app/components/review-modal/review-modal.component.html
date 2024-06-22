@@ -1,0 +1,32 @@
+<section class="modal">
+    <section class="modal-content">
+      <h2>Agregá una reseña del curso</h2>
+      <form class="container" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+        <div class="rating-content">
+          <h3>Calificación</h3>
+          <div class="rating">
+            <input type="radio" id="star1" formControlName="rating" value="1"><label for="star1" title="1 estrella">&#9733;</label>
+            <input type="radio" id="star2" formControlName="rating" value="2"><label for="star2" title="2 estrellas">&#9733;</label>
+            <input type="radio" id="star3" formControlName="rating" value="3"><label for="star3" title="3 estrellas">&#9733;</label>
+            <input type="radio" id="star4" formControlName="rating" value="4"><label for="star4" title="4 estrellas">&#9733;</label>
+            <input type="radio" id="star5" formControlName="rating" value="5"><label for="star5" title="5 estrellas">&#9733;</label>
+          </div>
+          <div *ngIf="reviewForm.get('rating')?.touched && reviewForm.get('rating')?.hasError('required')" class="error">
+            La calificación es requerida.
+          </div>
+        </div>
+        <div>
+          <h3>Comentario</h3>
+          <div class="comment-container">
+            <textarea class="comment" formControlName="comment" placeholder="Escribe tu comentario aquí..."></textarea>
+          </div>
+          <div *ngIf="reviewForm.get('comment')?.touched && reviewForm.get('comment')?.hasError('required')" class="error">
+            El comentario es requerido.
+          </div>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Enviar</button>
+        <button mat-raised-button (click)="closeModalEvent()" color="secondary" type="button">Cancelar</button>
+      </form>
+    </section>
+  </section>
+  
