@@ -57,10 +57,8 @@ export class EntityDetailComponent {
         children: course.assignments
       }
       this.entity = transformedCourse
-      //this.courseReviews = transformedCourse.reviews
-      //this.courseRating = transformedCourse.rating
-      this.courseReviews = [ { id: '1', rating: 5, description: 'La experiencia en el curso fue increíble. Los materiales proporcionados fueron de alta calidad y el instructor siempre estuvo dispuesto a responder cualquier pregunta. La estructura del curso estaba bien organizada, lo que facilitó mucho el aprendizaje de los conceptos más complicados. Definitivamente, recomendaría este curso a cualquiera que quiera aprender sobre programación.', courseId: '1', name: 'Juan', lastName: 'Gomez' }, { id: '2', rating: 4, description: 'Este curso superó mis expectativas. No solo cubrió todos los aspectos fundamentales, sino que también incluyó proyectos prácticos que ayudaron a consolidar el conocimiento adquirido. La plataforma era fácil de usar y los recursos adicionales, como los foros de discusión y las sesiones de tutoría en vivo, fueron muy útiles. Un gran curso para cualquier persona interesada en mejorar sus habilidades en programación.', courseId: '1', name: 'Pedro', lastName: 'Perez'} ]
-      this.courseRating = 3.7
+      this.courseReviews = transformedCourse.reviews
+      this.courseRating = transformedCourse.rating
     })
   }
 
