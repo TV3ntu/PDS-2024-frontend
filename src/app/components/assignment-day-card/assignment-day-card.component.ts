@@ -68,7 +68,7 @@ export class AssignmentDayCardComponent {
   unsubscribe(){
     this.showDay = true
     console.log("Unsubscribed, showDay is now", this.showDay)
-    this.assignmentService.unsuscribeAssignment(this.userService.getLoggedUser()!, this.assignment)
+    this.assignmentService.unsuscribeAssignment(this.userService.getLoggedUser()!.id, this.assignment.id)
     .pipe(
       catchError((error) => {
         console.log(error)

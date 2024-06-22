@@ -31,6 +31,6 @@ export class AssignmentService {
 
   subscribeAssigment = (user: User, assignment: Assignment): Observable<any> => { return this.http.post<any>( this.path + '/subscribe', { idUser: user.id, idAssignment: assignment.id }, { withCredentials: true })}
 
-  unsuscribeAssignment = (user:User, assignment:Assignment): Observable<any> => this.http.post<any>(this.path + '/unsubscribe', {idUser:user.id, idAssignment: assignment.id}, { withCredentials: true })
+  unsuscribeAssignment = (userId:String, assignmentId:String): Observable<any> => this.http.post<any>(this.path + '/unsubscribe', {idUser:userId, idAssignment: assignmentId}, { withCredentials: true })
 
 }

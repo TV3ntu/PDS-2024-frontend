@@ -3,7 +3,7 @@
         <app-search-bar (searchEvent)="updateQuery($event)"></app-search-bar>
         <section *ngIf="isLogged() && hasReserve()" class="reserve-container">
             <div class="reserve-title">
-                <p>Proxima reserva</p>
+                <p>Proxima inscripcion</p>
                 <p (click)="goToSubscriptions()" class="pointer">Mostrar todo ></p>
             </div>
             <div class="reserve-cards">
@@ -11,7 +11,7 @@
             </div>
         </section>
         <section *ngIf="isLogged() && !hasReserve()" class="reserve-container">
-            <p>Aún no tiene reservas</p>
+            <p>Aún no tiene inscripciones</p>
         </section>
         <app-entity-list [filter]="query"></app-entity-list>
     </section>
