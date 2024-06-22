@@ -1,8 +1,11 @@
 <main>
     <header>
         <img [src]="entity?.image" alt="entity?.name">
-        <section>
 
+        <section>
+            <span *ngIf="!isInstitution()" class="course-rating">
+              {{ courseRating }} <i [ngClass]="{ 'without-rating': courseRating == 0 }" class="fa fa-star star"></i>
+            </span>
             <h2>{{ entity?.title }}</h2>
             <span class="header-category">{{entity?.category}}</span>
             <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
@@ -26,4 +29,9 @@
     </section>
     <app-assignments-modal *ngIf="showAssignmentsModal" [assignments]="entity?.children" (closeModal)="closeAssignmentsModal()"></app-assignments-modal>
 
+    <section *ngIf="!isInstitution()" class="review-container">
+      <h2>Comentarios</h2>
+      <p *ngIf="courseReviews.length == 0">Aún no existen comentarios sobre este curso</p>
+      <app-review *ngFor="let review of courseReviews" [review]="review"></app-review>
+    </section>
 </main>
