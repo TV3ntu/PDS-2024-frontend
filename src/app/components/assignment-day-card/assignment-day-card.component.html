@@ -5,7 +5,7 @@
         <span>Costo de clase: <span class="text-bold">${{assignment.price}}</span></span>
     </div>
     <button *ngIf="!show()" type="button" (click)="toggleShowModal()"  mat-raised-button color="primary">Inscribirse</button>
-    <button *ngIf="show()" type="button" (click)="unsubscribe()"  mat-raised-button class="secondary-button">Desuscribirse</button>
+    <button *ngIf="show()" type="button" (click)="unsubscribe()"  mat-raised-button class="secondary-button">Desinscribirse</button>
 </li>
 
 <app-subscribe-modal *ngIf="showModal" [credits]="currentUser?.credits" [price]="assignment.price" 

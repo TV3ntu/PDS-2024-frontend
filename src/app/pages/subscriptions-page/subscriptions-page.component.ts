@@ -13,7 +13,11 @@ export class SubscriptionsPageComponent {
 
   subscriptionsList: Reserve[] = [ ]
 
-  constructor(private userService:UserService,private notificationService:NotificationService) { }
+  constructor(private userService:UserService, private notificationService:NotificationService) { 
+    this.notificationService.notification$.subscribe(()=>{
+      this.getSubscribedCourses()
+    })
+  }
 
   ngOnInit() {
     this.getSubscribedCourses()
@@ -37,7 +41,6 @@ export class SubscriptionsPageComponent {
       )
       .subscribe(
         (response) => {
-          console.log(response)
           this.subscriptionsList = response
         }
       )
