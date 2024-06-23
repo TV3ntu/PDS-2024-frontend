@@ -46,7 +46,7 @@ export class assignmentPageComponent {
 
   assignment: NewAssignment = {
     id:'',
-    quantityAvailable: 10,
+    quantityAvailable: 1,
     isActive:true,
     price: 100,
     startDate: new Date(),
