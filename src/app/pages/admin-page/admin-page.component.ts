@@ -37,7 +37,7 @@ export class AdminPageComponent {
   }
 
   getCourses(){
-    this.courseService.getAll()
+    this.courseService.getAllAdmin()
     .subscribe(courses => {
       this.courses = courses
     })
@@ -45,7 +45,7 @@ export class AdminPageComponent {
   }
 
   getInstitutions(){
-    this.institutionService.getAll()
+    this.institutionService.getAllAdmin()
     .subscribe(institutions => {
       const transformedInstitutions = institutions.map(institution => {
         return {
