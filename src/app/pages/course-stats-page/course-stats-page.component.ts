@@ -5,6 +5,7 @@ import { CourseStats } from 'src/app/models/courseStats';
 import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { CourseService } from 'src/app/services/course/course.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import {BasicUser, User} from "../../models/user";
 
 @Component({
   selector: 'app-course-stats-page',
@@ -14,6 +15,8 @@ import { NotificationService } from 'src/app/services/notification/notification.
 export class CourseStatsPageComponent {
   courseId: string = ''
   courseStats!: CourseStats
+  showModal = false;
+  users: BasicUser[] = [];
 
   constructor(
     private route:ActivatedRoute,
@@ -73,6 +76,27 @@ export class CourseStatsPageComponent {
       this.getCourse()
       this.notificationService.notify(200, "Se eliminó la clase exitosamente!")
     })
+  }
+
+  openModal(idAssignment: string) {
+    // TODO: Llamar a la API para obtener los usuarios de la clase
+    this.users = [
+      // new BasicUser("Jose", "Perez", "jperez@mail.com"),
+      // new BasicUser("Marta", "Gomez", "mgomez@mail.com"),
+      // new BasicUser("Luis", "Lopez", "llopez@mail.com"),
+      // new BasicUser("Ana", "Martinez", "amartinez@mail.com"),
+      // new BasicUser("Juan", "Garcia", "jgarcia@mail.com"),
+      // new BasicUser("Sofia", "Fernandez", "sfernandez@mail.com"),
+      // new BasicUser("Carlos", "Rodriguez", "crodriguez@mail.com"),
+      // new BasicUser("Elena", "Sanchez", "esanchez@mail.com"),
+      // new BasicUser("Miguel", "Diaz", "mdiaz@mail.com"),
+      // new BasicUser("Laura", "Torres", "ltorres@mail.com")
+    ]
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 }
 
