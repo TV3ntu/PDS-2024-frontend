@@ -158,14 +158,14 @@ p{
 
 @media (min-width: 960px) {
     .admin-panel{
-        padding: 2rem 35rem;
+        padding: 2rem 20rem;
     }
 
 }
 
 
-@media (min-width: 1160px) {
+@media (min-width: 1260px) {
     .admin-panel{
-        padding: 2rem 45rem;
+        padding: 2rem 35rem;
     }
 }
