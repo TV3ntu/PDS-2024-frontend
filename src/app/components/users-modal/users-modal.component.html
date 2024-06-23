@@ -1,0 +1,17 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+
+    <button (click)="closeModal()">Cerrar</button>
+
+    <h2>Usuarios inscriptos a la clase</h2>
+
+    <ul>
+      <li *ngFor="let user of users">
+        {{ user.name }} {{ user.lastName }}
+        <p>{{ user.email }}</p>
+      </li>
+      <p *ngIf="users.length == 0">Aún no hay usuarios inscriptos</p>
+    </ul>
+
+  </div>
+</div>
