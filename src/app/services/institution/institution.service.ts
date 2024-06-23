@@ -26,6 +26,8 @@ export class InstitutionService {
 
   getAll = (filter: String = ""):Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path + '?query=' + filter, { withCredentials: true })
 
+  getAllAdmin = ():Observable<InstitutionResponse[]> => this.http.get<InstitutionResponse[]>(this.path + '/admin', { withCredentials: true })
+
   create = (institution:Institution):Observable<Institution> => {
     const institutionToCreate = {
       name: institution.title,

@@ -26,6 +26,8 @@ export class CourseService {
 
   getAll = (filter: String = ""): Observable<Course[]> => this.http.get<Course[]>(this.path + '?query=' + filter, { withCredentials: true } )
 
+  getAllAdmin = (): Observable<Course[]> => this.http.get<Course[]>(this.path + '/admin', { withCredentials: true } )
+
   create = (course:Course):Observable<Course> => {
     const courseToCreate = {
       title: course.title,
