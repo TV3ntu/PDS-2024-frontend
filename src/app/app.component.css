@@ -1,0 +1,35 @@
+.logo {
+    padding: 2% 0 2% 0;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-bottom: 0.5px solid var(--light-gray-color);
+}
+img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+h1{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-family: Kanit, sans-serif;
+}
+
+@media (max-width: 660px) {
+    app-footer, app-header {
+        display: none;
+    }
+}
+
+@media (min-width: 660px) {
+    .logo {
+        display: none;
+    }
+}

@@ -1,0 +1,4 @@
+<button (click)="goToAdmin()" [ngClass]="isButton() ? 'button-add' : 'button-metric' ">
+    <p *ngIf="isButton()">Agregar {{type}}</p>
+    <i *ngIf="!isButton()" class="{{icon}}"></i>
+</button>

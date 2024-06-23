@@ -1,0 +1,30 @@
+.button-add{
+    padding: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--primary-color-lighter);
+    color: white;
+    min-width: 15rem;
+    max-height: 5rem;
+}
+
+.button-metric{
+    padding: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
+    width: 5rem;
+    height: 5rem;
+}
+
+i{
+    font-size: 1.5rem;
+}
+
+
+button:hover{
+    background-color: var(--primary-color-lighter-2);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
