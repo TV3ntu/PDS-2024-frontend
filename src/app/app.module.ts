@@ -40,6 +40,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component';
 import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-modal.component';
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +88,7 @@ import { ReviewModalComponent } from './components/review-modal/review-modal.com
     MatDatepickerModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
