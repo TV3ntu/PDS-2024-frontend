@@ -1,4 +1,4 @@
-<article class="admin-panel">
+<main class="admin-panel">
     <div class="admin-buttons">
         <h2>Panel de administrador</h2>
         <!-- <div class="admin-metrics">
@@ -8,14 +8,13 @@
         </div> -->
         <app-admin-button [style]="'button'" [type]="'institucion'" ></app-admin-button>
         <app-admin-button [style]="'button'" [type]="'curso'" ></app-admin-button>
-        <!-- <app-admin-button [style]="'button'" [type]="'clase'" ></app-admin-button> -->
     </div>
     <div class="admin-metrics">
-        <h3>Cursos</h3>
+        <h2>Cursos</h2>
         <div  *ngFor="let c of courses" class="entity">
             <div class="main-info">
-                {{c.title}}
-                <span>Categoria: {{c.category}}</span>
+                <h3>{{c.title}}</h3>
+                <span class="category">{{c.category}}</span>
             </div>
             <div class="entity-actions">
                 <button class="stats-button" mat-icon-button (click)="goToStats(c.id)">
@@ -26,11 +25,11 @@
                 </button>
             </div>
         </div>
-        <h3>Instituciones</h3>
+        <h2>Instituciones</h2>
         <div  *ngFor="let i of institutions" class="entity">
             <div class="main-info">
-                {{i.title}}
-                <span>Categoria: {{i.category}}</span>
+                <h3>{{i.title}}</h3>
+                <span class="category">{{i.category}}</span>
             </div>
             <div class="entity-actions">
                 <button class="delete-button" mat-icon-button (click)="deleteInstitution(i.id)">
@@ -39,4 +38,4 @@
             </div>
         </div>
     </div>
-</article>
+</main>
