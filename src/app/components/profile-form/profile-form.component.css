@@ -90,6 +90,7 @@
   border: 0 none;
   border-radius: var(--secondary-border-radius);
   cursor: pointer;
+  width: 50%;
 }
 .btn.btn-secondary{
   background-color: var(--light-color);
@@ -109,7 +110,9 @@
 .btn-container{
   display: flex;
   flex-direction: column;
-  width:30%;
+  justify-content: center;
+  align-items: center;
+  width:100%;
   gap: 1rem;
   padding: 1rem;
   margin: auto;
@@ -118,6 +121,18 @@
 
 small {
   color: var(--danger-color);
+}
+
+.credits{
+  margin-top: 1rem;
+  border: 0.1rem solid var(--dark-gray-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* DESKTOP */
@@ -130,6 +145,9 @@ small {
   .form-overlay .avatarImage{
     width: 200px;
     height: 200px;
+  }
+  .credits{
+    width: 50%;
   }
 }
 

@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ProfileFormComponent {
   @Input() user!: User
+  loading = false
   constructor(private userService:UserService,private router:Router,private notificationService:NotificationService) { }
 
   showCreditModal = false
@@ -69,10 +70,10 @@ export class ProfileFormComponent {
       this.router.navigate(['/ingresar'])
     }else{
       this.refreshUser()
-      /* this.user = this.userService.getLoggedUser() */
     }
   }
   refreshUser() {
+    this.loading = true
     this.userService.getUserLoggedData().subscribe(user => {
       this.user = user
       console.log(user)

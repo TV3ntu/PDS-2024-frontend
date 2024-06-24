@@ -40,14 +40,11 @@
     ¿Quieres crear una institución?
   </a>
 
-
-  <div class="form-group">
-    <label for="email">Cuenta</label>
+  <div class="credits">
+    <label>Creditos en cuenta</label>
     <h3>${{user.credits}}</h3>
-    <button (click)="showModal()" type="button" class="btn btn-secondary">Agregar crédito</button>
+    <button (click)="showModal()" type="button"  mat-raised-button color="primary">Agregar crédito</button>
   </div>
-
-
 
   <form #creditForm="ngForm" class="credits-modal" *ngIf="showCreditModal" (ngSubmit)="addCredits(creditForm)">
     <div class="form-group">
@@ -72,7 +69,7 @@
   </form>
   <div class="btn-container">
     <button type="submit" class="btn">Guardar</button>
-    <button (click)="deleteUserModal()" type="button" class="btn danger">Eliminar</button>
+    <button (click)="deleteUserModal()" type="button" class="btn danger">Eliminar cuenta</button>
   </div>
 
   <form #deleteUserForm="ngForm" class="credits-modal" *ngIf="showDeleteUserModal" (ngSubmit)="deleteUser()">
