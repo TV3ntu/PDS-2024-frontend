@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core'
 import {Observable } from "rxjs"
 import { Assignment } from 'src/app/models/assignment'
 import { path } from '../api.path'
-import { User } from 'src/app/models/user'
+import {BasicUser, User} from 'src/app/models/user'
+import {Course} from "../../models/course";
 @Injectable({
   providedIn: 'root'
 })
@@ -33,4 +34,5 @@ export class AssignmentService {
 
   unsuscribeAssignment = (userId:String, assignmentId:String): Observable<any> => this.http.post<any>(this.path + '/unsubscribe', {idUser:userId, idAssignment: assignmentId}, { withCredentials: true })
 
+  getUsersByAssignmentId = (assignmentId: String): Observable<BasicUser[]> => this.http.get<BasicUser[]>(this.path + '/' + assignmentId + '/admin', { withCredentials: true } )
 }

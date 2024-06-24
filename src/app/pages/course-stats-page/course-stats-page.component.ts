@@ -79,20 +79,11 @@ export class CourseStatsPageComponent {
   }
 
   openModal(idAssignment: string) {
-    // TODO: Llamar a la API para obtener los usuarios de la clase
-    this.users = [
-      new BasicUser("Jose", "Perez", "jperez@mail.com"),
-      new BasicUser("Marta", "Gomez", "mgomez@mail.com"),
-      new BasicUser("Luis", "Lopez", "llopez@mail.com"),
-      new BasicUser("Ana", "Martinez", "amartinez@mail.com"),
-      new BasicUser("Juan", "Garcia", "jgarcia@mail.com"),
-      new BasicUser("Sofia", "Fernandez", "sfernandez@mail.com"),
-      new BasicUser("Carlos", "Rodriguez", "crodriguez@mail.com"),
-      new BasicUser("Elena", "Sanchez", "esanchez@mail.com"),
-      new BasicUser("Miguel", "Diaz", "mdiaz@mail.com"),
-      new BasicUser("Laura", "Torres", "ltorres@mail.com")
-    ]
-    this.showModal = true;
+    this.assignmentService.getUsersByAssignmentId(idAssignment)
+      .subscribe(user => {
+        this.users = user;
+        this.showModal = true;
+      })
   }
 
   closeModal() {
