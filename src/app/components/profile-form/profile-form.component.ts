@@ -17,6 +17,8 @@ export class ProfileFormComponent {
   showCreditModal = false
   creditsToAdd = 0
   showDeleteUserModal=false
+  selectedFile: File | null = null
+  imagePreview: string | ArrayBuffer | null = ""
   showModal() {
     this.showCreditModal = true
   }
@@ -33,7 +35,26 @@ export class ProfileFormComponent {
   checkAdmin(){
     return this.user.isAdmin
   }
+  onFileSelected(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedFile = fileInput.files[0];
+      // Mostrar la vista previa de la imagen
+      const reader = new FileReader()
+      reader.onload = () => {
+        this.imagePreview = reader.result
+      }
+      reader.readAsDataURL(this.selectedFile)
+    }
+  }
+  hasPreviewImage = () => this.imagePreview !== "" && this.imagePreview !== null
 
+  triggerFileInput() {
+    const fileInput = document.getElementById('image') as HTMLInputElement
+    if (fileInput) {
+      fileInput.click()
+    }
+  }
 
   addCredits(form:NgForm) {
     if(form.valid){
@@ -47,17 +68,20 @@ export class ProfileFormComponent {
     if(!this.userService.isLogged()) {
       this.router.navigate(['/ingresar'])
     }else{
-      this.userService.getUserLoggedData().subscribe(user => {
-        this.user = user
-        console.log(user)
-      })
+      this.refreshUser()
       /* this.user = this.userService.getLoggedUser() */
     }
+  }
+  refreshUser() {
+    this.userService.getUserLoggedData().subscribe(user => {
+      this.user = user
+      console.log(user)
+    })
   }
 
   saveUser() {
     console.log(this.user)
-    this.userService.updateUser(this.user)
+    this.userService.updateUser(this.user,this.selectedFile)
     .pipe(
       catchError((error) => {
         console.log(error)
@@ -69,6 +93,7 @@ export class ProfileFormComponent {
     )
   .subscribe(user => {
       console.log(user)
+      this.refreshUser()
       this.notificationService.notify(200, 'Usuario actualizado')
     })
       // TODO: Guardar User
