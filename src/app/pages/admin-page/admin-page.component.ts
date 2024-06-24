@@ -28,8 +28,6 @@ export class AdminPageComponent {
       this.getCourses()
       this.getInstitutions()
     })
-
-
    }
 
   ngOnInit(){
@@ -66,8 +64,6 @@ export class AdminPageComponent {
     this.router.navigate([`/admin/curso/${id}`])
   }
 
-  isAdmin = () => true
-
   deleteCourse(idCourse: string | undefined) {
       this.courseService.delete(idCourse!)
       .pipe(
@@ -97,5 +93,7 @@ export class AdminPageComponent {
           this.getInstitutions()
         })
   }
+
+  hasCourses = () => this.courses.length > 0
 
 }

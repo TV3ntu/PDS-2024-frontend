@@ -11,7 +11,8 @@
         <app-admin-button [style]="'button'" [type]="'curso'" ></app-admin-button>
     </div>
     <div class="admin-metrics">
-        <h2>Cursos</h2>
+        <h2 *ngIf="hasCourses()">Cursos</h2>
+        <h2 *ngIf="!hasCourses()">No tiene cursos asociados</h2>
         <div  *ngFor="let c of courses" class="entity">
             <div class="main-info">
                 <h3>{{c.title}}</h3>
