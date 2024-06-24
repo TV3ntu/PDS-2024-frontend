@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
 import { RouterModule } from '@angular/router'
-import { FormsModule } from "@angular/forms"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { HttpClientModule } from '@angular/common/http'
 import { HomePageComponent } from './pages/home-page/home-page.component'
 import { HeaderComponent } from './components/header/header.component'
@@ -39,6 +39,11 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component';
 import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-modal.component';
+import { ReviewModalComponent } from './components/review-modal/review-modal.component';
+import { DatePipe } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { UsersModalComponent } from './components/users-modal/users-modal.component';
 import { ReviewComponent } from './components/review/review.component';
 @NgModule({
   declarations: [
@@ -68,6 +73,9 @@ import { ReviewComponent } from './components/review/review.component';
     RegisterPageComponent,
     CourseStatsPageComponent,
     SubscribeModalComponent,
+    ReviewModalComponent,
+    LoaderComponent,
+    UsersModalComponent,
     ReviewComponent
   ],
   imports: [
@@ -84,9 +92,10 @@ import { ReviewComponent } from './components/review/review.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe,{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

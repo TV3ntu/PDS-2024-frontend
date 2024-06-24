@@ -16,6 +16,7 @@ import { NotificationService } from 'src/app/services/notification/notification.
 export class AdminPageComponent {
   courses: Course[] = []
   institutions: Institution[]=[]
+  loading = false
 
   constructor(
     private courseService: CourseService,
@@ -37,15 +38,18 @@ export class AdminPageComponent {
   }
 
   getCourses(){
-    this.courseService.getAll()
+    this.loading = true
+    this.courseService.getAllAdmin()
     .subscribe(courses => {
       this.courses = courses
+      this.loading = false
     })
     console.log(this.courses)
   }
 
   getInstitutions(){
-    this.institutionService.getAll()
+    this.loading = true
+    this.institutionService.getAllAdmin()
     .subscribe(institutions => {
       const transformedInstitutions = institutions.map(institution => {
         return {
@@ -54,6 +58,7 @@ export class AdminPageComponent {
         }
       })
       this.institutions = transformedInstitutions;
+      this.loading = false
     })
   }
 

@@ -4,6 +4,7 @@ import { Course } from 'src/app/models/course'
 import { path } from '../api.path'
 import { HttpClient,HttpParams } from '@angular/common/http'
 import { Assignment } from 'src/app/models/assignment'
+import { ReviewRequest } from 'src/app/models/reviewRequest'
 import {Review} from "../../models/review";
 
 interface CourseResponse{
@@ -28,15 +29,17 @@ export class CourseService {
 
   getAll = (filter: String = ""): Observable<Course[]> => this.http.get<Course[]>(this.path + '?query=' + filter, { withCredentials: true } )
 
-  create = (course:Course):Observable<Course> => {
-    const courseToCreate = {
-      title: course.title,
-      description: course.description,
-      category: course.category,
-      image: course.image,
-      institutionId: course.institutionId
-    }
-    return this.http.post<Course>(this.path,courseToCreate, { withCredentials: true } )
+  getAllAdmin = (): Observable<Course[]> => this.http.get<Course[]>(this.path + '/admin', { withCredentials: true } )
+
+  create = (course:Course,file:File):Observable<Course> => {
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('title', course.title)
+    formData.append('description', course.description)
+    formData.append('category', course.category)
+    formData.append('institutionId', course.institutionId)
+
+    return this.http.post<Course>(this.path,formData, { withCredentials: true } )
   }
 
   delete = (courseId:string) => this.http.delete<Course>(this.path + '/' + courseId, { withCredentials: true })
@@ -51,4 +54,5 @@ export class CourseService {
 
   getStatsById = (id: string): Observable<any> => this.http.get(this.path + '/' + id + '/stats', { withCredentials: true })
 
+  addReview = (id: string, review: ReviewRequest) => this.http.post(this.path + '/' + id + '/review', {review}, {withCredentials:true})
 }

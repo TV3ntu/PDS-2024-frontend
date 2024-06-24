@@ -7,9 +7,9 @@
       <button class="secondary-button" (click)="closeModalEvent()">Cerrar</button>
       <h2>Seleccione día y horario</h2>
       <section class="date-picker">
-        <input matInput [matDatepicker]="picker" (dateChange)="updateSchedule($event.value)">
+        <input matInput [matDatepicker]="picker" [min]="minSelectedDate()" (dateChange)="updateSchedule($event.value)">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker class="date-picker"  [dateClass]="dateClass" (selectedChange)="updateSchedule($event)" #picker></mat-datepicker>
+        <mat-datepicker class="date-picker" [dateClass]="dateClass" (selectedChange)="updateSchedule($event)" #picker></mat-datepicker>
       </section>
       <label>
         {{spanishSelectedDate()}}
