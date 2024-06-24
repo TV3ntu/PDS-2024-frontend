@@ -86,9 +86,16 @@ export class CreateFormComponent {
   }
 
   getInstitutions(){
-    this.institutionService.getAll()
-      .subscribe(institutions => {
+    this.institutionService.getAllAdmin()
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          error.error.status = 401
+          return this.notificationService.handleError(error)
+        })
+      )
+    .subscribe(institutions => {
         this.institutions = institutions.map(institution => {return {name:institution.name, id:institution.id}})
-      })
+    })
   }
 }
