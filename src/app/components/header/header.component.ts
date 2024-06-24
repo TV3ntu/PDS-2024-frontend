@@ -36,6 +36,8 @@ export class HeaderComponent {
       this.userService.getUserLoggedData().subscribe(user => {
         this.user = user
       })
+    } else{
+      this.isLogged=false
     }
   }
 

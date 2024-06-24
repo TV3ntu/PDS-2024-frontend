@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { NgForm } from '@angular/forms';
-
 @Component({
   selector: 'app-profile-form',
   templateUrl: './profile-form.component.html',
@@ -17,12 +16,24 @@ export class ProfileFormComponent {
 
   showCreditModal = false
   creditsToAdd = 0
+  showDeleteUserModal=false
   showModal() {
     this.showCreditModal = true
   }
   closeModal() {
     this.showCreditModal = false
   }
+
+  deleteUserModal() {
+    this.showDeleteUserModal = true
+  }
+  closeDeleteUserModal() {
+    this.showDeleteUserModal = false
+  }
+  checkAdmin(){
+    return this.user.isAdmin
+  }
+
 
   addCredits(form:NgForm) {
     if(form.valid){
@@ -62,4 +73,26 @@ export class ProfileFormComponent {
     })
       // TODO: Guardar User
   }
+
+  deleteUser() {
+    console.log(this.user)
+    console.log(this.userService.deleteAccount(this.user))
+    this.userService.deleteAccount(this.user)
+    .pipe(
+      catchError((error) => {
+        console.log(error)
+        error.error.status = 401
+        error.error.message = 'No se pudo eliminar el usuario'
+        return this.notificationService.handleError(error)
+      })
+
+    )
+  .subscribe(user => {
+      console.log(user)
+      this.userService.localLogOut()
+      this.notificationService.notify(200, 'Usuario eliminado')
+      this.router.navigate(['/'])
+      })
+      // TODO: Guardar User
+    }
 }
