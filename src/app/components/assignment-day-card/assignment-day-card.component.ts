@@ -16,6 +16,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class AssignmentDayCardComponent {
   @Input() assignment!: Assignment
   @Input() showDay: boolean = true
+  @Input() startDate: Date = new Date()
 
   showModal: boolean = false
   currentUser: User | null = null
@@ -46,7 +47,7 @@ export class AssignmentDayCardComponent {
     if(this.userService.isLogged()){
       this.showDay = false;
       console.log("Subscribed, showDay is now", this.showDay)
-      this.assignmentService.subscribeAssigment(this.userService.getLoggedUser()!, this.assignment)
+      this.assignmentService.subscribeAssigment(this.userService.getLoggedUser()!, this.assignment,this.startDate)
         .pipe(
           catchError((error) => {
             console.log(error)

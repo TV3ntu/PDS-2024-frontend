@@ -29,7 +29,7 @@ export class AssignmentService {
 
   delete = (assignmentId:string) => this.http.delete<Assignment>(this.path+'/'+assignmentId, { withCredentials: true })
 
-  subscribeAssigment = (user: User, assignment: Assignment): Observable<any> => { return this.http.post<any>( this.path + '/subscribe', { idUser: user.id, idAssignment: assignment.id }, { withCredentials: true })}
+  subscribeAssigment = (user: User, assignment: Assignment,startDate:Date): Observable<any> => { return this.http.post<any>( this.path + '/subscribe', { idUser: user.id, idAssignment: assignment.id, startDate:startDate }, { withCredentials: true })}
 
   unsuscribeAssignment = (userId:String, assignmentId:String): Observable<any> => this.http.post<any>(this.path + '/unsubscribe', {idUser:userId, idAssignment: assignmentId}, { withCredentials: true })
 
