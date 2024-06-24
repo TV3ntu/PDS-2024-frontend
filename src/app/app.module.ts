@@ -41,6 +41,7 @@ import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats
 import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-modal.component';
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
 import { DatePipe } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,8 @@ import { DatePipe } from '@angular/common';
     RegisterPageComponent,
     CourseStatsPageComponent,
     SubscribeModalComponent,
-    ReviewModalComponent
+    ReviewModalComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

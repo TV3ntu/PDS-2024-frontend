@@ -16,6 +16,7 @@ export class EntityListComponent {
   mode: string = ''
   institutionId: string = ''
   @Input() filter: string = ''
+  loading = false
 
   constructor(private courseService: CourseService,private institutionService: InstitutionService, private activatedRoute:ActivatedRoute) { }
 
@@ -39,13 +40,16 @@ export class EntityListComponent {
   }
 
   getCourses(){
+    this.loading = true
     this.courseService.getAll(this.filter)
     .subscribe(courses => {
       this.entityList = courses
+      this.loading = false
     })
   }
 
   getInstitutions(){
+    this.loading = true
     this.institutionService.getAll(this.filter)
     .subscribe(institutions => {
       const transformedInstitutions = institutions.map(institution => {
@@ -55,6 +59,7 @@ export class EntityListComponent {
         }
       })
       this.entityList = transformedInstitutions;
+      this.loading = false
     })
   }
 
