@@ -77,7 +77,9 @@ export class ProfileFormComponent {
     this.userService.getUserLoggedData().subscribe(user => {
       this.user = user
       console.log(user)
+      this.loading = false
     })
+
   }
 
   saveUser() {
