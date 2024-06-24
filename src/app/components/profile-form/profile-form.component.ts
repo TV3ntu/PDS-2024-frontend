@@ -31,7 +31,7 @@ export class ProfileFormComponent {
     this.showDeleteUserModal = false
   }
   checkAdmin(){
-    return !this.user.isAdmin
+    return this.user.isAdmin
   }
 
 
