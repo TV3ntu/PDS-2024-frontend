@@ -27,7 +27,7 @@
 
   <div class="form-group">
     <label for="image">Imagen</label>
-    <input id="image" type="text" name="image" [(ngModel)]="form.image" class="form-input" required #image="ngModel">
+    <input id="image" type="file" name="image" (change)="onFileSelected($event)" [(ngModel)]="form.image" class="form-input" required #image="ngModel">
     <div *ngIf="image.invalid && (image.dirty || image.touched)" class="error">
       <div *ngIf="image.errors?.['required']">La imagen es obligatoria</div>
     </div>

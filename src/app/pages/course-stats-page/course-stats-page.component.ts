@@ -15,6 +15,7 @@ import {BasicUser, User} from "../../models/user";
 export class CourseStatsPageComponent {
   courseId: string = ''
   courseStats!: CourseStats
+  loading = false
   showModal = false;
   users: BasicUser[] = [];
 
@@ -34,10 +35,12 @@ export class CourseStatsPageComponent {
   }
 
   getCourse(): void {
+    this.loading = true
     this.courseService.getStatsById(this.courseId)
     .subscribe(course => {
       console.log(course)
       this.courseStats = course
+      this.loading = false
     })
   }
 

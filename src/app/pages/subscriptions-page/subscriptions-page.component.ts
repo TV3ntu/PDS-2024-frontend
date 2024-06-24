@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class SubscriptionsPageComponent {
 
   subscriptionsList: Reserve[] = [ ]
+  loading = false
 
   constructor(private userService:UserService, private notificationService:NotificationService) { 
     this.notificationService.notification$.subscribe(()=>{
@@ -31,16 +32,19 @@ export class SubscriptionsPageComponent {
 
   getSubscribedCourses = () => {
     if(this.userService.isLogged()){
+      this.loading = true
       this.userService.getSuscribedCourses(this.userService.currentUser?.id || '')
       .pipe(
         catchError((error) => {
           console.log(error)
           this.subscriptionsList = []
+          this.loading = false
           return this.notificationService.handleError(error)
         })
       )
       .subscribe(
         (response) => {
+          this.loading = false
           this.subscriptionsList = response
         }
       )

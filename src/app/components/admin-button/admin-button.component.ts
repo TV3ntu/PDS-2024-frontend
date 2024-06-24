@@ -25,7 +25,7 @@ export class AdminButtonComponent {
       this.router.navigate(['/admin/curso/agregar'])
     }
     if(this.type == 'clase'){
-      this.router.navigate(['/admin/clase/agregar'])
+      this.router.navigate(['/admin/agregar/horario'])
     }
   }
 }

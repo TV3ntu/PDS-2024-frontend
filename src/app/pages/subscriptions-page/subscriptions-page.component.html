@@ -16,3 +16,5 @@
 <main *ngIf="!hasSuscriptions()">
     <h2>Aún no tiene suscripciones</h2>
 </main>
+
+<app-loader *ngIf="loading" class="loading"></app-loader>

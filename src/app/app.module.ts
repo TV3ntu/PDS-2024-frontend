@@ -40,6 +40,9 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { CourseStatsPageComponent } from './pages/course-stats-page/course-stats-page.component';
 import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-modal.component';
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
+import { DatePipe } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { UsersModalComponent } from './components/users-modal/users-modal.component';
 @NgModule({
   declarations: [
@@ -70,6 +73,7 @@ import { UsersModalComponent } from './components/users-modal/users-modal.compon
     CourseStatsPageComponent,
     SubscribeModalComponent,
     ReviewModalComponent,
+    LoaderComponent,
     UsersModalComponent
   ],
   imports: [
@@ -89,7 +93,7 @@ import { UsersModalComponent } from './components/users-modal/users-modal.compon
     MatDatepickerModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe,{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,10 +27,14 @@ export class UserService {
   }
 
   logout():Observable<any> {
+    this.localLogOut()
+    return this.http.post<any>(this.serverUrl + '/api/users/logout',{}, { withCredentials: true })
+  }
+
+  localLogOut(){
     localStorage.removeItem('userId')
     localStorage.clear()
     this.currentUser = null
-    return this.http.post<any>(this.serverUrl + '/api/users/logout',{}, { withCredentials: true })
   }
 
   getUserLoggedData = (): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + localStorage.getItem('userId'), { withCredentials: true })
@@ -39,7 +43,18 @@ export class UserService {
 
   getById = (id: string): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + id, { withCredentials: true })
 
-  updateUser = (user: User): Observable<User> => {
+  updateUser = (user: User,file:File | null): Observable<User> => {
+    const formData = new FormData()
+    if(file) formData.append('file', file)
+      formData.append('name', user.name)
+      formData.append('lastName', user.lastName)
+      formData.append('email', user.email)
+      /* formData.append('isAdmin', user.isAdmin.toString()) */
+      formData.append('credits', user.credits.toString())
+      formData.append('id', user.id)
+
+/*
+
     const userToUpdate = {
       name: user.name,
       lastName:user.lastName,
@@ -49,14 +64,17 @@ export class UserService {
       credits: user.credits,
       id: user.id,
       nextClass: user.nextClass?.assignmentId,
-    }
-    return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, userToUpdate, { withCredentials: true })}
+    } */
+    return this.http.patch<User>(this.serverUrl + '/api/users/' + user.id, formData, { withCredentials: true })
+  }
 
   getSuscribedCourses = (id: string): Observable<Reserve[]> => this.http.get<Reserve[]>(this.serverUrl + '/api/users/' + id + '/subscriptions', { withCredentials: true })
 
   create = (user:NewUser) => this.http.post<User>(this.serverUrl+'/api/users/register',user, { withCredentials: true })
 
   delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/users/'+user.id, { withCredentials: true })
+
+  deleteAccount=(user:User)=>this.http.delete<any>(this.serverUrl+'/api/users',{withCredentials:true})
 
   refreshUser = () => this.getUserLoggedData().subscribe(user => this.currentUser = user)
 

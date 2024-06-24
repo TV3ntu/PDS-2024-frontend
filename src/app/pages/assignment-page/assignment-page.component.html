@@ -6,34 +6,36 @@
 
         <div class="form-group">
           <label for="quantityAvailable">Cantidad de suscripciones permitidas:</label>
-          <input id="quantityAvailable" type="number" name="quantityAvailable" [(ngModel)]="assignment.quantityAvailable" class="form-input" required #quantityAvailable="ngModel">
+          <input id="quantityAvailable" type="number" name="quantityAvailable" oninput="this.value=Math.round(this.value)" [(ngModel)]="assignment.quantityAvailable" class="form-input" required min="1" #quantityAvailable="ngModel">
             <div *ngIf="quantityAvailable.invalid && (quantityAvailable.dirty || quantityAvailable.touched)" class="error">
               <div *ngIf="quantityAvailable.errors?.['required']" class="error">Ingrese un Número válido</div>
+              <div *ngIf="checkQuantityValue()">Ingrese un Número válido mayor a 0</div>
             </div>
         </div>
         <div class="form-group">
             <label for="price">Precio:</label>
-            <input id="price" type="number" name="price" [(ngModel)]="assignment.price" class="form-input" required #price="ngModel">
+            <input id="price" type="number" name="price" oninput="this.value=Math.round(this.value)"  min="1"[(ngModel)]="assignment.price" class="form-input" required #price="ngModel">
             <div *ngIf="price.invalid && (price.dirty || price.touched)" class="error">
               <div *ngIf="price.errors?.['required']" class="error">Ingrese un Número válido</div>
+              <div *ngIf="checkPriceValue()">Ingrese un Número válido mayor a 0</div>
             </div>
             
         </div>
 
         <div class="form-group">
             <label for="startDate">fecha de inicio del curso:</label>
-            <input id="startDate" type="date" name="startDate" [(ngModel)]="assignment.startDate" class="form-input" required #startDate="ngModel">
+            <input id="startDate" [min]=minStartDateValue() (onchange)="checkStartDateValue()" type="date" name="startDate" [(ngModel)]="assignment.startDate" class="form-input" required #startDate="ngModel"/>
+            <div *ngIf="checkStartDateValue()" class="error">Ingrese una fecha mayor a hoy como fecha de inicio del curso</div>
             <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="error">
-              <div *ngIf="startDate.errors?.['required']" class="error">Ingrese una fecha válida</div>
+              <div *ngIf="startDate.errors?.['required']" class="error">Ingrese una fecha que exista</div>
             </div>
             
-      </div>
-
-      <div class="form-group">
+      
           <label for="endDate">fecha de fin del curso:</label>
-          <input id="endDate" type="date" name="endDate" [(ngModel)]="assignment.endDate" class="form-input" required #endDate="ngModel">
+          <input id="endDate" [min]=minEndDateValue() (onchange)="checkEndDateValue()"  type="date" name="endDate" [(ngModel)]="assignment.endDate" class="form-input" required #endDate="ngModel">
+            <div *ngIf="checkEndDateValue()" class="error" ng-cloak>Ingrese una fecha mayor a la fecha de inicio del curso</div>
             <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="error">
-              <div *ngIf="endDate.errors?.['required']" class="error">Ingrese una fecha válida</div>
+              <div *ngIf="endDate.errors?.['required']" class="error">Ingrese una fecha que exista</div>
             </div>
       </div>
 
@@ -140,7 +142,7 @@
 
         <div class="form-group">
           <label for="startTime">Horario de inicio del curso:</label>
-          <input id="startTime" type="time" name="startTime" [(ngModel)]="assignment.startTime" class="form-input" required #startTime="ngModel">
+          <input id="startTime" type="time" valueAsDate="new Date()" name="startTime" [(ngModel)]="assignment.startTime" class="form-input" required #startTime="ngModel">
             <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="error">
               <div *ngIf="startTime.errors?.['required']" class="error">Ingrese un horario válido</div>
             </div>
@@ -149,7 +151,8 @@
 
         <div class="form-group">
           <label for="endTime">Horario de fin del curso:</label>
-          <input id="endTime" type="time" name="endTime" [(ngModel)]="assignment.endTime" class="form-input" required #endTime="ngModel">
+          <input id="endTime" type="time" valueAsDate="new Date()" name="endTime" (onchange)="minEndTimeValue()" [(ngModel)]="assignment.endTime" (input)="minEndTimeValue()" class="form-input" required #endTime="ngModel">
+          <div *ngIf="minEndTimeValue()" class="error" ng-cloak>Ingrese un horario posterior al horario de inicio</div>
             <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)" class="error">
               <div *ngIf="endTime.errors?.['required']" class="error">Ingrese un horario válido</div>
             </div>

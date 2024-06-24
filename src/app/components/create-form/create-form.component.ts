@@ -28,6 +28,7 @@ export class CreateFormComponent {
     image: '',
     institution: ''
   }
+  selectedFile: File | null = null
 
   constructor(private http: HttpClient, private router: Router, private institutionService: InstitutionService,private courseService:CourseService,private notificationService:NotificationService) {}
 
@@ -41,10 +42,10 @@ export class CreateFormComponent {
 
   onSubmit() {
     if ( this.isCourseForm ) {
-      const course = new Course('', this.form.name,'', this.form.description, this.form.image, this.form.category, [])
+      const course = new Course('', this.form.name, this.form.description, this.form.image, this.form.category, [])
       course.institutionId = this.form.institution
       console.log(course)
-      this.courseService.create(course)
+      this.courseService.create(course, this.selectedFile!)
       .pipe(
           catchError((error) => {
             console.log(error)
@@ -61,7 +62,7 @@ export class CreateFormComponent {
     } else {
       const inst = new Institution('', this.form.name, this.form.description, this.form.image, this.form.category, [])
       console.log(inst)
-      this.institutionService.create(inst)
+      this.institutionService.create(inst,this.selectedFile!)
       .pipe(
           catchError((error) => {
             console.log(error)
@@ -75,6 +76,12 @@ export class CreateFormComponent {
         this.router.navigate(['/admin'])
         this.notificationService.notify(200, "Institución creada exitosamente!")
       })
+    }
+  }
+  onFileSelected(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedFile = fileInput.files[0];
     }
   }
 
