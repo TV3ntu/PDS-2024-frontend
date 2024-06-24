@@ -42,6 +42,7 @@ import { SubscribeModalComponent } from './components/subscribe-modal/subscribe-
 import { ReviewModalComponent } from './components/review-modal/review-modal.component';
 import { DatePipe } from '@angular/common';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +91,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatDatepickerModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{ provide: MAT_DATE_LOCALE, useValue: 'es-AR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
