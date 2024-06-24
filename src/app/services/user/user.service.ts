@@ -27,10 +27,14 @@ export class UserService {
   }
 
   logout():Observable<any> {
+    this.localLogOut()
+    return this.http.post<any>(this.serverUrl + '/api/users/logout',{}, { withCredentials: true })
+  }
+
+  localLogOut(){
     localStorage.removeItem('userId')
     localStorage.clear()
     this.currentUser = null
-    return this.http.post<any>(this.serverUrl + '/api/users/logout',{}, { withCredentials: true })
   }
 
   getUserLoggedData = (): Observable<User> => this.http.get<User>(this.serverUrl + '/api/users/' + localStorage.getItem('userId'), { withCredentials: true })
@@ -57,6 +61,8 @@ export class UserService {
   create = (user:NewUser) => this.http.post<User>(this.serverUrl+'/api/users/register',user, { withCredentials: true })
 
   delete = (user:User) => this.http.delete<User>(this.serverUrl+'/api/users/'+user.id, { withCredentials: true })
+
+  deleteAccount=(user:User)=>this.http.delete<any>(this.serverUrl+'/api/users',{withCredentials:true})
 
   refreshUser = () => this.getUserLoggedData().subscribe(user => this.currentUser = user)
 

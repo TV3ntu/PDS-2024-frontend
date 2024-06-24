@@ -28,7 +28,7 @@
 
   </div>
 
-  <a routerLink="/admin/institucion/agregar">
+  <a *ngIf="!checkAdmin()" (onload)="!checkAdmin()" routerLink="/admin/institucion/agregar">
     ¿Quieres crear una institución?
   </a>
 
@@ -62,7 +62,17 @@
     <button type="submit" class="btn">Agregar</button>
     <button type="button" (click)="closeModal()" class="btn btn-secondary">Cancelar</button>
   </form>
+  <div class="btn-container">
+    <button type="submit" class="btn">Guardar</button>
+    <button (click)="deleteUserModal()" type="button" class="btn danger">Eliminar</button>
+  </div>
 
-  <button type="submit" class="btn">Guardar</button>
+  <form #deleteUserForm="ngForm" class="credits-modal" *ngIf="showDeleteUserModal" (ngSubmit)="deleteUser()">
+    <div class="form-group">
+      <h3>¿Estas Seguro que quieres eliminar tu cuenta?</h3>
+      <button type="button" (click)="closeDeleteUserModal()" class="btn">Cancelar</button>
+      <button for="eliminar" type="button" (click)=deleteUser() class="btn danger">Eliminar</button>
+    </div>  
+  </form>
 
 </form>
