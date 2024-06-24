@@ -1,5 +1,4 @@
 <main *ngIf="hasSuscriptions()">
-    <app-loader></app-loader>
     <section class="subscription">
         <h3>Suscripciones</h3>
         <article *ngFor="let sub of filterByStatus('CONFIRMED')">
