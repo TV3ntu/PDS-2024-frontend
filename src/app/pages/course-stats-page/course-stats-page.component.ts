@@ -5,6 +5,7 @@ import { CourseStats } from 'src/app/models/courseStats';
 import { AssignmentService } from 'src/app/services/assignment/assignment.service';
 import { CourseService } from 'src/app/services/course/course.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import {BasicUser, User} from "../../models/user";
 
 @Component({
   selector: 'app-course-stats-page',
@@ -15,6 +16,8 @@ export class CourseStatsPageComponent {
   courseId: string = ''
   courseStats!: CourseStats
   loading = false
+  showModal = false;
+  users: BasicUser[] = [];
 
   constructor(
     private route:ActivatedRoute,
@@ -76,6 +79,18 @@ export class CourseStatsPageComponent {
       this.getCourse()
       this.notificationService.notify(200, "Se eliminó la clase exitosamente!")
     })
+  }
+
+  openModal(idAssignment: string) {
+    this.assignmentService.getUsersByAssignmentId(idAssignment)
+      .subscribe(user => {
+        this.users = user;
+        this.showModal = true;
+      })
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 }
 

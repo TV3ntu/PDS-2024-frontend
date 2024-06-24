@@ -43,6 +43,7 @@ import { ReviewModalComponent } from './components/review-modal/review-modal.com
 import { DatePipe } from '@angular/common';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { UsersModalComponent } from './components/users-modal/users-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     CourseStatsPageComponent,
     SubscribeModalComponent,
     ReviewModalComponent,
-    LoaderComponent
+    LoaderComponent,
+    UsersModalComponent
   ],
   imports: [
     BrowserModule,
