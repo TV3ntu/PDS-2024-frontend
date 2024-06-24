@@ -15,6 +15,8 @@ export class EntityDetailComponent {
   courseId: string = ''
   institutionId: string = ''
   showAssignmentsModal: boolean = false
+  loading = false
+
   constructor(
     private courseService:CourseService,
     private institutionService: InstitutionService,
@@ -44,6 +46,7 @@ export class EntityDetailComponent {
   isInstitution = () => this.institutionId !== '' && this.courseId === ''
 
   getCourse(): void {
+    this.loading = true
     this.courseService.getById(this.courseId)
     .subscribe(course => {
       console.log(course)
@@ -54,10 +57,12 @@ export class EntityDetailComponent {
         children: course.assignments
       }
       this.entity = transformedCourse
+      this.loading = false
     })
   }
 
   getInstitution():void{
+    this.loading = true
     this.institutionService.getById(this.institutionId)
     .subscribe(institution => {
       const transformedInstitution = {
@@ -66,6 +71,7 @@ export class EntityDetailComponent {
         children: institution.courses
       }
       this.entity = transformedInstitution
+      this.loading = false
     })
   }
   hasChildren = () => {
