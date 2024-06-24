@@ -5,6 +5,7 @@ import {Assignment} from "../../models/assignment"
 import {AssignmentService} from "../../services/assignment/assignment.service"
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker'
 import { catchError } from 'rxjs';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-assignments-modal',
   templateUrl: './assignments-modal.component.html',
@@ -14,11 +15,14 @@ export class AssignmentsModalComponent {
   @Input() assignments: Assignment[] = []
   @Input() showModal: boolean = false
   @Output() closeModal = new EventEmitter()
+  currentUser: User | null = null
+
   selectedDate: Date = new Date()
   userAssignments: string[] = []
   constructor(private userService: UserService,private notificationService:NotificationService) {
     this.notificationService.notification$.subscribe(()=>{
       this.updateAssignments()
+      this.refreshUser()
     })
 
    }
@@ -56,7 +60,7 @@ export class AssignmentsModalComponent {
       // pone la fecha de hoy para q sea la minima posible del calendario
        return new Date()
   }
-  
+
 
   updateSchedule(event: any){
     this.selectedDate = event
@@ -86,10 +90,34 @@ export class AssignmentsModalComponent {
     })
   }
 
+  refreshUser = () => {
+    if(this.userService.isLogged()){
+
+      this.userService.getUserLoggedData()
+      .pipe(
+        catchError((error) => {
+          console.log(error)
+          error.error.status = 401
+          error.error.message = 'No se pudo obtener usuario'
+          return this.notificationService.handleError(error)
+        })
+      )
+      .subscribe(user => {
+        this.currentUser = user
+      })
+
+    }else{
+      this.currentUser = null
+    }
+  }
+
+  hasUser = () => this.currentUser !== null
+
 
 
   ngOnInit() {
     this.updateAssignments()
+    this.refreshUser()
   }
 
   updateAssignments = () => {
