@@ -28,7 +28,7 @@
 
   </div>
 
-  <a routerLink="/admin/institucion/agregar">
+  <a *ngIf="checkAdmin()" (onload)="checkAdmin()" routerLink="/admin/institucion/agregar">
     ¿Quieres crear una institución?
   </a>
 

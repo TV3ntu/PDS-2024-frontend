@@ -30,6 +30,9 @@ export class ProfileFormComponent {
   closeDeleteUserModal() {
     this.showDeleteUserModal = false
   }
+  checkAdmin(){
+    return this.user.isAdmin
+  }
 
 
   addCredits(form:NgForm) {
