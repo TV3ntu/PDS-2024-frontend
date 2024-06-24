@@ -31,8 +31,6 @@ export class HeaderComponent {
   }
 
   checkUser (){
-    console.log(this.userService.isLogged())
-    console.log(localStorage.getItem('userId'))
     if(this.userService.isLogged()){
       this.isLogged = true
       this.userService.getUserLoggedData().subscribe(user => {
