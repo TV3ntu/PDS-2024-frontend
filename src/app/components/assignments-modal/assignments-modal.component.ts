@@ -2,12 +2,9 @@ import { NotificationService } from './../../services/notification/notification.
 import { UserService } from './../../services/user/user.service';
 import {Component, EventEmitter, Input, Output} from '@angular/core'
 import {Assignment} from "../../models/assignment"
-import {Course} from "../../models/course"
 import {AssignmentService} from "../../services/assignment/assignment.service"
-import { Entity } from 'src/app/models/entity'
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker'
 import { catchError } from 'rxjs';
-
 @Component({
   selector: 'app-assignments-modal',
   templateUrl: './assignments-modal.component.html',
@@ -54,6 +51,12 @@ export class AssignmentsModalComponent {
   hasTimes = () => {
     console.log(this.getAllTimes()!.length > 0)
     return this.getAllTimes()!.length > 0}
+
+  minSelectedDate(){
+      // pone la fecha de hoy para q sea la minima posible del calendario
+       return new Date()
+  }
+  
 
   updateSchedule(event: any){
     this.selectedDate = event
