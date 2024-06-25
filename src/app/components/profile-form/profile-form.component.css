@@ -7,6 +7,13 @@
   width: 100%;
   padding: 2rem;
 }
+.loading-form{
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .form-overlay .avatarImage{
   width: 150px;
