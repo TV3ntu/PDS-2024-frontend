@@ -19,7 +19,7 @@
               <div *ngIf="price.errors?.['required']" class="error">Ingrese un Número válido</div>
               <div *ngIf="checkPriceValue()">Ingrese un Número válido mayor a 0</div>
             </div>
-            
+
         </div>
 
         <div class="form-group">
@@ -29,8 +29,8 @@
             <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="error">
               <div *ngIf="startDate.errors?.['required']" class="error">Ingrese una fecha que exista</div>
             </div>
-            
-      
+
+
           <label for="endDate">fecha de fin del curso:</label>
           <input id="endDate" [min]=minEndDateValue() (onchange)="checkEndDateValue()"  type="date" name="endDate" [(ngModel)]="assignment.endDate" class="form-input" required #endDate="ngModel">
             <div *ngIf="checkEndDateValue()" class="error" ng-cloak>Ingrese una fecha mayor a la fecha de inicio del curso</div>
@@ -134,7 +134,7 @@
                 (change)="daySelectedCheck()">
               <label for="domingo">Domingo</label>
             </div>
-          </div>          
+          </div>
         </div>
         <div *ngIf="!newTimeOnPage && !atLeastOneDaySelected" class="error">
           Seleccione al menos un día para el curso.
@@ -146,7 +146,7 @@
             <div *ngIf="startTime.invalid && (startTime.dirty || startTime.touched)" class="error">
               <div *ngIf="startTime.errors?.['required']" class="error">Ingrese un horario válido</div>
             </div>
-          
+
         </div>
 
         <div class="form-group">
@@ -156,7 +156,7 @@
             <div *ngIf="endTime.invalid && (endTime.dirty || endTime.touched)" class="error">
               <div *ngIf="endTime.errors?.['required']" class="error">Ingrese un horario válido</div>
             </div>
-          
+
         </div>
 
         <div class="form-group">
@@ -169,8 +169,9 @@
           <div *ngIf="recurrenceWeek.invalid && (recurrenceWeek.dirty || recurrenceWeek.touched)" class="error">
             <div *ngIf="recurrenceWeek.errors?.['required']" class="error">seleccione una opción</div>
           </div>
-        </div>  
-      <button type="submit" class="btn" >Asignar horario</button>
+        </div>
+      <app-loader *ngIf="showLoader"></app-loader>
+      <button *ngIf="!showLoader" type="submit" class="btn" >Asignar horario</button>
 
     </form>
 </main>

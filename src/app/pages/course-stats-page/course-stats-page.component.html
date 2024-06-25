@@ -1,6 +1,8 @@
-<app-loader *ngIf="loading" class="loading"></app-loader>
 
-<article *ngIf="courseStats">
+<article *ngIf="loading" >
+<app-loader  class="loading"></app-loader>
+</article>
+<article *ngIf="courseStats && !loading">
     <h2>Estadisticas del curso</h2>
     <div class="img-container">
         <img src="{{courseStats.image}}">

@@ -33,9 +33,8 @@ export class ProfileFormComponent {
   closeDeleteUserModal() {
     this.showDeleteUserModal = false
   }
-  checkAdmin(){
-    return this.user.isAdmin
-  }
+  checkAdmin = () => this.user.isAdmin
+
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files.length > 0) {
@@ -84,18 +83,20 @@ export class ProfileFormComponent {
 
   saveUser() {
     console.log(this.user)
+    this.loading = true
     this.userService.updateUser(this.user,this.selectedFile)
     .pipe(
       catchError((error) => {
         console.log(error)
         error.error.status = 401
         error.error.message = 'No se pudo actualizar usuario'
+        this.loading = false
         return this.notificationService.handleError(error)
       })
-
     )
   .subscribe(user => {
       console.log(user)
+      this.loading = false
       this.refreshUser()
       this.notificationService.notify(200, 'Usuario actualizado')
     })
@@ -105,12 +106,14 @@ export class ProfileFormComponent {
   deleteUser() {
     console.log(this.user)
     console.log(this.userService.deleteAccount(this.user))
+    this.loading = true
     this.userService.deleteAccount(this.user)
     .pipe(
       catchError((error) => {
         console.log(error)
         error.error.status = 401
         error.error.message = 'No se pudo eliminar el usuario'
+        this.loading = false
         return this.notificationService.handleError(error)
       })
 
@@ -119,6 +122,7 @@ export class ProfileFormComponent {
       console.log(user)
       this.userService.localLogOut()
       this.notificationService.notify(200, 'Usuario eliminado')
+      this.loading = false
       this.router.navigate(['/'])
       })
       // TODO: Guardar User

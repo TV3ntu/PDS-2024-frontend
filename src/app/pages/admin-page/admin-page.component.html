@@ -1,5 +1,7 @@
-<app-loader *ngIf="loading" class="loading"></app-loader>
-<main class="admin-panel">
+<main *ngIf="loading" class="admin-panel">
+    <app-loader  class="loading"></app-loader>
+</main>
+<main *ngIf="!loading" class="admin-panel">
     <div class="admin-buttons">
         <h2>Panel de administrador</h2>
         <!-- <div class="admin-metrics">

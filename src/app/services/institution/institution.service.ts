@@ -4,6 +4,7 @@ import { path } from '../api.path'
 import { HttpClient } from '@angular/common/http'
 import { Course } from 'src/app/models/course'
 import { Institution } from 'src/app/models/institution'
+import environment from 'src/environment'
 interface InstitutionResponse{
   title:string
   id:string
@@ -18,7 +19,7 @@ interface InstitutionResponse{
   providedIn: 'root'
 })
 export class InstitutionService {
-  path: string = path.local + '/api/institutions'
+  path: string = `${environment.apiUrl}/api/institutions`
 
   constructor(private http: HttpClient) {  }
 

@@ -40,7 +40,8 @@
             </div>
         </div>
 
-        <button type="submit" class="btn">Ingresar</button>
+        <button *ngIf="!showLoader" type="submit" class="btn">Ingresar</button>
+        <app-loader *ngIf="showLoader"></app-loader>
         <button (click)="goToRegister()" class="btn btn-secondary register">Registrarse</button>
       </form>
 </main>

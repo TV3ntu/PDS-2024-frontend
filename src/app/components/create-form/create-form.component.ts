@@ -32,6 +32,7 @@ export class CreateFormComponent {
   }
   selectedFile: File | null = null
   currentUser: User | null = null
+  showLoader = false
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -54,6 +55,7 @@ export class CreateFormComponent {
   }
 
   onSubmit() {
+    this.showLoader = true
     if ( this.isCourseForm ) {
       const course = new Course('', this.form.name, this.form.description, this.form.image, this.form.category, [])
       course.institutionId = this.form.institution
@@ -64,12 +66,14 @@ export class CreateFormComponent {
             console.log(error)
             error.error.status = 401
             error.error.message = 'No se pudo crear el curso'
+            this.showLoader = false
             return this.notificationService.handleError(error)
           })
       )
       .subscribe((data)=>{
         console.log(data)
         this.router.navigate(['/admin'])
+        this.showLoader = false
         this.notificationService.notify(200, "Curso creado exitosamente!")
       })
     } else {
@@ -81,6 +85,7 @@ export class CreateFormComponent {
             console.log(error)
             error.error.status = 401
             error.error.message = 'No se pudo crear la institución'
+            this.showLoader = false
             return this.notificationService.handleError(error)
           })
       )
@@ -91,16 +96,20 @@ export class CreateFormComponent {
             .pipe(
               catchError((error) => {
                 console.log(error)
+                this.showLoader = false
                 this.userService.localLogOut()
                 return this.notificationService.handleError(error)
               })
           )
           .subscribe(()=>{
+            this.showLoader = false
             this.router.navigate(['/ingresar'])
           })
         }else{
+          this.showLoader = false
           this.router.navigate(['/admin'])
         }
+        this.showLoader = false
         this.notificationService.notify(200, "Institución creada exitosamente!")
       })
     }
@@ -113,15 +122,18 @@ export class CreateFormComponent {
   }
 
   getInstitutions(){
+    this.showLoader = true
     this.institutionService.getAllAdmin()
       .pipe(
         catchError((error) => {
           console.log(error)
           error.error.status = 401
+          this.showLoader = false
           return this.notificationService.handleError(error)
         })
       )
     .subscribe(institutions => {
+        this.showLoader = false
         this.institutions = institutions.map(institution => {return {name:institution.name, id:institution.id}})
     })
   }
