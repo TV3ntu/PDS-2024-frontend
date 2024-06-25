@@ -4,6 +4,7 @@ import { Entity } from 'src/app/models/entity';
 import { CourseService } from 'src/app/services/course/course.service'
 import { InstitutionService } from 'src/app/services/institution/institution.service'
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import {Review} from "../../models/review";
 
 @Component({
   selector: 'app-entity-detail',
@@ -12,6 +13,8 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class EntityDetailComponent {
   entity: Entity | undefined
+  courseReviews: Review[] = []
+  courseRating: number = 0
   courseId: string = ''
   institutionId: string = ''
   showAssignmentsModal: boolean = false
@@ -58,6 +61,8 @@ export class EntityDetailComponent {
       }
       this.entity = transformedCourse
       this.loading = false
+      this.courseReviews = transformedCourse.reviews
+      this.courseRating = transformedCourse.rating
     })
   }
 

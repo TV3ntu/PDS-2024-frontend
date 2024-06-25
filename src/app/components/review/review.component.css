@@ -1,0 +1,18 @@
+.review-overlay {
+  display: flex;
+  flex-direction: column;
+  border: 0.1rem solid var(--primary-color);
+  padding: 1rem;
+  border-radius: var(--primary-border-radius);
+}
+
+.review-rating {
+  color: var(--primary-color);
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.review-rating .star {
+  color: gold;
+  margin-left: 0.2rem;
+}

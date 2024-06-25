@@ -44,6 +44,7 @@ import { DatePipe } from '@angular/common';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { UsersModalComponent } from './components/users-modal/users-modal.component';
+import { ReviewComponent } from './components/review/review.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { UsersModalComponent } from './components/users-modal/users-modal.compon
     SubscribeModalComponent,
     ReviewModalComponent,
     LoaderComponent,
-    UsersModalComponent
+    UsersModalComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
