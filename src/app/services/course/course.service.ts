@@ -15,7 +15,7 @@ interface CourseResponse{
   category: string
   assignments: Assignment[]
   reviews: Review[]
-  rating: number
+  averageRating: number
 }
 @Injectable({
   providedIn: 'root'
