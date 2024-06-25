@@ -33,5 +33,6 @@
       </div>
     </div>
 
-    <button type="submit" class="btn" [disabled]="myForm.invalid">Registrarse</button>
+    <app-loader *ngIf="showLoader"></app-loader>
+    <button type="submit" *ngIf="!showLoader" class="btn" [disabled]="myForm.invalid">Registrarse</button>
 </form>

@@ -18,13 +18,13 @@ export class LoginPageComponent {
   @ViewChild('loginForm') loginForm!: NgForm
   user: UserLogin = {email: '', password: ''}
   errorMessage: string = ''
-
+  showLoader = false
   constructor(private router: Router,private userService:UserService,private notificationService: NotificationService) { }
 
   login(e:Event) {
     e.preventDefault()
     this.errorMessage = ''
-
+    this.showLoader = true
     this.userService.login(this.user.email, this.user.password)
     .pipe(
       catchError((error) => {
@@ -32,6 +32,7 @@ export class LoginPageComponent {
         this.errorMessage = error.message
         error.error.status = 401
         error.error.message = 'Usuario o contraseña incorrectos'
+        this.showLoader = false
         return this.notificationService.handleError(error)
       })
     )
@@ -39,6 +40,7 @@ export class LoginPageComponent {
       (response) => {
         console.log(response)
         this.notificationService.notify(200, 'Inicio de sesión exitoso')
+        this.showLoader = false
         this.router.navigate(['/instituciones'])
       }
     )
