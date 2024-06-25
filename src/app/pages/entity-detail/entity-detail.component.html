@@ -6,10 +6,13 @@
         <img [src]="entity?.image" alt="entity?.name">
 
         <section>
-            <span *ngIf="!isInstitution()" class="course-rating">
-              {{ courseRating }} <i [ngClass]="{ 'without-rating': courseRating == 0 }" class="fa fa-star star"></i>
-            </span>
             <h2>{{ entity?.title }}</h2>
+            <span *ngIf="!isInstitution() && hasReviews()" class="course-rating">
+              {{ courseRating }} <i class="fa fa-star star"></i>
+            </span>
+            <span *ngIf="!isInstitution() && !hasReviews()" class="course-rating">
+                <i class="fa fa-star star without-rating"></i> Sin reseñas
+            </span>
             <span class="header-category">{{entity?.category}}</span>
             <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
 
