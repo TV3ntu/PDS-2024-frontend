@@ -43,5 +43,6 @@
     </div>
   </div>
 
-  <button type="submit" class="btn" [disabled]="myForm.invalid">Crear</button>
+  <app-loader *ngIf="showLoader"></app-loader>
+  <button *ngIf="!showLoader" type="submit" class="btn" [disabled]="myForm.invalid">Crear</button>
 </form>
