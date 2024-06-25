@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user/user.service';
 import { Institution } from 'src/app/models/institution'
 import { CourseService } from 'src/app/services/course/course.service'
 import { Component } from '@angular/core'
@@ -7,6 +8,7 @@ import { Course } from "../../models/course"
 import {InstitutionService} from "../../services/institution/institution.service"
 import { catchError } from 'rxjs'
 import { NotificationService } from 'src/app/services/notification/notification.service'
+import { User } from 'src/app/models/user'
 
 interface CoruseInstitution{
   name: string
@@ -29,8 +31,15 @@ export class CreateFormComponent {
     institution: ''
   }
   selectedFile: File | null = null
-
-  constructor(private http: HttpClient, private router: Router, private institutionService: InstitutionService,private courseService:CourseService,private notificationService:NotificationService) {}
+  currentUser: User | null = null
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private institutionService: InstitutionService,
+    private courseService:CourseService,
+    private notificationService:NotificationService,
+    private userService:UserService
+  ) {}
 
   ngOnInit() {
     const currentUrl = this.router.url
@@ -38,6 +47,10 @@ export class CreateFormComponent {
       this.isCourseForm = true
       this.getInstitutions()
     }
+    this.refreshUser()
+  }
+  refreshUser(){
+    this.currentUser = this.userService.getLoggedUser()
   }
 
   onSubmit() {
@@ -61,7 +74,7 @@ export class CreateFormComponent {
       })
     } else {
       const inst = new Institution('', this.form.name, this.form.description, this.form.image, this.form.category, [])
-      console.log(inst)
+      let wasAdmin = this.currentUser?.isAdmin
       this.institutionService.create(inst,this.selectedFile!)
       .pipe(
           catchError((error) => {
@@ -73,7 +86,21 @@ export class CreateFormComponent {
       )
       .subscribe((data)=>{
         console.log(data)
-        this.router.navigate(['/admin'])
+        if(!wasAdmin){
+          this.userService.logout()
+            .pipe(
+              catchError((error) => {
+                console.log(error)
+                this.userService.localLogOut()
+                return this.notificationService.handleError(error)
+              })
+          )
+          .subscribe(()=>{
+            this.router.navigate(['/ingresar'])
+          })
+        }else{
+          this.router.navigate(['/admin'])
+        }
         this.notificationService.notify(200, "Institución creada exitosamente!")
       })
     }
