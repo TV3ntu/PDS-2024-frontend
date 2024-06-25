@@ -48,7 +48,27 @@
   right: 0;
   z-index:20;
 }
+.form-overlay .create-institution{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
+.form-overlay .create-institution a{
+  width: 100%;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.form-overlay .create-institution h4{
+  font-size: 1.5rem;
+  color: var(--danger-color);
+  text-align: center;
+}
 
 .form-group {
   display: flex;

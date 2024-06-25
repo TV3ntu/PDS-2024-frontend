@@ -36,9 +36,6 @@
 
   </div>
 
-  <a *ngIf="!checkAdmin()" (onload)="!checkAdmin()" routerLink="/admin/institucion/agregar">
-    ¿Quieres crear una institución?
-  </a>
 
   <div class="credits">
     <label>Creditos en cuenta</label>
@@ -69,8 +66,15 @@
   </form>
   <div class="btn-container">
     <button type="submit" class="btn">Guardar</button>
-    <button (click)="deleteUserModal()" type="button" class="btn danger">Eliminar cuenta</button>
+    <div *ngIf="!checkAdmin()" class="create-institution">
+      <a  class="btn btn-secondary" (onload)="!checkAdmin()" routerLink="/admin/institucion/agregar">
+        ¿Quieres crear una institución?
+      </a>
+      <h4>Si crea una institución, su perfil será adminsitrador y deberá volver a iniciar su sesión.</h4>
+    </div>
+    <button *ngIf="!checkAdmin()" (click)="deleteUserModal()" type="button" class="btn danger">Eliminar cuenta</button>
   </div>
+
 
   <form #deleteUserForm="ngForm" class="credits-modal" *ngIf="showDeleteUserModal" (ngSubmit)="deleteUser()">
     <div class="form-group">
