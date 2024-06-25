@@ -95,6 +95,10 @@
   justify-content: flex-end;
 }
 
+.without-rating {
+  color: var(--light-gray-color);
+}
+
 
 
 @media (min-width: 660px) {

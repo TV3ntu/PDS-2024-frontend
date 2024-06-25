@@ -16,8 +16,8 @@ export class EntityCardComponent{
   institutionId: string = ''
   courseId: string = ''
   mode: string = ''
-  
 
+  
   constructor(private router:Router, private activatedRoute:ActivatedRoute, private institutionService:InstitutionService,
               private courseService:CourseService, private notificationService: NotificationService, private userService: UserService) { }
 
