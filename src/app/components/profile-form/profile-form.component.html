@@ -64,14 +64,14 @@
     <button type="submit" class="btn">Agregar</button>
     <button type="button" (click)="closeModal()" class="btn btn-secondary">Cancelar</button>
   </form>
+  <div *ngIf="!checkAdmin()" class="create-institution">
+    <a  class="btn btn-tertiary" mat-raised-button routerLink="/admin/institucion/agregar">
+      Quiero crear una institución
+    </a>
+    <h4>Si crea una institución, su perfil será adminsitrador y deberá volver a iniciar su sesión.</h4>
+  </div>
   <div class="btn-container">
     <button type="submit" class="btn">Guardar</button>
-    <div *ngIf="!checkAdmin()" class="create-institution">
-      <a  class="btn btn-secondary" (onload)="!checkAdmin()" routerLink="/admin/institucion/agregar">
-        ¿Quieres crear una institución?
-      </a>
-      <h4>Si crea una institución, su perfil será adminsitrador y deberá volver a iniciar su sesión.</h4>
-    </div>
     <button *ngIf="!checkAdmin()" (click)="deleteUserModal()" type="button" class="btn danger">Eliminar cuenta</button>
   </div>
 

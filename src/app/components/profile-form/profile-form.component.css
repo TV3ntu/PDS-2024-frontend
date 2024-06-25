@@ -59,9 +59,10 @@
 .form-overlay .create-institution a{
   width: 100%;
   text-align: center;
-  color: var(--primary-color);
+  color: var(--light-color);
   font-size: 1.5rem;
   text-decoration: none;
+  background-color: var(--primary-color-lighter-2);
 }
 
 .form-overlay .create-institution h4{
@@ -134,7 +135,7 @@
   align-items: center;
   width:100%;
   gap: 1rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   margin: auto;
 }
 
