@@ -43,6 +43,7 @@ export class assignmentPageComponent {
   newTimeOnPage: boolean=true
   courseId: string = ''
 
+  showLoader = false
 
   assignment: NewAssignment = {
     id:'',
@@ -60,7 +61,7 @@ export class assignmentPageComponent {
   }
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private assignmentService:AssignmentService, 
+              private assignmentService:AssignmentService,
               private notificationService: NotificationService,
               private datePipe: DatePipe
             ) {}
@@ -84,17 +85,18 @@ export class assignmentPageComponent {
     this.setSchedule()
     console.log(e)
     console.log(this.assignment)
-
+    this.showLoader = true
     this.assignmentService.create(this.assignment,this.courseId)
       .pipe(
         catchError((error) => {
           console.log(error)
           error.error.status = 401
+          this.showLoader = false
           return this.notificationService.handleError(error)
         })
       )
-
       .subscribe((data)=>{
+        this.showLoader = false
         this.notificationService.notify(200, "Horario creado!")
         this.router.navigate(['/admin/curso/' + this.courseId])
       })
@@ -116,25 +118,19 @@ export class assignmentPageComponent {
     console.log(this.assignment.schedule)
   }
 
-  checkQuantityValue(){
-    return this.assignment.quantityAvailable==0
-  }
+  checkQuantityValue = () =>  this.assignment.quantityAvailable==0
 
-  checkPriceValue(){
-    return this.assignment.price==0
-  }
+  checkPriceValue = () => this.assignment.price==0
 
+  //assign the startDate like the minimun value possible in the form
+  minEndDateValue = () =>  this.datePipe.transform(this.assignment.endDate, 'yyyy-MM-dd')
 
-  minEndDateValue(){
-    //assign the startDate like the minimun value possible in the form
-    return this.datePipe.transform(this.assignment.endDate, 'yyyy-MM-dd')
-  }
 
   minStartDateValue(){
     //assign the current date how the minimun value possible in the form
-      let tomorrowDate= new Date()  
+      let tomorrowDate= new Date()
       tomorrowDate.setDate(tomorrowDate.getDate() + 1)
-      return this.datePipe.transform(tomorrowDate, 'yyyy-MM-dd')     
+      return this.datePipe.transform(tomorrowDate, 'yyyy-MM-dd')
   }
 
   checkStartDateValue(){
@@ -151,8 +147,7 @@ export class assignmentPageComponent {
     return endDateInput<=startDateInput
   }
 
-  minEndTimeValue(){
-    //devuelve si la fecha de comienzo es posterior a la decha de comienzo
-    return this.assignment.startTime>this.assignment.endTime
-  }
+  //devuelve si la fecha de comienzo es posterior a la decha de comienzo
+  minEndTimeValue = () =>  this.assignment.startTime>this.assignment.endTime
+
 }
