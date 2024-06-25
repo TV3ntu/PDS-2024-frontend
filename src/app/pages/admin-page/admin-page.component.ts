@@ -95,5 +95,5 @@ export class AdminPageComponent {
   }
 
   hasCourses = () => this.courses.length > 0
-
+  hasInstitutions = () => this.institutions.length > 0
 }

@@ -8,7 +8,7 @@
             <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-users'" ></app-admin-button>
         </div> -->
         <app-admin-button [style]="'button'" [type]="'institucion'" ></app-admin-button>
-        <app-admin-button [style]="'button'" [type]="'curso'" ></app-admin-button>
+        <app-admin-button *ngIf="hasInstitutions()" [style]="'button'" [type]="'curso'" ></app-admin-button>
     </div>
     <div class="admin-metrics">
         <h2 *ngIf="hasCourses()">Cursos</h2>
@@ -27,7 +27,8 @@
                 </button>
             </div>
         </div>
-        <h2>Instituciones</h2>
+        <h2 *ngIf="hasInstitutions()">Instituciones</h2>
+        <h2 *ngIf="!hasInstitutions()">No tiene instituciones asociadas</h2>
         <div  *ngFor="let i of institutions" class="entity">
             <div class="main-info">
                 <h3>{{i.title}}</h3>
