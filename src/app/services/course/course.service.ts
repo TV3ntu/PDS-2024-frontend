@@ -5,6 +5,7 @@ import { path } from '../api.path'
 import { HttpClient,HttpParams } from '@angular/common/http'
 import { Assignment } from 'src/app/models/assignment'
 import { ReviewRequest } from 'src/app/models/reviewRequest'
+import {Review} from "../../models/review";
 
 interface CourseResponse{
   id: string
@@ -13,6 +14,8 @@ interface CourseResponse{
   image: string
   category: string
   assignments: Assignment[]
+  reviews: Review[]
+  rating: number
 }
 @Injectable({
   providedIn: 'root'
