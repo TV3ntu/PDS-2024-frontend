@@ -53,6 +53,7 @@ export class AdminPageComponent {
         return {
             ...institution,  // Copia todas las propiedades existentes
             title: institution.name,
+            averageRating: 0
         }
       })
       this.institutions = transformedInstitutions;
