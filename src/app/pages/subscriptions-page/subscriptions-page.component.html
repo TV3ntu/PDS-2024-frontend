@@ -1,4 +1,4 @@
-<main *ngIf="hasSuscriptions()">
+<main *ngIf="hasSuscriptions() && !loading">
     <section class="subscription">
         <h3>Suscripciones</h3>
         <article *ngFor="let sub of filterByStatus('CONFIRMED')">
@@ -13,8 +13,9 @@
     </section>
 </main>
 
-<main *ngIf="!hasSuscriptions()">
+<main *ngIf="!hasSuscriptions() && !loading">
     <h2>Aún no tiene suscripciones</h2>
 </main>
-
-<app-loader *ngIf="loading" class="loading"></app-loader>
+<main *ngIf="loading">
+    <app-loader class="loading"></app-loader>
+</main>
