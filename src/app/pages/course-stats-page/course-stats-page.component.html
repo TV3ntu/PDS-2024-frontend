@@ -30,7 +30,7 @@
                 <div>
                     {{translateDay(c.name)}} | {{c.schedule.startTime.slice(0,5)}} - {{c.schedule.endTime.slice(0,5)}}
                 </div>
-    
+
                 <div>
                     De {{c.schedule.startDate}} a {{c.schedule.endDate}}
                 </div>
@@ -44,10 +44,14 @@
                 </div>
             </section>
             <section>
-                <button class="delete-button" mat-icon-button (click)="deleteAssignment(c.id)">
+                <button (click)="openModal(c.id)" mat-icon-button>
+                  <mat-icon class="users-icon">person</mat-icon>
+                </button>
+              <button class="delete-button" mat-icon-button (click)="deleteAssignment(c.id)">
                   <mat-icon class="delete-icon">delete</mat-icon>
                 </button>
             </section>
         </div>
     </section>
+    <app-users-modal *ngIf="showModal" [users]="users" (closeModalEvent)="closeModal()"></app-users-modal>
 </article>
