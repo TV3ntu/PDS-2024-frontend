@@ -43,7 +43,13 @@ export class EntityListComponent {
     this.loading = true
     this.courseService.getAll(this.filter)
     .subscribe(courses => {
-      this.entityList = courses
+      const transformedCourses = courses.map(course => {
+        return {
+            ...course,  // Copia todas las propiedades existentes
+            averageRating: course.averageRating,
+        }})
+
+      this.entityList = transformedCourses
       this.loading = false
     })
   }
@@ -56,6 +62,7 @@ export class EntityListComponent {
         return {
             ...institution,  // Copia todas las propiedades existentes
             title: institution.name,
+            averageRating: 0
         }
       })
       this.entityList = transformedInstitutions;

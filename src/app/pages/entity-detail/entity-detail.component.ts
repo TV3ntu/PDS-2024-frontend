@@ -57,12 +57,13 @@ export class EntityDetailComponent {
         ...course,
         title: course.title,
         name: '',
-        children: course.assignments
+        children: course.assignments,
+        averageRating: course.averageRating
       }
       this.entity = transformedCourse
       this.loading = false
       this.courseReviews = transformedCourse.reviews
-      this.courseRating = transformedCourse.rating
+      this.courseRating = transformedCourse.averageRating
     })
   }
 
@@ -73,7 +74,8 @@ export class EntityDetailComponent {
       const transformedInstitution = {
         ...institution,
         title: institution.name,
-        children: institution.courses
+        children: institution.courses,
+        averageRating: 0
       }
       this.entity = transformedInstitution
       this.loading = false
@@ -89,6 +91,8 @@ export class EntityDetailComponent {
   closeAssignmentsModal(){
     this.showAssignmentsModal = false
   }
+
+  hasReviews = () => this.courseReviews.length > 0
 
 
 }
