@@ -5,12 +5,13 @@ import {NewUser, User} from "../../models/user"
 import { Course } from 'src/app/models/course'
 import { Assignment } from 'src/app/models/assignment'
 import { Reserve } from 'src/app/models/reserve'
+import environment from 'src/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  serverUrl = 'http://localhost:8080'
+  serverUrl = `${environment.apiUrl}`
   public currentUser: User | null = null
 
   constructor(private http: HttpClient) {}

@@ -6,6 +6,7 @@ import { HttpClient,HttpParams } from '@angular/common/http'
 import { Assignment } from 'src/app/models/assignment'
 import { ReviewRequest } from 'src/app/models/reviewRequest'
 import {Review} from "../../models/review";
+import environment from 'src/environment'
 
 interface CourseResponse{
   id: string
@@ -21,7 +22,7 @@ interface CourseResponse{
   providedIn: 'root'
 })
 export class CourseService {
-  path: string = path.local + '/api/courses'
+  path: string = `${environment.apiUrl}/api/courses`
 
   constructor(private http: HttpClient) {  }
 

@@ -4,12 +4,14 @@ import {Observable } from "rxjs"
 import { Assignment } from 'src/app/models/assignment'
 import { path } from '../api.path'
 import {BasicUser, User} from 'src/app/models/user'
-import {Course} from "../../models/course";
+import environment from 'src/environment'
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentService {
-  path = 'http://localhost:8080/api/assignments'
+  path = `${environment.apiUrl}/api/assignments`
 
   constructor(private http:HttpClient) {  }
 
