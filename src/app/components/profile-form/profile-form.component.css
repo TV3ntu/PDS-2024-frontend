@@ -48,7 +48,28 @@
   right: 0;
   z-index:20;
 }
+.form-overlay .create-institution{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
 
+.form-overlay .create-institution a{
+  width: 100%;
+  text-align: center;
+  color: var(--light-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+  background-color: var(--primary-color-lighter-2);
+}
+
+.form-overlay .create-institution h4{
+  font-size: 1.5rem;
+  color: var(--danger-color);
+  text-align: center;
+}
 
 .form-group {
   display: flex;
@@ -114,7 +135,7 @@
   align-items: center;
   width:100%;
   gap: 1rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   margin: auto;
 }
 

@@ -1,4 +1,6 @@
-<app-loader *ngIf="loading" class="loading"></app-loader>
+<main *ngIf="loading">
+    <app-loader class="loading"></app-loader>
+</main>
 <main *ngIf="!loading">
     <header>
         <img [src]="entity?.image" alt="entity?.name">
