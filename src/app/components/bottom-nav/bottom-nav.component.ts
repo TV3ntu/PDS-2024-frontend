@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {User} from '../../models/user';
 import {UserService} from "../../services/user/user.service";
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { catchError, Subscription } from 'rxjs';
@@ -46,7 +45,6 @@ export class BottomNavComponent {
 
   logOut() {
     this.activeButton = 'logOut';
-    this.goTo("instituciones")
     this.userService.logout()
     .pipe(
       catchError((error) => {
@@ -55,7 +53,10 @@ export class BottomNavComponent {
         return this.notificationService.handleError(error)
       })
     )
-    .subscribe(() => this.notificationService.notify(200, 'Sesión cerrada'))
+    .subscribe(() => {
+      this.goTo("instituciones")
+      this.notificationService.notify(200, 'Sesión cerrada')
+    })
     this.isLogged = false
   }
 

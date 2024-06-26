@@ -13,7 +13,9 @@ export class HomePageComponent {
 
   constructor(private userService: UserService, private router:Router,private notificationService:NotificationService) {
     this.notificationService.notification$.subscribe(()=>{
-      this.userService.refreshUser()
+      if (this.userService.isLogged()) {
+        this.userService.refreshUser()
+      }
     })
 
   }
