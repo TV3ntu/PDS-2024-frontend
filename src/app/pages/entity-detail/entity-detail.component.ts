@@ -58,7 +58,7 @@ export class EntityDetailComponent {
         title: course.title,
         name: '',
         children: course.assignments,
-        averageRating: course.averageRating
+        averageRating: course.rating
       }
       this.entity = transformedCourse
       this.loading = false

@@ -95,6 +95,10 @@
   justify-content: flex-end;
 }
 
+.star {
+  color: gold;
+  font-size: 1.4rem;
+}
 .without-rating {
   color: var(--light-gray-color);
 }
