@@ -27,8 +27,8 @@ export class ReserveCardComponent {
   getDay = () => new Date(this.reserve!.date).getDay()+1
 
   getDayOnMonthFormat = () => {
-    console.log(new Date(this.reserve!.date).getDate()+1)
-    return new Date(this.reserve!.date).getDate()+1
+    console.log(this.reserve!.date.substring(8, 10))
+    return this.reserve!.date.substring(8, 10)
   }
 
 
