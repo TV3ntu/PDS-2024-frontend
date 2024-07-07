@@ -1,3 +1,3 @@
 export const path = {
-    local: 'http://localhost:8080',
+    local: 'http://149.50.141.196:8080',
 }
