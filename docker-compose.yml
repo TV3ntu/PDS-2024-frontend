@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    container_name: frontend
+    image: frontend
+    ports:
+      - "4200:4200"
