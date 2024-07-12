@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { Router } from '@angular/router';
 import {UserService} from "../../services/user/user.service";
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -24,6 +24,14 @@ export class BottomNavComponent {
   goTo(route: string){
     this.activeButton = route;
     this.router.navigate([`/${route}`])
+    this.scrollToTop()
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
   }
 
   ngOnInit(): void {
