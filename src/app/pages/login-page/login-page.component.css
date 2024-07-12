@@ -76,6 +76,7 @@ main{
 
   .fa-eye {
     padding: 9px;
+    justify-items: flex-end;
     border: 1px;
     border: 2px solid var(--primary-color);
     border-left: 0px;
@@ -88,7 +89,11 @@ main{
     }
 
     .form-pwd-input {
-      width: 45%;
+      width: 46%;
+    }
+
+    .fa-eye{
+      width: 4%;
     }
 
     main{
