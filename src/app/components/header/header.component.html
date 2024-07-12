@@ -1,5 +1,5 @@
 <header>
-    <h1><img src="/assets/weekbook-logo.png" alt='WeekBook' >WeekBook</h1>
+    <h1><img src="/assets/weekbook-logo.png" (click)="goTo('instituciones')" alt='WeekBook' >WeekBook</h1>
     <div class="icon-container">
       <div *ngIf="isLogged" class="user-data-container">{{user?.name}}</div>
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
