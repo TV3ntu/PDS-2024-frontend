@@ -20,7 +20,8 @@ export class LoginPageComponent {
   errorMessage: string = ''
   showLoader = false
   constructor(private router: Router,private userService:UserService,private notificationService: NotificationService) { }
-
+  displayPwd = false;
+  
   login(e:Event) {
     e.preventDefault()
     this.errorMessage = ''
@@ -48,5 +49,9 @@ export class LoginPageComponent {
 
   goToRegister(){
     this.router.navigate(['/register'])
+  }
+
+  toggleVisibility(): void {
+    this.displayPwd = !this.displayPwd;
   }
 }

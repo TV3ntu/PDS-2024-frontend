@@ -20,11 +20,28 @@ main{
     width: 100%;
   }
 
+  .form-pwd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .form-pwd-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.2rem solid var(--primary-color);
+    border-right: 0px;
+  }
+
   .form-input {
     width: 100%;
     padding: 0.5rem;
     border: 0.2rem solid var(--primary-color);
   }
+
+
 
   .btn {
     background-color: var(--primary-color);
@@ -49,13 +66,31 @@ main{
   small {
     color: var(--danger-color);
   }
+  
+  .clearFix{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 
+  .fa-eye {
+    padding: 9px;
+    border: 1px;
+    border: 2px solid var(--primary-color);
+    border-left: 0px;
+  }
   /* DESKTOP */
 
   @media (min-width: 769px) {
     .form-input {
       width: 50%;
     }
+
+    .form-pwd-input {
+      width: 45%;
+    }
+
     main{
       height: 80vh;
   }
