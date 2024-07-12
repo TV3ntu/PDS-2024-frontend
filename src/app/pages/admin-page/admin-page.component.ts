@@ -63,6 +63,14 @@ export class AdminPageComponent {
 
   goToStats(id: string){
     this.router.navigate([`/admin/curso/${id}`])
+    this.scrollToTop()
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
   }
 
   deleteCourse(idCourse: string | undefined) {
