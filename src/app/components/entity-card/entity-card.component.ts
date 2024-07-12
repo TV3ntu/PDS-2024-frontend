@@ -17,7 +17,7 @@ export class EntityCardComponent{
   courseId: string = ''
   mode: string = ''
 
-  
+
   constructor(private router:Router, private activatedRoute:ActivatedRoute, private institutionService:InstitutionService,
               private courseService:CourseService, private notificationService: NotificationService, private userService: UserService) { }
 
@@ -36,6 +36,14 @@ export class EntityCardComponent{
   navigateToDetail = (id:string|undefined) => {
     if(this.isInstitution()) this.router.navigate(['instituciones', this.entity?.id])
     if(!this.isInstitution()) this.router.navigate(['cursos', id])
+    this.scrollToTop()
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
   }
 
   goToButtonText=() => this.isInstitution() ? 'Ver cursos' : 'Más Detalles'
