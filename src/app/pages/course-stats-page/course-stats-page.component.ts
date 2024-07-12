@@ -61,6 +61,14 @@ export class CourseStatsPageComponent {
 
   goToCreateAssignment() {
     this.router.navigate([`/admin/${this.courseId}/clase/agregar`])
+    this.scrollToTop()
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
   }
 
   deleteAssignment(id: string){
@@ -87,6 +95,14 @@ export class CourseStatsPageComponent {
         this.users = user;
         this.showModal = true;
       })
+    this.scrollToTopSmooth()
+  }
+
+  scrollToTopSmooth(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   closeModal() {

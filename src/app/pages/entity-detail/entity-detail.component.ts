@@ -81,13 +81,23 @@ export class EntityDetailComponent {
       this.loading = false
     })
   }
+
   hasChildren = () => {
     console.log(this.entity?.children)
     return this.entity?.children?.length > 0}
 
   openAssignmentsModal = () => {
     this.showAssignmentsModal = true
+    this.scrollToTop()
   }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
   closeAssignmentsModal(){
     this.showAssignmentsModal = false
   }
