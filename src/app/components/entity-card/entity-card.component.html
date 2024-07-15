@@ -1,0 +1,21 @@
+<div class="card-container">
+  <mat-card class="institution-card">
+    <div class="mat-card-image-container">
+      <img class="mat-card-image" [ngClass]="{'cover':!isInstitution()}" [src]="entity?.image">
+    </div>
+
+    <mat-card-content class="institution-card-content">
+      <h2>{{entity?.title}}</h2>
+      <h3>{{entity?.category}}</h3>
+      <span *ngIf="!isInstitution() && entity?.averageRating!=0" class="course-rating">
+        {{ entity?.averageRating }} <i [ngClass]="{ 'without-rating': entity?.averageRating == 0 }" class="fa fa-star star"></i>
+      </span>
+      <span *ngIf="!isInstitution()&& entity?.averageRating==0" class="course-rating">
+        <i [ngClass]="{ 'without-rating': entity?.averageRating == 0 }" class="fa fa-star star"></i> Sin reseñas      </span>
+      <p>{{entity?.description}}</p>
+      <div class="institution-card-button">
+        <button mat-raised-button color="primary" (click)="navigateToDetail(entity?.id)">{{goToButtonText()}}</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

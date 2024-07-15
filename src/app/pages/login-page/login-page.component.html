@@ -1,0 +1,51 @@
+<main>
+    <form #loginForm="ngForm" class="form-overlay" (ngSubmit)="login($event)">
+
+        <h2>Ingresá para gestionar tus horarios</h2>
+
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            placeholder="jua.perez@hotmail.com"
+            id="email"
+            [(ngModel)]="user.email"
+            name="email"
+            required
+            class="form-input"
+            email
+            #emailField="ngModel"
+            >
+          <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
+            <small *ngIf="emailField.errors?.['required']">El email es obligatorio</small>
+            <small *ngIf="emailField.errors?.['email']">El email no es válido</small>
+          </div>
+        </div>
+
+        <div class="form-pwd">
+            <label for="password">Contraseña</label>
+            <div class="clearFix">
+            <input
+                [attr.type]="displayPwd ? 'text' : 'password'"
+                type="password"
+                placeholder="********"
+                id="password"
+                [(ngModel)]="user.password"
+                name="password"
+                required
+                class="form-pwd-input"
+                password
+                #passwordField="ngModel">
+                <i class="fa fa-eye" (click)="toggleVisibility()" aria-hidden="true"></i>
+            </div>    
+            <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
+              <small *ngIf="passwordField.errors?.['required']">La contraseña es obligatoria</small>
+            </div>
+        </div>
+
+        <button *ngIf="!showLoader" type="submit" class="btn">Ingresar</button>
+        <app-loader *ngIf="showLoader"></app-loader>
+        <button (click)="goToRegister()" class="btn btn-secondary register">Registrarse</button>
+      </form>
+</main>

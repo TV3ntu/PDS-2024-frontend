@@ -1,0 +1,77 @@
+:host{
+    width: 100%;
+}
+
+.assignment-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+article > h3{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 1rem 0;
+    margin: 0;
+    border-radius: 1rem;
+}
+article > h3 > .fa-chevron-down{
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+article.show > h3 > .fa-chevron-down{
+    transform: translateY(-50%) rotate(180deg);
+}
+
+article > section{
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out;
+}
+article.show > section{
+    max-height: 100vh;
+}
+
+article > section > ul{
+    padding: 1rem 0;
+    list-style: none;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-direction: column;
+    width: 100%;
+}
+
+li{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+}
+
+.secondary-button {
+    background-color: var(--light-color);
+    color: var(--danger-color);
+    border: 0.1rem solid var(--danger-color);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}

@@ -1,0 +1,102 @@
+main{
+    height: 90vh;
+}
+
+.form-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .form-pwd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .form-pwd-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.2rem solid var(--primary-color);
+    border-right: 0px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.2rem solid var(--primary-color);
+  }
+
+
+
+  .btn {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border: 0 none;
+    border-radius: var(--secondary-border-radius);
+    cursor: pointer;
+    min-width: 15rem;
+  }
+  .btn.btn-secondary{
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+  }
+
+  .register {
+    background-color: var(--dark-gray-color);
+  }
+
+  small {
+    color: var(--danger-color);
+  }
+  
+  .clearFix{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .fa-eye {
+    padding: 9px;
+    justify-items: flex-end;
+    border: 1px;
+    border: 2px solid var(--primary-color);
+    border-left: 0px;
+  }
+  /* DESKTOP */
+
+  @media (min-width: 769px) {
+    .form-input {
+      width: 50%;
+    }
+
+    .form-pwd-input {
+      width: 46%;
+    }
+
+    .fa-eye{
+      width: 4%;
+    }
+
+    main{
+      height: 80vh;
+  }
+  }

@@ -1,0 +1,48 @@
+<form class="form-overlay" (ngSubmit)="onSubmit()" #myForm="ngForm" novalidate>
+  <h2>{{ isCourseForm ? 'Crear Curso' : 'Crear Institución' }}</h2>
+
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input id="name" type="text" name="name" [(ngModel)]="form.name" class="form-input" required #name="ngModel">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+      <div *ngIf="name.errors?.['required']">El nombre es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <input id="description" type="text" name="description" [(ngModel)]="form.description" class="form-input" required #description="ngModel">
+    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+      <div *ngIf="description.errors?.['required']">La descripción es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Categoría</label>
+    <input id="category" type="text" name="category" [(ngModel)]="form.category" class="form-input" required #category="ngModel">
+    <div *ngIf="category.invalid && (category.dirty || category.touched)" class="error">
+      <div *ngIf="category.errors?.['required']">La categoría es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="image">Imagen</label>
+    <input id="image" type="file" name="image" (change)="onFileSelected($event)" [(ngModel)]="form.image" class="form-input" required #image="ngModel">
+    <div *ngIf="image.invalid && (image.dirty || image.touched)" class="error">
+      <div *ngIf="image.errors?.['required']">La imagen es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="isCourseForm">
+    <label for="institution">Institución</label>
+    <select id="institution" name="institution" [(ngModel)]="form.institution" class="form-input" required #institution="ngModel">
+      <option *ngFor="let institution of institutions" [value]="institution.id">{{ institution.name }}</option>
+    </select>
+    <div *ngIf="institution.invalid && (institution.dirty || institution.touched)" class="error">
+      <div *ngIf="institution.errors?.['required']">La institución es obligatoria</div>
+    </div>
+  </div>
+
+  <app-loader *ngIf="showLoader"></app-loader>
+  <button *ngIf="!showLoader" type="submit" class="btn" [disabled]="myForm.invalid">Crear</button>
+</form>

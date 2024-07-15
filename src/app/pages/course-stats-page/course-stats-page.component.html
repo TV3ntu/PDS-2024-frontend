@@ -1,0 +1,59 @@
+
+<article *ngIf="loading" >
+<app-loader  class="loading"></app-loader>
+</article>
+<article *ngIf="courseStats && !loading">
+    <h2>Estadisticas del curso</h2>
+    <div class="img-container">
+        <img src="{{courseStats.image}}">
+    </div>
+    <h4> {{courseStats.title}} </h4>
+    <section class="stats-container">
+        <div class="stats">
+            <p>Total clases</p>
+            {{courseStats.totalAssignments}}
+        </div>
+        <div class="stats">
+            <p>Total Inscripciones</p>
+            {{courseStats.totalSubscriptions}}
+        </div>
+        <div class="stats">
+            <p>Ingresos</p>
+            {{courseStats.totalIncome}}
+        </div>
+    </section>
+    <section class="assignments-container">
+        <div class="assignments-labels">
+          <h3>Clases</h3>
+          <button class="btn" (click)="goToCreateAssignment()">Agregar clase</button>
+        </div>
+        <div *ngFor="let c of courseStats.assignments" class="assignments-stats">
+            <section class="assignments">
+                <div>
+                    {{translateDay(c.name)}} | {{c.schedule.startTime.slice(0,5)}} - {{c.schedule.endTime.slice(0,5)}}
+                </div>
+
+                <div>
+                    De {{c.schedule.startDate}} a {{c.schedule.endDate}}
+                </div>
+                <div>
+                    Suscriptores:
+                    {{c.subscribers.length}}
+                </div>
+                <div>
+                    Ingresos:
+                    {{c.totalIncome}}
+                </div>
+            </section>
+            <section>
+                <button (click)="openModal(c.id)" mat-icon-button>
+                  <mat-icon class="users-icon">person</mat-icon>
+                </button>
+              <button class="delete-button" mat-icon-button (click)="deleteAssignment(c.id)">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+            </section>
+        </div>
+    </section>
+    <app-users-modal *ngIf="showModal" [users]="users" (closeModalEvent)="closeModal()"></app-users-modal>
+</article>

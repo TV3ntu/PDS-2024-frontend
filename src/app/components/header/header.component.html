@@ -1,0 +1,40 @@
+<header>
+    <h1 (click)="goTo('instituciones')"><img src="/assets/weekbook-logo.png" alt='WeekBook' >WeekBook</h1>
+    <div class="icon-container">
+      <div *ngIf="isLogged" class="user-data-container">{{user?.name}}</div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu" class="mat-menu">
+        <button *ngIf="isAdmin()" (click)="goTo('admin')" mat-menu-item>
+          <mat-icon>admin_panel_settings</mat-icon>
+          <span>Administrador</span>
+        </button>
+        <button (click)="goTo('instituciones')" mat-menu-item>
+          <mat-icon>domain</mat-icon>
+          <span>Instituciones</span>
+        </button>
+        <button (click)="goTo('cursos')" mat-menu-item>
+          <mat-icon>school</mat-icon>
+          <span>Cursos</span>
+        </button>
+        <button *ngIf="isLogged" (click)="goTo('suscripciones')" mat-menu-item>
+          <mat-icon>history_edu</mat-icon>
+          <span>Suscripciones</span>
+        </button>
+        <button *ngIf="isLogged" (click)="goTo('perfil')" mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span>Perfil</span>
+        </button>
+        <button class="log-out-button" *ngIf="isLogged" (click)="logOut()" mat-menu-item>
+          <mat-icon>close</mat-icon>
+          <span>Log Out</span>
+        </button>
+        <button *ngIf="!isLogged" mat-menu-item (click)="goTo('ingresar')" aria-label="log in or register">
+          <mat-icon>login</mat-icon>
+          <span>Ingresar</span>
+        </button>
+    </mat-menu>
+  </div>
+</header>

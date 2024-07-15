@@ -1,0 +1,13 @@
+<li *ngIf="assignment.isActive">
+    <div class="assignment-info">
+        <span class="text-bold">{{assignment.schedule.startTime.slice(0,5)}} a {{assignment.schedule.endTime.slice(0,5)}}</span>
+        <span>Lugares disponibles: <span class="text-bold">{{assignment.quantityAvailable}}</span></span>
+        <span>Costo de clase: <span class="text-bold">${{assignment.price}}</span></span>
+    </div>
+    <button *ngIf="!show()" type="button" (click)="toggleShowModal()"  mat-raised-button color="primary">Inscribirse</button>
+    <button *ngIf="show()" type="button" (click)="unsubscribe()"  mat-raised-button class="secondary-button">Desinscribirse</button>
+</li>
+
+<app-subscribe-modal *ngIf="showModal" [credits]="currentUser?.credits" [price]="assignment.price" 
+    (subscribe)="subscribe()" (closeModal)="toggleShowModal()">
+</app-subscribe-modal>

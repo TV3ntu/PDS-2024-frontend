@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #161718;
+    --primary-color-lighter: #036280;
+    --primary-color-lighter-2: #378BA4;
+    --secondary-color: #00a3ad;
+    --tertiary-color: #E8EDE7;
+    --danger-color: #b80909;
+    --danger-color-hover:#800606;
+    --success-color: #71b371;
+    --green-color: rgba(113, 179, 113, 0.5);
+    --warning-color: #e8d846;
+    --info-color: #0000ff;
+    --light-color: #ffffff;
+    --dark-gray-color: #2a2d32;
+    --light-gray-color: #afafaf;
+    --primary-font: Kanit, sans-serif;
+    --secondary-font: 'Montserrat', sans-serif;
+    --primary-font-size: 1.6rem;
+    --secondary-font-size: 1.4rem;
+    --primary-border-radius: 1rem;
+    --secondary-border-radius: 0.5rem;
+    --primary-border: 0.2rem solid var(--primary-color);
+    --primary-border_lighter: 0.2rem solid var(--primary-color-lighter);
+    --primary-border_gray: 0.2rem solid #d3d3d3;
+    --secondary-border: 0.1rem solid var(--secondary-color);
+    --secondary-border_lighter: 0.1rem solid var(--primary-color-lighter);
+    --tertiary-border: 0.5rem;
+    --primary-padding: 1rem;
+    --secondary-padding: 0.5rem;
+    --primary-margin: 1rem;
+    --secondary-margin: 0.5rem;
+    --primary-shadow: 0.2rem 0.1rem 6rem black;
+    --secondary-shadow: 0.1rem 0.1rem 0.5rem var(--secondary-color);
+    --primary-transition: all 0.3s ease-in-out;
+    --ambar-color: #ac977b;
+    --icon-yellow-color: #efb810;
+}
+
+* {
+    font-family: var(--primary-font);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 12px;
+}
+
+body{
+    min-height: 100vh;
+    position: relative;
+}
+
+app-root{
+    position: relative;
+}
+.date-picker{
+    position:relative;
+}
+button.mat-calendar-body-cell.special-date {
+    background-color: #673ab7;
+    border-radius: 100% ;
+  }
+  button.mat-calendar-body-cell.special-date span {
+    color: white ;
+  }
+  button.mat-calendar-body-cell.subscribed-date {
+    background-color: var(--green-color);
+    border-radius: 100% ;
+  }
+  .mat-datepicker-popup.cdk-overlay-pane{
+    top: 0;
+    left: 0;
+    transform: translate(20%,70%);
+  }
+h1,h2,h3,h4,h5,h6,p,span{
+    font-family: var(--primary-font) !important;
+    font-weight: normal;
+    margin: 0;
+}
+
+.text-bold{
+    font-weight: 600;
+}
+.text-success{
+    color: var(--success-color);
+}
+
+.bolder-text{
+    font-weight: 700;
+}
+
+.italic-text{
+    font-style: italic;
+}
+html { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-mdc-menu-panel{
+    padding: 1%;
+}
+.loading{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5rem;
+}
+@media (min-width: 700px) {
+    .mat-datepicker-popup.cdk-overlay-pane{
+        top: 50%;
+        left: 50%;
+        transform: translate(70%,70%);
+    }
+}
+
+@media (min-width: 1000px) {
+    .mat-datepicker-popup.cdk-overlay-pane{
+        transform: translate(120%,70%);
+    }
+}
+
+@media (min-width: 1200px) {
+    .mat-datepicker-popup.cdk-overlay-pane{
+        transform: translate(250%,70%);
+    }
+}

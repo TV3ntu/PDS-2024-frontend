@@ -1,0 +1,6 @@
+<app-loader *ngIf="loading" class="loading"></app-loader>
+<section *ngIf="!loading">
+    <h3>Resultados ({{entityList?.length}})</h3>
+    <app-entity-card *ngFor="let entity of entityList" [entity]="entity" (entityDeleted)="onEntityDeleted()">
+    </app-entity-card>
+</section>

@@ -1,0 +1,91 @@
+<form *ngIf="user && !loading" class="form-overlay" (ngSubmit)="saveUser()">
+
+  <h2>Datos del Perfil</h2>
+
+  <div class="avatarImage">
+    <img src="{{user.image}}" alt="user image" class="profile-image">
+    <img *ngIf="hasPreviewImage()" src="{{imagePreview}}" alt="preview image" class="preview-image">
+    <input id="image" type="file" name="image" (change)="onFileSelected($event)" class="form-input" hidden>
+    <i class="fa fa-pencil" (click)="triggerFileInput()"></i>
+  </div>
+
+
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input id="name" type="text" name="name" class="form-input" [(ngModel)]="user!.name" required #nameField="ngModel">
+    <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)">
+      <small *ngIf="nameField.errors?.['required']">El nombre es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Apellido</label>
+    <input id="lastName" type="text" name="lastname" class="form-input" [(ngModel)]="user!.lastName" required #lastnameField="ngModel">
+    <div *ngIf="lastnameField.invalid && (lastnameField.dirty || lastnameField.touched)">
+      <small *ngIf="lastnameField.errors?.['required']">El apellido es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" class="form-input" [(ngModel)]="user!.email" required email #emailField="ngModel">
+    <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)">
+      <small *ngIf="emailField.errors?.['required']">El email es obligatorio</small>
+      <small *ngIf="emailField.errors?.['email']">El email no es válido</small>
+    </div>
+
+  </div>
+
+
+  <div class="credits">
+    <label>Creditos en cuenta</label>
+    <h3>${{user.credits}}</h3>
+    <button (click)="showModal()" type="button"  mat-raised-button color="primary">Agregar crédito</button>
+  </div>
+
+  <form #creditForm="ngForm" class="credits-modal" *ngIf="showCreditModal" (ngSubmit)="addCredits(creditForm)">
+    <div class="form-group">
+      <label for="credit">Créditos</label>
+      <input
+        id="credit"
+        type="number"
+        name="credit"
+        class="form-input"
+        [(ngModel)]="creditsToAdd"
+        required
+        #creditField="ngModel"
+        min="1"
+      >
+      <div *ngIf="creditField.invalid && (creditField.dirty || creditField.touched)">
+        <small *ngIf="creditField.errors?.['required']">El crédito a agregar debe ser mayor a 0</small>
+        <small *ngIf="creditField.errors?.['min']">El crédito a agregar debe ser mayor a 0</small>
+      </div>
+    </div>
+    <button type="submit" class="btn">Agregar</button>
+    <button type="button" (click)="closeModal()" class="btn btn-secondary">Cancelar</button>
+  </form>
+  <div *ngIf="!checkAdmin()" class="create-institution">
+    <a  class="btn btn-tertiary" mat-raised-button routerLink="/admin/institucion/agregar">
+      Quiero crear una institución
+    </a>
+    <h4>Si crea una institución, su perfil será adminsitrador y deberá volver a iniciar su sesión.</h4>
+  </div>
+  <div class="btn-container">
+    <button type="submit" class="btn">Guardar</button>
+    <button *ngIf="!checkAdmin()" (click)="deleteUserModal()" type="button" class="btn danger">Eliminar cuenta</button>
+  </div>
+
+
+  <form #deleteUserForm="ngForm" class="credits-modal" *ngIf="showDeleteUserModal" (ngSubmit)="deleteUser()">
+    <div class="form-group">
+      <h3>¿Estas Seguro que quieres eliminar tu cuenta?</h3>
+      <button type="button" (click)="closeDeleteUserModal()" class="btn">Cancelar</button>
+      <button for="eliminar" type="button" (click)=deleteUser() class="btn danger">Eliminar</button>
+    </div>
+  </form>
+
+</form>
+
+<form class="loading-form" *ngIf="loading">
+  <app-loader></app-loader>
+</form>

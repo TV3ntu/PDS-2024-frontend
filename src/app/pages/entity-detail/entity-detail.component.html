@@ -1,0 +1,43 @@
+<main *ngIf="loading">
+    <app-loader class="loading"></app-loader>
+</main>
+<main *ngIf="!loading">
+    <header>
+        <img [src]="entity?.image" alt="entity?.name">
+
+        <section>
+            <h2>{{ entity?.title }}</h2>
+            <span *ngIf="!isInstitution() && hasReviews()" class="course-rating">
+              {{ courseRating }} <i class="fa fa-star star"></i>
+            </span>
+            <span *ngIf="!isInstitution() && !hasReviews()" class="course-rating">
+                <i class="fa fa-star star without-rating"></i> Sin reseñas
+            </span>
+            <span class="header-category">{{entity?.category}}</span>
+            <!-- <button mat-raised-button color="primary" (click)="goTo('cursos')">Ver cursos</button> -->
+
+            <p>{{ entity?.description }}</p>
+        </section>
+    </header>
+    <p *ngIf="isInstitution()">Resultados ({{entity?.children.length}})</p>
+    <section class="entity-list" *ngIf="isInstitution() && hasChildren()">
+            <app-entity-card *ngFor="let child of entity?.children" [entity]="child"></app-entity-card>
+    </section>
+    <section *ngIf="isInstitution() && !hasChildren()">
+        <p>No hay cursos disponibles</p>
+    </section>
+
+    <section class="button-container" *ngIf="!isInstitution() && hasChildren()">
+        <button mat-raised-button color="primary" (click)="openAssignmentsModal()">Ver horarios</button>
+    </section>
+    <section *ngIf="!isInstitution() && !hasChildren()">
+        <p>No hay horarios disponibles</p>
+    </section>
+    <app-assignments-modal *ngIf="showAssignmentsModal" [assignments]="entity?.children" (closeModal)="closeAssignmentsModal()"></app-assignments-modal>
+
+    <section *ngIf="!isInstitution()" class="review-container">
+      <h2>Comentarios</h2>
+      <p *ngIf="courseReviews.length == 0">Aún no existen comentarios sobre este curso</p>
+      <app-review *ngFor="let review of courseReviews" [review]="review"></app-review>
+    </section>
+</main>

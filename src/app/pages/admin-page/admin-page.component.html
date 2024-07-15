@@ -1,0 +1,46 @@
+<main *ngIf="loading" class="admin-panel">
+    <app-loader  class="loading"></app-loader>
+</main>
+<main *ngIf="!loading" class="admin-panel">
+    <div class="admin-buttons">
+        <h2>Panel de administrador</h2>
+        <!-- <div class="admin-metrics">
+            <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-chart-simple'" ></app-admin-button>
+            <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-calendar-days'" ></app-admin-button>
+            <app-admin-button [style]="'metric'" [icon]="'fa-solid fa-users'" ></app-admin-button>
+        </div> -->
+        <app-admin-button [style]="'button'" [type]="'institucion'" ></app-admin-button>
+        <app-admin-button *ngIf="hasInstitutions()" [style]="'button'" [type]="'curso'" ></app-admin-button>
+    </div>
+    <div class="admin-metrics">
+        <h2 *ngIf="hasCourses()">Cursos</h2>
+        <h2 *ngIf="!hasCourses()">No tiene cursos asociados</h2>
+        <div  *ngFor="let c of courses" class="entity">
+            <div class="main-info">
+                <h3>{{c.title}}</h3>
+                <span class="category">{{c.category}}</span>
+            </div>
+            <div class="entity-actions">
+                <button class="stats-button" mat-icon-button (click)="goToStats(c.id)">
+                    <mat-icon class="stats-icon">query_stats</mat-icon>
+                  </button>
+                <button class="delete-button" mat-icon-button (click)="deleteCourse(c.id)">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+            </div>
+        </div>
+        <h2 *ngIf="hasInstitutions()">Instituciones</h2>
+        <h2 *ngIf="!hasInstitutions()">No tiene instituciones asociadas</h2>
+        <div  *ngFor="let i of institutions" class="entity">
+            <div class="main-info">
+                <h3>{{i.title}}</h3>
+                <span class="category">{{i.category}}</span>
+            </div>
+            <div class="entity-actions">
+                <button class="delete-button" mat-icon-button (click)="deleteInstitution(i.id)">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</main>

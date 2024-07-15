@@ -1,0 +1,68 @@
+main{
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+app-search-bar{
+    width: 100%;
+}
+
+.reserve-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 2rem;
+}
+
+.reserve-cards{
+    display: flex;
+    gap: 1rem;
+}
+
+app-reserve-card{
+    width: 190%;
+}
+
+.reserve-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.admin-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 660px) {
+
+    main{
+        padding: 1rem 5rem;
+        min-height: 100vh;
+    }
+
+    .admin-buttons{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (min-width: 900px) {
+
+    main{
+        padding: 1rem 15rem;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    main{
+        padding: 1rem 20rem;
+    }
+}

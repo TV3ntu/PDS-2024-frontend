@@ -1,0 +1,63 @@
+header{
+    padding: 2%;
+    position: sticky;
+    top:0;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    height: 10vh;
+}
+header h1{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    font-family: Kanit, sans-serif;
+    color: var(--light-color);
+    cursor: pointer;
+}
+header img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+header button {
+    background-color: rgb(78, 78, 78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header button mat-icon{
+    color: var(--light-color);
+}
+.log-out-button{
+    border-radius: 0.5rem;
+    background-color: var(--danger-color);
+    color: var(--light-color);
+}
+.log-out-button:hover{
+    background-color: var(--danger-color-hover) !important;
+}
+.log-out-button mat-icon{
+    color: var(--light-color);
+}
+.icon-container{
+    display: flex;
+    width: 21%;
+    justify-content: flex-end;
+}
+.cdk-overlay-pane{
+    padding: 1%;
+}
+
+.user-data-container{
+    display: flex;
+    justify-items: flex;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    margin: auto;
+}
