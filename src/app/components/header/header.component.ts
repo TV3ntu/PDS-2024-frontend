@@ -24,6 +24,14 @@ export class HeaderComponent {
 
   goTo(route: string){
     this.router.navigate([`/${route}`])
+    this.scrollToTop()
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
   }
 
   ngOnInit(): void {

@@ -124,7 +124,8 @@ export class ProfileFormComponent {
       this.notificationService.notify(200, 'Usuario eliminado')
       this.loading = false
       this.router.navigate(['/'])
-      })
+      window.location.reload();
+  })
       // TODO: Guardar User
     }
 }
