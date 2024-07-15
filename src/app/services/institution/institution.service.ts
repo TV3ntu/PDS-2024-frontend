@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import { path } from '../api.path'
 import { HttpClient } from '@angular/common/http'
 import { Course } from 'src/app/models/course'
 import { Institution } from 'src/app/models/institution'

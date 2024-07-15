@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import {Observable } from "rxjs"
 import { Assignment } from 'src/app/models/assignment'
-import { path } from '../api.path'
 import {BasicUser, User} from 'src/app/models/user'
 import environment from 'src/environment'
 
