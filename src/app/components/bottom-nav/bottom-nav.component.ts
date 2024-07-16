@@ -44,6 +44,8 @@ export class BottomNavComponent {
       this.userService.getUserLoggedData().subscribe(user => {
         this.user = user
       })
+    } else {
+      this.isLogged=false
     }
   }
 
