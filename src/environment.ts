@@ -1,5 +1,5 @@
 const environment = {
-    apiUrl: "http://localhost:8080"
+    apiUrl: "http://149.50.143.203:8080"
 }
 
 export default environment
