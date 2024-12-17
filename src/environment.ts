@@ -1,5 +1,5 @@
 const environment = {
-    apiUrl: "http://weekbook.site:8080"
+    apiUrl: "http://localhost:8080"
 }
 
 export default environment
